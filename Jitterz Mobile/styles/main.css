@@ -1,5 +1,44 @@
 #map
 {
-	border: 0px solid red;
 	height: 365px;
+}
+
+.km-card
+{
+	-webkit-mask-box-image: url("../icons/card.png");
+}
+
+.km-rewards
+{
+	-webkit-mask-box-image: url("../icons/rewards.png");
+}
+
+.km-stores
+{
+	-webkit-mask-box-image: url("../icons/stores.png");
+}
+
+/*66CCFF*/
+#jitterz-tabstrip,
+#jitterz-default-header .km-navbar,
+#jitterz-tabstrip .km-state-active .km-icon,
+#jitterz-default-header .km-navbar .km-button
+{
+	background-color: #66ccff;
+}
+
+.km-ios .km-navbar
+{
+	background-image: -webkit-linear-gradient(bottom, #3399cc 30%, #66ccff 71%);
+}
+	
+.km-ios #jitterz-default-header .km-navbar .km-view-title 
+{
+	color: #fff;
+	text-shadow: none;
+}
+
+.km-ios #jitterz-tabstrip
+{
+	border-top: 2px solid #66ccff;
 }

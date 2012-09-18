@@ -3,7 +3,7 @@
 // Wait for Apache Cordova to load
 document.addEventListener("deviceready", onDeviceReady, false);
 
-var map;
+var mapElem;
 
 // Apache Cordova is ready
 function onDeviceReady() {
@@ -11,7 +11,7 @@ function onDeviceReady() {
 	getLocation();
 	
 	// Prevent screen bounce
-	$(document).bind('touchmove', function (e) {
+	$(document).bind("touchmove", function (e) {
 		e.preventDefault();
 	});
 }
@@ -39,12 +39,12 @@ function onGeolocationSuccess(position) {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
     
-	map = new google.maps.Map(document.getElementById("map"), myOptions);
+	mapElem = new google.maps.Map(document.getElementById("map"), myOptions);
         
 	var marker = new google.maps.Marker({
 		position: latlng,
-		map: map,
-		title: 'Your Location'
+		map: mapElem,
+		title: "Your Location"
 	});
     
     // Set property markers
@@ -88,24 +88,16 @@ function setMarkers(locations) {
 												new google.maps.Point(0, 0),
 												new google.maps.Point(12, 35));
     
-    var markerImage = new google.maps.MarkerImage('images/icehorizontal_icon.png');
+    var markerImage = new google.maps.MarkerImage('icons/coffeecupbutton.png');
 	var marker;
     
 	for (i = 0; i < locations.length; i++) {
-        /*
-        marker = new google.maps.Marker({
-                    position: locations[i].latlng,
-                    map: map,
-                    title: 'Jitterz Coffeehouse',
-                    icon: markerImage
-                });
-        */
 		marker = new google.maps.Marker({
-			map: map,
+			map: mapElem,
 			animation: google.maps.Animation.DROP,
 			position: locations[i].latlng,
 			title: locations[i].address,
-			icon: pinImage, //icon: markerImage,
+			icon: markerImage,
 			shadow: pinShadow
 		});
 	}
