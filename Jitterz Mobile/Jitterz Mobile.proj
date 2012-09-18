@@ -28,7 +28,6 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
-    <Folder Include="images" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -56,6 +55,10 @@
     <Content Include="icons\rewards.png" />
     <Content Include="icons\card.png" />
     <Content Include="icons\stores.png" />
+    <Content Include="images\hot-coffee.jpg" />
+    <Content Include="images\holiday.jpg" />
+    <Content Include="images\rewards.jpg" />
+    <Content Include="images\anniversary.jpg" />
     <Content Include="index.html" />
     <Content Include="kendo\js\jquery.min.js" />
     <Content Include="kendo\js\kendo.mobile.min.js" />

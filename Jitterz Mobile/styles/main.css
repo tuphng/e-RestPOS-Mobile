@@ -3,6 +3,47 @@
 	height: 365px;
 }
 
+#announcements
+{
+    margin: 12px;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+}
+
+.item-photo {
+    width: 5em;
+    height: 3.5em;
+    float: left;
+    margin: .5em 0;
+    -webkit-box-shadow: 0 1px 3px #333;
+    box-shadow: 0 1px 3px #333;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+#announcements-listview .item-title {
+	float: left;
+	font-size: 1.3em;
+    line-height: 1.2em;
+    margin: 0 0 0 .8em;
+    width: 61%;
+}
+
+#announcements-listview .item-info {
+	float: left;
+	font-size: 1em;
+    font-weight: 100;
+	line-height: 1em;
+    margin: 0 0 0 1em;
+    width: 61%;
+}
+
+.km-ios #home .km-list
+{
+    background: rgba(255, 255, 255, 0.5);
+}
+
 .km-card
 {
 	-webkit-mask-box-image: url("../icons/card.png");
@@ -31,14 +72,15 @@
 {
 	background-image: -webkit-linear-gradient(bottom, #3399cc 30%, #66ccff 71%);
 }
-	
-.km-ios #jitterz-default-header .km-navbar .km-view-title 
-{
-	color: #fff;
-	text-shadow: none;
-}
 
 .km-ios #jitterz-tabstrip
 {
 	border-top: 2px solid #66ccff;
 }
+
+#home .km-content
+{
+    background-image: url("../images/hot-coffee.jpg");
+    background-size: auto 100%;
+}
+
