@@ -126,4 +126,7 @@
     border-radius: 20px;
     margin: 0 auto;
 }
-
+#mapwrap div.km-scroll-container,
+#mapwrap #map {
+    width:100%; height:100%; position:absolute;        
+}
