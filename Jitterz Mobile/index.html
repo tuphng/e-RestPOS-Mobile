@@ -46,16 +46,60 @@
             </div>
         </div>
         
+        <!-- Templates -->
+        <script type="text/x-kendo-template" id="cardsListTemplate">
+            <div class="listCard clear" data-cardId="${cardId}">
+                <img class="item-photo" src="http://www.veryicon.com/icon/preview/System/clearDisk%20iconset%20part%20I/stuff%20coffee%20Icon.jpg" />
+                <p class="item-info">${cardNumber}</p>
+            </div>    
+        </script>
+        
         <script type="text/x-kendo-template" id="announcement-listview-template">
             <img class="item-photo" src="${url}" />
             <h3 class="item-title">${title}</h3>
             <p class="item-info">${description}</p>
         </script>
         
-        <!-- CARD page -->
-        <div data-role="view" id="card" data-title="Card">
-			<div data-role="content">
-            Home
+        <!-- CARDS List page -->
+        <div data-role="view" id="cardsView" data-title="Cards" data-init="listViewCardsInit">
+			<div data-role="content">         
+                
+                <!-- ModalViewAddCard -->
+                <div data-role="modalview" id="modalViewAddCard" style="width: 95%; height: 80%;">
+					<div data-role="header">
+						<div data-role="navbar">
+							<span>Add Card</span>
+							<a id="modalViewAddCardCancelButton" data-role="button" data-align="right">Cancel</a>
+						</div>
+					</div>
+					<ul data-role="listview" data-style="inset">
+						<li>
+							<label for="cardNumberField">CardNumber:</label>
+							<input type="text" id="cardNumberField" />
+						</li>
+					</ul>
+					<a id="modalViewAddCardButton" type="button" data-role="button">Add Card</a>
+                </div>
+                
+                <!-- List of cards -->
+                <a id="buttonAddNewCard" class="button" data-role="button">Add Card</a>
+                <ul id="cardsList"></ul>
+            </div>
+        </div>
+        
+        <!-- Single Card page -->
+        <div data-role="view" id="singleCardView" data-title="Card">
+			<header data-role="header" data-id="jitterz-default-header">
+				<div data-role="navbar">
+                    <a class="nav-button" data-role="backbutton" data-align="left">Back</a>
+                    <span data-role="view-title"></span>
+				</div>
+			</header>
+            <div data-role="content">
+                <div style="text-align: center"> 
+                    <img id="cardFront" src="http://webmuch.com/demos/jquery_image_flip/images/image2.jpg" alt="" />
+                    <img id="cardBack" src="http://webmuch.com/demos/jquery_image_flip/images/image1.jpg" alt="" />
+                </div>
             </div>
         </div>
         
@@ -86,7 +130,7 @@
 			<div data-role="footer">
 				<div data-role="tabstrip" data-id="jitterz-tabstrip">
 					<a href="#home" data-icon="home">Home</a>
-					<a href="#card" data-icon="card">Card</a>
+					<a href="#cardsView" data-icon="card">Card</a>
 					<a href="#rewards" data-icon="rewards">Rewards</a>
 					<a href="#stores" data-icon="stores">Stores</a>
 				</div>

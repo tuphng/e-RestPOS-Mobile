@@ -14,6 +14,16 @@ function onDeviceReady() {
 	$(document).bind("touchmove", function (e) {
 		e.preventDefault();
 	});
+    
+    //Append events
+    appendModalViewAddNewCardButtonsEvent();
+
+    $("#cardsView").on("click", ".listCard", function(){
+    	alert($(this).data('cardid'));
+        app.navigate('#singleCardView');
+    });
+    
+    appendCardFlipEffect();
 }
 
 function getLocation() {
@@ -114,4 +124,70 @@ function setMarkers(locations) {
 			shadow: pinShadow
 		});
 	}
+}
+
+function addNewCard()
+{
+    var cardNumberValue = $("#cardNumberField").val();
+    
+    var newGuid = ($.guid++);
+    
+    var cardToAdd = {
+        cardId : newGuid,
+        cardNumber : cardNumberValue
+    }
+    
+    cardsData.cards.push(cardToAdd);
+    $("#modalViewAddCard").kendoMobileModalView("close");
+}
+
+//Cards informations
+var cardsData = kendo.observable({
+    cards : []
+});
+
+function listViewCardsInit()
+{
+    $("#cardsList").kendoMobileListView({
+        dataSource: kendo.data.DataSource.create({data: cardsData.cards}),
+        template: $("#cardsListTemplate").html()
+    });
+}
+
+function appendCardFlipEffect()
+{
+    var margin =$("#cardFront").width()/2;
+    var width=$("#cardFront").width();
+    var height=$("#cardFront").height();
+     
+    $("#cardBack").stop().css({width:'0px',height:''+height+'px',marginLeft:''+margin+'px',opacity:'0.5'});
+     
+    $("#cardFront").click(function(){
+        $(this).stop().animate({width:'0px',height:''+height+'px',marginLeft:''+margin+'px',opacity:'0.5'},{duration:500});
+        window.setTimeout(function() {
+            $("#cardBack").show().animate({width:''+width+'px',height:''+height+'px',marginLeft:'0px',opacity:'1'},{duration:500});
+        },500);
+    });
+ 
+    $("#cardBack").click(function(){
+        $(this).stop().animate({width:'0px',height:''+height+'px',marginLeft:''+margin+'px',opacity:'0.5'},{duration:500});
+        window.setTimeout(function() {
+            $("#cardFront").show().animate({width:''+width+'px',height:''+height+'px',marginLeft:'0px',opacity:'1'},{duration:500});
+        },500);
+    });
+}
+
+function appendModalViewAddNewCardButtonsEvent()
+{
+    $("#cardsView").on("click", "#buttonAddNewCard", function(){
+        $("#modalViewAddCard").kendoMobileModalView("open");
+    });
+    
+    $("#modalViewAddCard").on("click", "#modalViewAddCardCancelButton", function(){
+        $("#modalViewAddCard").kendoMobileModalView("close");
+    });
+    
+    $("#modalViewAddCard").on("click", "#modalViewAddCardButton", function(){
+        addNewCard();
+    });
 }
