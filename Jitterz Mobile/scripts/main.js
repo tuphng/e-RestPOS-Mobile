@@ -18,6 +18,7 @@ function onDeviceReady() {
         app.navigate('#singleCardView');
     });
     
+    centerSingleCard();
     appendCardFlipEffect();
 }
 
@@ -202,4 +203,13 @@ function appendModalViewAddNewCardButtonsEvent()
     $("#modalViewAddCard").on("click", "#modalViewAddCardButton", function(){
         addNewCard();
     });
+}
+
+function centerSingleCard()
+{
+    var cardWidth = $("#cardFront").width();
+    var screenWidth = $(window).width();
+    var marginLeft = (screenWidth - cardWidth) / 2;
+    
+    $('#singleCardContainer').css("margin-left", marginLeft )
 }
