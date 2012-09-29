@@ -137,6 +137,11 @@ function setStiresViews(locations) {
 			shadow: pinShadow
 		});
 	}
+	
+	$("#stores-listview").kendoMobileListView({
+		dataSource: kendo.data.DataSource.create({ data: locations}),
+		template: $("#stores-listview-template").html()
+	});
 }
 
 function addNewCard()
