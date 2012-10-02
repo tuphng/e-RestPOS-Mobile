@@ -72,8 +72,9 @@ function storesShow(e) {
 	$("#storesNavigate").kendoMobileButtonGroup({
 		select: function() {
 			if (this.selectedIndex == 0) {
+                $("#storeswrap").hide();
 				$("#mapwrap").show();
-				$("#storeswrap").hide();
+                google.maps.event.trigger(map, "resize");
 			}
 			else if (this.selectedIndex == 1) {
 				$("#mapwrap").hide();

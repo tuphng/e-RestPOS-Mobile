@@ -152,7 +152,7 @@
         </div>
         
         <!-- STORES page -->
-		<div data-role="view" id="stores" data-title="Stores" data-show="storesShow" >
+		<div data-role="view" id="stores" data-title="Stores" data-show="storesShow" data-stretch="true">
 
 			<ul id="storesNavigate" data-index="0">
 				<li>
@@ -166,9 +166,11 @@
                 <div id="map"></div>
 			</div>
 			<div id="storeswrap" data-role="content" style="display:none;">
-				<ul data-role="listview" id="stores-listview" 
-					data-style="inset" data-type="group" >
-				</ul>
+                <div data-role="scroller">
+				    <ul data-role="listview" id="stores-listview" 
+				    	data-style="inset" data-type="group" >
+				    </ul>
+                </div>
     		</div>
 		</div>
 
