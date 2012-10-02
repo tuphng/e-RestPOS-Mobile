@@ -33,6 +33,7 @@
         <script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/card.js"></script>
+        <script type="text/javascript" src="scripts/jquery-barcode-2.0.2.min.js"></script>  
     </head>
     <body>
         <!-- HOME page -->
@@ -49,9 +50,13 @@
         
         <!-- Templates -->
         <script type="text/x-kendo-template" id="cardsListTemplate">
-            <div class="listCard clear" data-cardId="${cardId}">
-                <img class="item-photo" src="http://www.veryicon.com/icon/preview/System/clearDisk%20iconset%20part%20I/stuff%20coffee%20Icon.jpg" />
-                <p class="item-info">${cardNumber}</p>
+            <div class="listCard clear" data-cardId="${cardNumber}">
+                <div class="cardPicture item-photo"></div>
+                <div class="cardNumberContainer" style="float: left">
+                    <div>Card Number: </div>
+                    <div class="item-info">${cardNumber}</div>
+                </div>
+                <div class="deleteCardButton">x</div>
             </div>    
         </script>
         
@@ -63,7 +68,7 @@
         
         <!-- CARDS List page -->
         <div data-role="view" id="cardsView" data-title="Cards" data-init="listViewCardsInit">
-			<div data-role="content">         
+			<div id="cardsViewContent" data-role="content">         
                 
                 <!-- ModalViewAddCard -->
                 <div data-role="modalview" id="modalViewAddCard" style="width: 95%; height: 80%;">
@@ -80,10 +85,27 @@
 						</li>
 					</ul>
 					<a id="modalViewAddCardButton" type="button" data-role="button">Add Card</a>
+                    <div id="addNewCardErrorLog"></div>
                 </div>
                 
+                <!-- ModalViewDeleteCardConfirmation -->
+                <div data-role="modalview" id="modalViewDeleteCard" style="width: 95%; height: 80%;">
+					<div data-role="header">
+						<div data-role="navbar">
+							<span>Delete Card</span>
+						</div>
+					</div>
+                    <div id="modalViewDeleteCardContent">
+                        <div id ="modalViewDeleteCardMessage"></div>
+                        <div id ="modalViewDeleteCardNumber"></div>                        
+                    </div>
+					<a id="buttonModalViewDeleteConfirm" type="button" data-role="button">Yes</a>
+                    <a id="buttonModalViewDeleteCancel" type="button" data-role="button">No</a>
+                </div>
+                
+                
                 <!-- List of cards -->
-                <a id="buttonAddNewCard" class="button" data-role="button">Add Card </a>
+                <a id="buttonAddNewCard" class="button" data-role="button">Add Card</a>
                 <ul id="cardsList"></ul>
             </div>
         </div>
@@ -96,10 +118,13 @@
                     <span data-role="view-title"></span>
 				</div>
 			</header>
-            <div data-role="content">
+            <div id="cardViewContent" data-role="content">
                 <div id="singleCardContainer"> 
-                    <img class="cardStyle" id="cardFront" src="http://webmuch.com/demos/jquery_image_flip/images/image2.jpg" alt="" />
-                    <img class="cardStyle" id="cardBack" src="http://webmuch.com/demos/jquery_image_flip/images/image1.jpg" alt="" />
+                    <div class="cardStyle" id="cardFront"></div>
+                    <div class="cardStyle clear" id="cardBack">
+                        <div id="cardBarcode">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
