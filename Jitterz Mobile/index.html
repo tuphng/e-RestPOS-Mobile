@@ -56,7 +56,7 @@
                     <div>Card Number: </div>
                     <div class="item-info">${cardNumber}</div>
                 </div>
-                <div class="deleteCardButton">x</div>
+                <a class='deleteCardButton' data-role="detailbutton" data-style="rowdelete"></a>
             </div>    
         </script>
         
@@ -64,6 +64,14 @@
             <img class="item-photo" src="${url}" />
             <h3 class="item-title">${title}</h3>
             <p class="item-info">${description}</p>
+        </script>
+        
+		<script type="text/x-kendo-template" id="stores-listview-template">
+	        <p class="item-address">${address}</p>
+		</script>
+
+        <script type="text/x-kendo-template" id="stores-listview-template" >
+            <p class="item-address">${address}</p>
         </script>
         
         <!-- CARDS List page -->
@@ -96,8 +104,17 @@
 						</div>
 					</div>
                     <div id="modalViewDeleteCardContent">
-                        <div id ="modalViewDeleteCardMessage"></div>
-                        <div id ="modalViewDeleteCardNumber"></div>                        
+                        <ul data-role="listview" data-style="inset">
+    						<li>
+    							<div id ="modalViewDeleteCardMessage"></div>
+    						</li>
+                            <li>
+                                <div id ="modalViewDeleteCardNumber">
+                                    <span id="deleteMessage"></span>
+                                    <span id="deleteCardId"></span>
+                                </div> 
+                            </li>
+    					</ul>                   
                     </div>
 					<a id="buttonModalViewDeleteConfirm" type="button" data-role="button">Yes</a>
                     <a id="buttonModalViewDeleteCancel" type="button" data-role="button">No</a>
@@ -122,8 +139,6 @@
                 <div id="singleCardContainer"> 
                     <div class="cardStyle" id="cardFront"></div>
                     <div class="cardStyle clear" id="cardBack">
-                        <div id="cardBarcode">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -157,15 +172,6 @@
     		</div>
 		</div>
 
-		<script type="text/x-kendo-template" id="stores-listview-template">
-			<p class="item-address">${address}</p>
-		</script>
-
-        <script type="text/x-kendo-template" id="stores-listview-template" >
-            <p class="item-address">${address}</p>
-        </script>
-
-        
         <!-- Page Layout -->
 		<div data-role="layout" data-id="jitterz-default">
 			<header data-role="header" data-id="jitterz-default-header">

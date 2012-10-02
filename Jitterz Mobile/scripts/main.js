@@ -14,18 +14,19 @@ function onDeviceReady() {
 	appendModalViewAddNewCardButtonsEvent();
 
 	$("#cardsView").on("click", ".listCard", function() {
-		var cardId = $(this).data('cardid');
-		generateBarcode(cardId);  
+		//var cardId = $(this).data('cardid');
+		//generateBarcode(cardId);  
 		app.navigate('#singleCardView');
 	});
     
 	$("#cardsView").on("click", ".deleteCardButton", function(e) {
     	
 		var cardNumberToDelete = $(this).parent().data('cardid');
-		var message = "Are you sure that you want to permanently delete card with number : ";
+		var message = "Are you sure that you want to permanently delete card with number ?";
         
 		$("#modalViewDeleteCardMessage").text(message);
-		$("#modalViewDeleteCardNumber").text(cardNumberToDelete);
+		$("#deleteMessage").text("Card Id:");
+        $("#deleteCardId").text(cardNumberToDelete);
 		$("#modalViewDeleteCard").kendoMobileModalView("open");
 		e.stopPropagation();
 	});
@@ -35,7 +36,7 @@ function onDeviceReady() {
 	});
     
 	$("#modalViewDeleteCard").on("click", '#buttonModalViewDeleteConfirm', function() {
-		var cardNumberToDelete = $("#modalViewDeleteCardNumber").text();
+		var cardNumberToDelete = $("#deleteCardId").text();
 		deleteCard(cardNumberToDelete);
 		$("#modalViewDeleteCard").kendoMobileModalView("close");
 	});
@@ -167,6 +168,12 @@ function setStiresViews(locations) {
 	});
 }
 
+//Cards informations
+var cardsData = kendo.observable({
+	cardNumbers: {},
+	cards : []
+});
+
 function addNewCard() {
 	var cardNumberValue = $("#cardNumberField").val();
     
@@ -180,9 +187,10 @@ function addNewCard() {
 		$('#addNewCardErrorLog').text('Dublicate record');
 	}
 	else {
-    
+		var currentAmount = 0;
 		var cardToAdd = {
-			cardNumber : cardNumberValue
+			cardNumber : cardNumberValue,
+			amount: currentAmount
 		}
         
 		cardsData.cardNumbers[cardNumberValue] = true;
@@ -204,12 +212,6 @@ function isDublicateNumber(cardNumberValue) {
 	var isDublicate = cardsData.cardNumbers.hasOwnProperty(cardNumberValue);
 	return isDublicate;
 }
-
-//Cards informations
-var cardsData = kendo.observable({
-	cardNumbers: {},
-	cards : []
-});
 
 function listViewCardsInit() {
 	$("#cardsList").kendoMobileListView({
@@ -261,11 +263,6 @@ function centerSingleCard() {
 	var marginLeft = (screenWidth - cardWidth) / 2;
     
 	$('#singleCardContainer').css("margin-left", marginLeft)
-}
-
-function generateBarcode(cardId) {
-	var cardIdString = cardId.toString();
-	$("#cardBarcode").barcode(cardIdString, "code128", { barWidth:2, barHeight:50});
 }
 
 function deleteCard(cardId) {
