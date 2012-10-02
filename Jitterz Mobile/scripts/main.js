@@ -14,11 +14,11 @@ function onDeviceReady() {
 	appendModalViewAddNewCardButtonsEvent();
 
 	$("#cardsView").on("click", ".listCard", function() {
-		//var cardId = $(this).data('cardid');
-		//generateBarcode(cardId);  
+		var cardId = $(this).data('cardid');
+		generateBarcode(cardId);
 		app.navigate('#singleCardView');
 	});
-    
+   
 	$("#cardsView").on("click", ".deleteCardButton", function(e) {
     	
 		var cardNumberToDelete = $(this).parent().data('cardid');
@@ -43,6 +43,18 @@ function onDeviceReady() {
     
 	centerSingleCard();
 	appendCardFlipEffect();
+}
+
+function generateBarcode(cardId) {
+    
+    var size = "150";
+    var urlSizeParameter ="chs=" + size + "x" + size;
+    var urlQrParameter = "cht=qr"
+    var urlDataParameter = "chl=" + cardId;
+    var urlBase = "https://chart.googleapis.com/chart?";
+    var imageRequestString = urlBase + urlSizeParameter + "&" + urlQrParameter + "&" + urlDataParameter;
+    
+    $("#barcodeImage").attr("src", imageRequestString);
 }
 
 function getPosition(handler) {

@@ -228,3 +228,11 @@
     width: 240px;
     text-align: center;
 }
+
+#barcodeImage
+{
+    width: 150px;
+    height: 150px;
+    margin-left: 80px;
+    margin-top: 20px;
+}
