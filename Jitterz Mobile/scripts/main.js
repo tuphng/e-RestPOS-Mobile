@@ -194,7 +194,8 @@ function addNewCard() {
 		var currentAmount = 0;
 		var cardToAdd = {
 			cardNumber : cardNumberValue,
-			amount: currentAmount
+			amount: currentAmount,
+            bonusPoints:20
 		}
         
 		cardsData.cardNumbers[cardNumberValue] = true;
