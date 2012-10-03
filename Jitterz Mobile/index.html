@@ -74,6 +74,16 @@
             <p class="item-address">${address}</p>
         </script>
         
+        <script type="text/x-kendo-template" id="singleCardTamplate" >
+            <div id="singleCardContainer" class="clear"> 
+                <div class="cardStyle" id="cardFront"></div>
+                <div class="cardStyle clear" id="cardBack">
+                    <img id="barcodeImage" src="#= barcodeUrl #" alt="Shop Card Id"/>
+                </div>
+            </div>
+            <div id="cardAmount">#= cardAmount #</div>
+        </script>
+        
         <!-- CARDS List page -->
         <div data-role="view" id="cardsView" data-title="Cards" data-init="listViewCardsInit">
 			<div id="cardsViewContent" data-role="content">         
@@ -136,12 +146,7 @@
 				</div>
 			</header>
             <div id="cardViewContent" data-role="content">
-                <div id="singleCardContainer"> 
-                    <div class="cardStyle" id="cardFront"></div>
-                    <div class="cardStyle clear" id="cardBack">
-                        <img id="barcodeImage" src="" alt="Shop Card Id"/>
-                    </div>
-                </div>
+                
             </div>
         </div>
         

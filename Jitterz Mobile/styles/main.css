@@ -123,6 +123,7 @@
 #singleCardContainer
 {
     margin-top: 15px;
+    height: 220px;
 }
 
 #cardFront
@@ -234,4 +235,12 @@
     height: 150px;
     margin-left: 80px;
     margin-top: 20px;
+}
+
+#cardAmount
+{
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
 }

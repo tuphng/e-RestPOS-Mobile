@@ -15,7 +15,9 @@ function onDeviceReady() {
 
 	$("#cardsView").on("click", ".listCard", function() {
 		var cardId = $(this).data('cardid');
-		generateBarcode(cardId);
+		initSingleCardView(cardId);
+		centerSingleCard();
+		appendCardFlipEffect();
 		app.navigate('#singleCardView');
 	});
    
@@ -26,7 +28,7 @@ function onDeviceReady() {
         
 		$("#modalViewDeleteCardMessage").text(message);
 		$("#deleteMessage").text("Card Id:");
-        $("#deleteCardId").text(cardNumberToDelete);
+		$("#deleteCardId").text(cardNumberToDelete);
 		$("#modalViewDeleteCard").kendoMobileModalView("open");
 		e.stopPropagation();
 	});
@@ -41,20 +43,6 @@ function onDeviceReady() {
 		$("#modalViewDeleteCard").kendoMobileModalView("close");
 	});
     
-	centerSingleCard();
-	appendCardFlipEffect();
-}
-
-function generateBarcode(cardId) {
-    
-    var size = "150";
-    var urlSizeParameter ="chs=" + size + "x" + size;
-    var urlQrParameter = "cht=qr"
-    var urlDataParameter = "chl=" + cardId;
-    var urlBase = "https://chart.googleapis.com/chart?";
-    var imageRequestString = urlBase + urlSizeParameter + "&" + urlQrParameter + "&" + urlDataParameter;
-    
-    $("#barcodeImage").attr("src", imageRequestString);
 }
 
 function getPosition(handler) {
@@ -84,9 +72,9 @@ function storesShow(e) {
 	$("#storesNavigate").kendoMobileButtonGroup({
 		select: function() {
 			if (this.selectedIndex == 0) {
-                $("#storeswrap").hide();
+				$("#storeswrap").hide();
 				$("#mapwrap").show();
-                google.maps.event.trigger(map, "resize");
+				google.maps.event.trigger(map, "resize");
 			}
 			else if (this.selectedIndex == 1) {
 				$("#mapwrap").hide();
@@ -188,16 +176,19 @@ var cardsData = kendo.observable({
 });
 
 function addNewCard() {
-	var cardNumberValue = $("#cardNumberField").val();
+	var cardNumberValue = $('#cardNumberField').val();
     
-	var isValidCardNumber = validateCardNumber(cardNumberValue);
-	var isDuplicateCardNumber = isDublicateNumber(cardNumberValue);
+	var isValidCardNumber = validateCardNumber(cardNumberValue),
+	    isDuplicateCardNumber = isDublicateNumber(cardNumberValue);
+    
+    var $addnewCardErrorLog = $('#addNewCardErrorLog'),
+        $modalViewCardNumber = $('#modalViewAddCard');
     
 	if (!isValidCardNumber) {
-		$('#addNewCardErrorLog').text('Card number is nine digits code');
+		$addnewCardErrorLog.text('Card number is nine digits code');
 	}
 	else if (isDuplicateCardNumber) {
-		$('#addNewCardErrorLog').text('Dublicate record');
+		$addnewCardErrorLog.text('Dublicate record');
 	}
 	else {
 		var currentAmount = 0;
@@ -209,8 +200,8 @@ function addNewCard() {
 		cardsData.cardNumbers[cardNumberValue] = true;
 		cardsData.cards.push(cardToAdd);
         
-		$('#addNewCardErrorLog').text('');
-		$("#modalViewAddCard").kendoMobileModalView("close");
+		$addnewCardErrorLog.text('');
+		$modalViewCardNumber.kendoMobileModalView("close");
 	}
 }
 
@@ -234,24 +225,27 @@ function listViewCardsInit() {
 }
 
 function appendCardFlipEffect() {
-	var margin = $("#cardFront").width() / 2;
-	var width = $("#cardFront").width();
-	var height = $("#cardFront").height();
+	var $cardFront = $("#cardFront"),
+	    $cardBack = $("#cardBack");
+    
+	var width = $cardFront.width(),
+	    height = $cardFront.height(),
+        margin = $cardFront.width() / 2;
+	
+	$cardBack.stop().css({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'});
      
-	$("#cardBack").stop().css({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'});
-     
-	$("#cardFront").click(function() {
-		$(this).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
+	$cardFront.click(function(e) {
+		$(e.currentTarget).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
 		window.setTimeout(function() {
-			$("#cardBack").show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
+			$cardBack.show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
 		}, 500);
 	});
  
-	$("#cardBack").click(function() {
-		$(this).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
-		$(this).hide(500);
+	$cardBack.click(function(e) {
+		$(e.currentTarget).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
+		$(e.currentTarget).hide(500);
 		window.setTimeout(function() {
-			$("#cardFront").show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
+			$cardFront.show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
 		}, 500);
 	});
 }
@@ -271,18 +265,46 @@ function appendModalViewAddNewCardButtonsEvent() {
 }
 
 function centerSingleCard() {
-	var cardWidth = $("#cardFront").width();
-	var screenWidth = $(window).width();
-	var marginLeft = (screenWidth - cardWidth) / 2;
+	var cardWidth = $("#cardFront").width(),
+    	screenWidth = $(window).width(),
+    	marginLeft = (screenWidth - cardWidth) / 2;
     
-	$('#singleCardContainer').css("margin-left", marginLeft)
+	$('#singleCardContainer').css("margin-left", marginLeft);
 }
 
 function deleteCard(cardId) {
-	for (var i = 0; i < cardsData.cards.length;i++) {
-		if (cardsData.cards[i].cardNumber === cardId) {
-			cardsData.cards.splice(i, 1);
+	var allCardsArray = cardsData.cards;
+    
+	for (var i = -1, len = allCardsArray.length; ++i < len;) {
+		if (allCardsArray[i].cardNumber === cardId) {
+			allCardsArray.splice(i, 1);
 			delete cardsData.cardNumbers[cardId];
 		}
 	} 
+}
+
+function initSingleCardView(cardId) {
+	var barcodeUrl = generateBarcodeUrl(cardId),
+	    amount = 1;
+    
+	var singleCardViewData = {
+		barcodeUrl : barcodeUrl,
+		cardId : cardId,
+		cardAmount : amount
+	};
+    
+	var encodingTemplate = kendo.template($("#singleCardTamplate").text());
+	$('#cardViewContent').html(encodingTemplate(singleCardViewData));
+}
+
+function generateBarcodeUrl(cardId) {
+    
+	var size = "150",
+    	urlSizeParameter = "chs=" + size + "x" + size,
+    	urlQrParameter = "cht=qr",
+    	urlDataParameter = "chl=" + cardId,
+    	urlBase = "https://chart.googleapis.com/chart?",
+    	imageRequestString = urlBase + urlSizeParameter + "&" + urlQrParameter + "&" + urlDataParameter; 
+    
+	return imageRequestString;
 }
