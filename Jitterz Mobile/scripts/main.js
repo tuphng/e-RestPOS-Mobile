@@ -290,7 +290,8 @@ function initSingleCardView(cardId) {
 	var singleCardViewData = {
 		barcodeUrl : barcodeUrl,
 		cardId : cardId,
-		cardAmount : amount
+		cardAmount : amount,
+		bonusPoints:20
 	};
     
 	var encodingTemplate = kendo.template($("#singleCardTamplate").text());
@@ -307,4 +308,19 @@ function generateBarcodeUrl(cardId) {
     	imageRequestString = urlBase + urlSizeParameter + "&" + urlQrParameter + "&" + urlDataParameter; 
     
 	return imageRequestString;
+}
+
+
+/*------------------- Rewards ----------------------*/
+
+function rewardsViewInit() {
+	$("#rewordsCardsList").kendoMobileListView({
+		dataSource: kendo.data.DataSource.create({data: cardsData.cards}),
+		template: $("#rewordsCardsList-template").html()
+	});
+}
+
+function rewardCardShow(e)
+{
+    var p = e;
 }
