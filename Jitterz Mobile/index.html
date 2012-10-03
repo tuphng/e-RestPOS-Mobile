@@ -49,6 +49,16 @@
         </div>
         
         <!-- Templates -->
+        <script type="text/x-kendo-template" id="rewordsCardsList-template">
+            <a class="listReswardsCard clear" data-role="listview-link"  href="rewardCard?bonusPoints=#:bonusPoints#" data-cardId="${cardNumber}">
+                <div class="cardPicture item-photo"></div>
+                <div class="cardNumberContainer" style="float: left">
+                    <div>Card Number: </div>
+                    <div class="item-info">${cardNumber}</div>
+                </div>
+            </a>    
+        </script>
+        
         <script type="text/x-kendo-template" id="cardsListTemplate">
             <div class="listCard clear" data-cardId="${cardNumber}">
                 <div class="cardPicture item-photo"></div>
@@ -151,13 +161,20 @@
         </div>
         
         <!-- REWARDS page -->
-        <div data-role="view" id="rewards" data-title="Rewards">
-			<div data-role="content">
-            Home
+        <div data-role="view" id="rewardsView" data-title="Cards" data-init="rewardsViewInit">
+			<div id="rewardsCardsViewContent" data-role="content">
+                
+                <!-- List of cards -->
+                <ul id="rewordsCardsList" data-role="listView"></ul>
             </div>
         </div>
         
-        <!-- STORES page -->
+        <!-- REWARD CARD page -->
+        
+        <div data-role="view" id="rewardCard" data-title="Card" data-show="rewardCardShow">
+        </div>
+        
+          <!-- STORES page -->
 		<div data-role="view" id="stores" data-title="Stores" data-show="storesShow" data-stretch="true">
 
 			<ul id="storesNavigate" data-index="0">
