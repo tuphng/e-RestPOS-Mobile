@@ -1,8 +1,3 @@
-#map
-{
-	height: 365px;
-}
-
 #announcements
 {
     margin: 12px;
@@ -245,4 +240,62 @@
     width: 100px;
     text-align: center;
     border-radius: 10px;
+}
+
+/*Kristian Styles*/
+
+clear:after
+{
+    content: "";
+    clear: both;
+    height: 0;
+    display: block;
+}
+
+#rewordsCardsList
+{
+    margin: 0 15px;
+}
+
+.cardNumberContainer
+{
+    margin: 7px 0 0 10px;
+}
+
+#rewardsCardsViewContent, #cardViewContent
+{
+    background: rgba(0,0,0,.1);
+    box-shadow: 0 0 2px rgba(255,255,255,.5), inset 0 0 7px #000;
+}
+
+#rewordsCardsList
+{
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: 0px 0px 2px #333;
+}
+
+.km-ios #rewordsCardsList li:first-child
+{
+    margin-top:9px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.km-ios #rewordsCardsList li:last-child
+{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#rewordsCardsList li 
+{
+    background-color: #BAB8B9;
+    color: #363636;
+    font-size: 13px;
+}
+
+.listReswardsCard
+{
+    overflow:hidden;
 }
