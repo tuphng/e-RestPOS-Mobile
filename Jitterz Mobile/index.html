@@ -87,7 +87,13 @@
                     <img id="barcodeImage" src="#= barcodeUrl #" alt="Shop Card Id"/>
                 </div>
             </div>
-            <div id="cardAmount">#= cardAmount #</div>
+            <div id="cardAmount">
+                <div class="singleCardPriceBox">#= cardAmount #</div>
+                <div>
+                    <span>as of</span>
+                    <span>#= currentDate #<span>
+                </div>
+            </div>
         </script>
         
         <script type="text/x-kendo-template" id="rewardsListTemplate">

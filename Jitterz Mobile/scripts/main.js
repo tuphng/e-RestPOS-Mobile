@@ -13,8 +13,8 @@ function onDeviceReady() {
 	//Append events
 	appendModalViewAddNewCardButtonsEvent();
 
-	$("#cardsView").on("click", ".listCard", function() {
-		var cardId = $(this).data('cardid');
+	$("#cardsView").on("click", ".listCard", function(e) {
+		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
         var $cardFront = $("#cardFront"),
         cardFrontWidth =$("#cardFront").width(),
@@ -27,7 +27,7 @@ function onDeviceReady() {
    
 	$("#cardsView").on("click", ".deleteCardButton", function(e) {
     	
-		var cardNumberToDelete = $(this).parent().data('cardid');
+		var cardNumberToDelete = $(e.currentTarget).parent().data('cardid');
 		var message = "Are you sure that you want to permanently delete card with number ?";
         
 		$("#modalViewDeleteCardMessage").text(message);
@@ -55,21 +55,19 @@ function getPosition(handler) {
 
 function getLocations(position, handler) {
 	$.getJSON("http://www.starbucks.com/api/location.ashx?&features=&lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "&limit=10",
-			  function(data) {
-				  var locations = [];
-				  $.each(data, function() {
-					  locations.push(
-						  {
-						  address: this.WalkInAddressDisplayStrings[0] + ", " + this.WalkInAddressDisplayStrings[1], 
-						  latlng: new google.maps.LatLng(this.WalkInAddress.Coordinates.Latitude, this.WalkInAddress.Coordinates.Longitude)
-					  });                
-				  });
-				  handler(locations);
-			  }
-	)
-	.error(function(error) {
-		alert(error.message);
-	});
+    function(data) {
+      var locations = [];
+      $.each(data, function() {
+    	  locations.push(
+    		  {
+    		  address: this.WalkInAddressDisplayStrings[0] + ", " + this.WalkInAddressDisplayStrings[1], 
+    		  latlng: new google.maps.LatLng(this.WalkInAddress.Coordinates.Latitude, this.WalkInAddress.Coordinates.Longitude)
+    	  });                
+      });
+      handler(locations);
+    }).error(function(error) {
+        alert(error.message);
+    });
 }
 
 function storesShow(e) {
@@ -91,6 +89,7 @@ function storesShow(e) {
 	$('#map').bind("touchmove", function (e) {
 		e.preventDefault();
 	});
+    
 	var iteration = function() {
 		getPosition(function(position) {
 			// Use Google API to get the location data for the current coordinates
@@ -195,15 +194,17 @@ function addNewCard() {
 		$addnewCardErrorLog.text('Dublicate record');
 	}
 	else {
-		var currentAmount = 0;
+		var currentAmount = Math.floor((Math.random()*100) + 10),
+            bonusPoints = Math.floor((Math.random()*100) + 20);
+        
 		var cardToAdd = {
 			cardNumber : cardNumberValue,
 			amount: currentAmount,
-            bonusPoints:20
+            bonusPoints: bonusPoints
 		}
         
-		cardsData.cardNumbers[cardNumberValue] = true;
-		cardsData.cards.push(cardToAdd);
+		var positionAdded = cardsData.cards.push(cardToAdd) - 1;
+        cardsData.cardNumbers[cardNumberValue] = positionAdded;
         
 		$addnewCardErrorLog.text('');
 		$modalViewCardNumber.kendoMobileModalView("close");
@@ -276,26 +277,32 @@ function centerSingleCard($cardFrontWidth,$container) {
 }
 
 function deleteCard(cardId) {
-	var allCardsArray = cardsData.cards;
+    var allCardsArray = cardsData.cards;
     
 	for (var i = -1, len = allCardsArray.length; ++i < len;) {
 		if (allCardsArray[i].cardNumber === cardId) {
 			allCardsArray.splice(i, 1);
 			delete cardsData.cardNumbers[cardId];
+            break;
 		}
 	} 
 }
 
 function initSingleCardView(cardId) {
-	var barcodeUrl = generateBarcodeUrl(cardId),
-	    amount = 1;
-        bonusPoints = 20;
-    
+	var cardPosition = cardsData.cardNumbers[cardId];
+    var cardsArray = cardsData.cards;
+    debugger;
+    var barcodeUrl = generateBarcodeUrl(cardId),
+        amount = cardsArray[cardPosition].amount,
+        bonusPoints = cardsArray[cardPosition].bonusPoints,
+        amountFormated = kendo.toString(amount, "c");
+     
 	var singleCardViewData = {
 		barcodeUrl : barcodeUrl,
 		cardId : cardId,
-		cardAmount : amount,
-        bonusPoints:bonusPoints
+		cardAmount : amountFormated,
+		bonusPoints : bonusPoints,
+        currentDate : kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt" )
 	};
     
 	var encodingTemplate = kendo.template($("#singleCardTamplate").text());
