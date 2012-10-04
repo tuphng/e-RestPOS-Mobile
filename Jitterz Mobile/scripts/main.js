@@ -289,7 +289,7 @@ function deleteCard(cardId) {
 function initSingleCardView(cardId) {
 	var cardPosition = cardsData.cardNumbers[cardId];
     var cardsArray = cardsData.cards;
-    debugger;
+    
     var barcodeUrl = generateBarcodeUrl(cardId),
         amount = cardsArray[cardPosition].amount,
         bonusPoints = cardsArray[cardPosition].bonusPoints,

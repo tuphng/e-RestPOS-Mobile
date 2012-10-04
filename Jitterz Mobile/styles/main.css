@@ -124,6 +124,10 @@
 #cardFront
 {
     background-image: url("http://webmuch.com/demos/jquery_image_flip/images/image1.jpg");
+    /*-moz-animation:myfirst 2s infinite; // Firefox 
+    -webkit-animation:myfirst 2s infinite; // Safari and Chrome 
+    -o-animation:myfirst 2s infinite; // Opera
+    */
 }
 
 #cardBack
@@ -252,6 +256,43 @@
     margin-bottom: 10px;
 }
 
+/*Glow effect*/
+/*
+@keyframes myfirst
+{
+    0%   { box-shadow: 0 0 3px #5E9BFF;}
+    50% {box-shadow: 0 0 20px #5E9BFF;}
+    100% {box-shadow: 0 0 3px #5E9BFF;}
+}
+
+@keyframes myfirst
+{
+    0%   { box-shadow: 0 0 3px #5E9BFF;}
+    50% {box-shadow: 0 0 20px #5E9BFF;}
+    100% {box-shadow: 0 0 3px #5E9BFF;}
+}
+
+@-moz-keyframes myfirst // Firefox 
+{
+    0%   { box-shadow: 0 0 3px #5E9BFF;}
+    50% {box-shadow: 0 0 20px #5E9BFF;}
+    100% {box-shadow: 0 0 3px #5E9BFF;}
+}
+
+@-webkit-keyframes myfirst // Safari and Chrome 
+{
+    0%   { box-shadow: 0 0 3px #5E9BFF;}
+    50% {box-shadow: 0 0 20px #5E9BFF;}
+    100% {box-shadow: 0 0 3px #5E9BFF;}
+}
+
+@-o-keyframes myfirst // Opera 
+{
+    0%   { box-shadow: 0 0 3px #5E9BFF;}
+    50% {box-shadow: 0 0 20px #5E9BFF;}
+    100% {box-shadow: 0 0 3px #5E9BFF;}
+}
+*/
 /*Kristian Styles*/
 
 clear:after
