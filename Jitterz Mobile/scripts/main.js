@@ -16,8 +16,12 @@ function onDeviceReady() {
 	$("#cardsView").on("click", ".listCard", function(e) {
 		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
-		centerSingleCard();
-		appendCardFlipEffect();
+        var $cardFront = $("#cardFront"),
+        cardFrontWidth =$("#cardFront").width(),
+	    $cardBack = $("#cardBack"),
+        container = $('#singleCardContainer');
+		centerSingleCard(cardFrontWidth,container);
+		appendCardFlipEffect($cardFront,$cardBack);
 		app.navigate('#singleCardView');
 	});
    
@@ -226,9 +230,7 @@ function listViewCardsInit() {
 	});
 }
 
-function appendCardFlipEffect() {
-	var $cardFront = $("#cardFront"),
-	    $cardBack = $("#cardBack");
+function appendCardFlipEffect($cardFront,$cardBack) {
     
 	var width = $cardFront.width(),
 	    height = $cardFront.height(),
@@ -266,12 +268,12 @@ function appendModalViewAddNewCardButtonsEvent() {
 	});
 }
 
-function centerSingleCard() {
-	var cardWidth = $("#cardFront").width(),
+function centerSingleCard($cardFrontWidth,$container) {
+	var cardWidth = $cardFrontWidth,
     	screenWidth = $(window).width(),
     	marginLeft = (screenWidth - cardWidth) / 2;
     
-	$('#singleCardContainer').css("margin-left", marginLeft);
+	$container.css("margin-left", marginLeft);
 }
 
 function deleteCard(cardId) {
@@ -319,8 +321,27 @@ function generateBarcodeUrl(cardId) {
 	return imageRequestString;
 }
 
-
 /*------------------- Rewards ----------------------*/
+
+var rewardCards = {
+    gold : {
+        imageURLFront:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
+        imageURLBack:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
+        rewards:[
+            {reward:"Free coffee every day"},
+            {reward:"Free refil"},
+            {reward:"Free cookies with every drink"}
+        ]
+    },
+    silver:{
+        imageURLFront:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
+        imageURLBack:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
+        rewards:[
+            {reward:"Free refil"},
+            {reward:"Free cookies with every drink"}
+        ]
+    }
+};
 
 function rewardsViewInit() {
 	$("#rewordsCardsList").kendoMobileListView({
@@ -329,7 +350,38 @@ function rewardsViewInit() {
 	});
 }
 
-function rewardCardShow(e)
+var rewardsViewModel = new kendo.observable({
+		setBonusPoints: function(e){
+            var that = this,
+            bonusPointsReceived=e.view.params.bonusPoints,
+            currentCard = null,
+            barcode = generateBarcodeUrl("121314151");
+            that.set("bonusPoints",bonusPointsReceived);
+            if(bonusPointsReceived<20)
+            {
+                currentCard = rewardCards["silver"];
+            } else {
+                currentCard = rewardCards["gold"];
+            }  
+            that.set("rewards",currentCard.rewards);
+            that.set("imageUrlFront",currentCard.imageURLFront);
+            that.set("imageUrlBack",currentCard.imageURLBack);
+            that.set("barcodeURL",barcode);
+		},
+		imageUrlFront: "",
+		imageUrlBack: "",
+		rewards: [],
+		bonusPoints:0,
+        barcodeURL:""
+	});
+
+function rewardCardShow()
 {
-    var p = e;
+    rewardsViewModel.setBonusPoints.apply(rewardsViewModel,arguments);
+    var $rewardCardFront = $("#rewardCardFront"),
+    $rewardCardFrontWidth = $("#rewardCardFront").width(),
+    cointainer = $("#singleRewardCardContainer"),
+    $rewardCardBack = $("#rewardCardBack");
+    centerSingleCard($rewardCardFrontWidth,cointainer);
+    appendCardFlipEffect($rewardCardFront,$rewardCardBack);
 }
