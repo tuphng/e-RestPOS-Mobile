@@ -228,11 +228,12 @@ function listViewCardsInit() {
 }
 
 function appendCardFadeEffect($cardFront, $cardBack) {
-    
+
 	$cardFront.click(function(e) {
 		$(e.currentTarget).fadeOut(500, "linear", function(){
             $cardBack.fadeIn(500, "linear");
         });
+
 	});
     
     $cardBack.click(function(e) {
@@ -347,21 +348,20 @@ var rewardsViewModel = new kendo.observable({
             that.set("imageUrlFront",currentCard.imageURLFront);
             that.set("imageUrlBack",currentCard.imageURLBack);
             that.set("barcodeURL",barcode);
+            that.set("currentDate",kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt" ))
 		},
 		imageUrlFront: "",
 		imageUrlBack: "",
 		rewards: [],
 		bonusPoints:0,
-        barcodeURL:""
+        barcodeURL:"",
+        currentDate:""
 	});
 
 function rewardCardShow()
 {
     rewardsViewModel.setBonusPoints.apply(rewardsViewModel,arguments);
     var $rewardCardFront = $("#rewardCardFront"),
-    $rewardCardFrontWidth = $("#rewardCardFront").width(),
-    cointainer = $("#singleRewardCardContainer"),
     $rewardCardBack = $("#rewardCardBack");
-    centerSingleCard($rewardCardFrontWidth,cointainer);
     appendCardFadeEffect($rewardCardFront,$rewardCardBack);
 }
