@@ -135,11 +135,11 @@
 .cardStyle
 {
     border-radius: 25px;
-    position:absolute;
     cursor:pointer;
     width:300px;
     height:190px;
     box-shadow: 0px 0px 2px #333;
+    margin:0 auto;
 }
 
 #cardBarcode
@@ -300,6 +300,7 @@ clear:after
 
 #rewordsCardsList li 
 {
+    margin-top:9px;
     background-color: #BAB8B9;
     color: #363636;
     font-size: 13px;
@@ -323,5 +324,36 @@ clear:after
 
 #singleRewardCardContainer{
     margin-top: 15px;
-    height: 220px;
+    margin-bottom:15px;
+}
+
+.singleRewardCardBonusBox
+{
+    font-size: 30px;
+    font-weight: normal;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.cardBonus
+{
+    margin: 0 auto;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #333;
+    padding: 10px;
+    background-color: #bababa;
+    color: #000;
+    margin-bottom:20px;
+}
+
+.starIcon,.bonusHeader
+{
+    float:left;
+}
+
+ #rewardCardBarcode, #rewardCardBack
+{
+    display:none;
 }

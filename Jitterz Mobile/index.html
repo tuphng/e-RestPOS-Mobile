@@ -52,7 +52,7 @@
         <script type="text/x-kendo-template" id="rewordsCardsList-template">
             <a class="listReswardsCard clear" data-role="listview-link" href='rewardCard?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}' data-cardId="${cardNumber}">
                 <div class="cardPicture item-photo"></div>
-                <div class="cardNumberContainer" style="float: left">s
+                <div class="cardNumberContainer" style="float: left">
                     <div>Card Number: </div>
                     <div class="item-info">${cardNumber}</div>
                 </div>
@@ -178,21 +178,31 @@
         <!-- REWARD CARD page -->
         
 		<div data-role="view" id="rewardCard" data-title="Card" data-show="rewardCardShow" data-model="rewardsViewModel">
-            <header data-role="header" data-id="jitterz-default-header">
+			<header data-role="header" data-id="jitterz-default-header">
 				<div data-role="navbar">
-                    <a class="nav-button" data-role="backbutton" data-align="left">Back</a>
-                    <span data-role="view-title"></span>
+					<a class="nav-button" data-role="backbutton" data-align="left">Back</a>
+					<span data-role="view-title"></span>
 				</div>
 			</header>
-			<div id="rewardCardViewContent" data-role="content">
-				<div id="singleRewardCardContainer" class="clear">
-					<img id="rewardCardFront" class="cardStyle"  data-bind="attr: { src: imageUrlFront }"/>
-					<img id="rewardCardBack" class="cardStyle" data-bind='attr: {src:imageUrlBack}' styles="display:none;">
+			<div id="rewardCardViewContent" data-role="content" class="clear">
+				<div id="singleRewardCardContainer" class="cardStyle clear">
+					<img id="rewardCardFront" class="cardStyle clear"  data-bind="attr: { src: imageUrlFront }"/>
+					<img id="rewardCardBack" class="cardStyle clear" data-bind='attr: {src:imageUrlBack}' styles="display:none;">
 				</div>
-                <div>
-                    <ul id="rewardsList" data-role="listview" data-bind="source: rewards" data-template="rewardsListTemplate"></ul>       
-                    <div data-bind="text: bonusPoints"> </div>
-                </div>
+				<div class="clear">
+					<div class="cardBonus" class="clear">
+						<div class="clear">
+							<img class="starIcon" src="http://icons.iconarchive.com/icons/double-j-design/xmas-festives/48/star-icon.png">
+							<h3 class="bonusHeader">Bonus:</h3>
+							<div class="singleRewardCardBonusBox clear"  data-bind="text: bonusPoints"></div>
+							<span>as of</span>
+							<span data-bind="text: currentDate"></span>
+						</div>
+					</div>
+                    <div>
+					    <ul id="rewardsList" data-role="listview" data-bind="source: rewards" data-template="rewardsListTemplate"></ul>
+                    </div>
+				</div>
 			</div>
 		</div>
         

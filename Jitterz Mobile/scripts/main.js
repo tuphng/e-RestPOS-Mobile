@@ -21,7 +21,7 @@ function onDeviceReady() {
 	    $cardBack = $("#cardBack"),
         container = $('#singleCardContainer');
 		centerSingleCard(cardFrontWidth,container);
-		appendCardFlipEffect($cardFront,$cardBack);
+		appendCardFadeEffect($cardFront,$cardBack);
 		app.navigate('#singleCardView');
 	});
    
@@ -230,27 +230,18 @@ function listViewCardsInit() {
 	});
 }
 
-function appendCardFlipEffect($cardFront,$cardBack) {
-    
-	var width = $cardFront.width(),
-	    height = $cardFront.height(),
-        margin = $cardFront.width() / 2;
-	
-	$cardBack.stop().css({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'});
-     
+function appendCardFadeEffect($cardFront, $cardBack) {
+
 	$cardFront.click(function(e) {
-		$(e.currentTarget).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
-		window.setTimeout(function() {
-			$cardBack.show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
-		}, 500);
+		$(e.currentTarget).fadeOut(500, "linear", function() {
+			$cardBack.fadeIn(500, "linear");
+		});
 	});
- 
+
 	$cardBack.click(function(e) {
-		$(e.currentTarget).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
-		$(e.currentTarget).hide(500);
-		window.setTimeout(function() {
-			$cardFront.show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
-		}, 500);
+		$(e.currentTarget).fadeOut(500, "linear", function() {
+			$cardFront.fadeIn(500, "linear");
+		});
 	});
 }
 
@@ -367,12 +358,14 @@ var rewardsViewModel = new kendo.observable({
             that.set("imageUrlFront",currentCard.imageURLFront);
             that.set("imageUrlBack",currentCard.imageURLBack);
             that.set("barcodeURL",barcode);
+            that.set("currentDate",kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt" ))
 		},
 		imageUrlFront: "",
 		imageUrlBack: "",
 		rewards: [],
 		bonusPoints:0,
-        barcodeURL:""
+        barcodeURL:"",
+        currentDate:""
 	});
 
 function rewardCardShow()
@@ -382,6 +375,5 @@ function rewardCardShow()
     $rewardCardFrontWidth = $("#rewardCardFront").width(),
     cointainer = $("#singleRewardCardContainer"),
     $rewardCardBack = $("#rewardCardBack");
-    centerSingleCard($rewardCardFrontWidth,cointainer);
-    appendCardFlipEffect($rewardCardFront,$rewardCardBack);
+    appendCardFadeEffect($rewardCardFront,$rewardCardBack);
 }
