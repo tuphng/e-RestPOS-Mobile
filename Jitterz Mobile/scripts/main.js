@@ -17,11 +17,8 @@ function onDeviceReady() {
 		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
         var $cardFront = $("#cardFront"),
-        cardFrontWidth =$("#cardFront").width(),
-	    $cardBack = $("#cardBack"),
-        container = $('#singleCardContainer');
-		centerSingleCard(cardFrontWidth,container);
-		appendCardFlipEffect($cardFront,$cardBack);
+	    $cardBack = $("#cardBack");
+		appendCardFadeEffect($cardFront,$cardBack);
 		app.navigate('#singleCardView');
 	});
    
@@ -230,27 +227,18 @@ function listViewCardsInit() {
 	});
 }
 
-function appendCardFlipEffect($cardFront,$cardBack) {
+function appendCardFadeEffect($cardFront, $cardBack) {
     
-	var width = $cardFront.width(),
-	    height = $cardFront.height(),
-        margin = $cardFront.width() / 2;
-	
-	$cardBack.stop().css({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'});
-     
 	$cardFront.click(function(e) {
-		$(e.currentTarget).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
-		window.setTimeout(function() {
-			$cardBack.show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
-		}, 500);
+		$(e.currentTarget).fadeOut(500, "linear", function(){
+            $cardBack.fadeIn(500, "linear");
+        });
 	});
- 
-	$cardBack.click(function(e) {
-		$(e.currentTarget).stop().animate({width:'0px',height:'' + height + 'px',marginLeft:'' + margin + 'px',opacity:'0.5'}, {duration:500});
-		$(e.currentTarget).hide(500);
-		window.setTimeout(function() {
-			$cardFront.show().animate({width:'' + width + 'px',height:'' + height + 'px',marginLeft:'0px',opacity:'1'}, {duration:500});
-		}, 500);
+    
+    $cardBack.click(function(e) {
+		$(e.currentTarget).fadeOut(500, "linear", function(){
+            $cardFront.fadeIn(500, "linear");
+        });
 	});
 }
 
@@ -266,14 +254,6 @@ function appendModalViewAddNewCardButtonsEvent() {
 	$("#modalViewAddCard").on("click", "#modalViewAddCardButton", function() {
 		addNewCard();
 	});
-}
-
-function centerSingleCard($cardFrontWidth,$container) {
-	var cardWidth = $cardFrontWidth,
-    	screenWidth = $(window).width(),
-    	marginLeft = (screenWidth - cardWidth) / 2;
-    
-	$container.css("margin-left", marginLeft);
 }
 
 function deleteCard(cardId) {
@@ -383,5 +363,5 @@ function rewardCardShow()
     cointainer = $("#singleRewardCardContainer"),
     $rewardCardBack = $("#rewardCardBack");
     centerSingleCard($rewardCardFrontWidth,cointainer);
-    appendCardFlipEffect($rewardCardFront,$rewardCardBack);
+    appendCardFadeEffect($rewardCardFront,$rewardCardBack);
 }
