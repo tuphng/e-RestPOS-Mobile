@@ -4,7 +4,7 @@
         <title>Jitterz Mobile</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        
+         
         <!-- Styles -->
         <link rel="stylesheet" href="kendo/styles/kendo.mobile.all.min.css" />
         <!-- Default Stylesheet -->
@@ -25,15 +25,16 @@
         <link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:2)" href="styles/tablet-1024-hdpi.css" type="text/css" />
         <style type="text/css">
 
+            
         </style>
         <!-- Scripts -->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript" src="kendo/js/jquery.min.js"></script>
-        <script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
+        <script src="kendo/js/kendo.mobile.min.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/card.js"></script>
-        <script type="text/javascript" src="scripts/jquery-barcode-2.0.2.min.js"></script>  
+        <script type="text/javascript" src="scripts/jquery-barcode-2.0.2.min.js"></script>
     </head>
     <body>
         <!-- HOME page -->
@@ -47,7 +48,7 @@
                 </div>
             </div>
         </div>
-        
+         
         <!-- Templates -->
         <script type="text/x-kendo-template" id="rewordsCardsList-template">
             <a class="listReswardsCard clear" data-role="listview-link" href='rewardCard?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}' data-cardId="${cardNumber}">
@@ -60,14 +61,14 @@
         </script>
         
         <script type="text/x-kendo-template" id="cardsListTemplate">
-            <div class="listCard clear" data-cardId="${cardNumber}">
-                <div class="cardPicture item-photo"></div>
-                <div class="cardNumberContainer" style="float: left">
-                    <div>Card Number: </div>
-                    <div class="item-info">${cardNumber}</div>
+                <div class="listCard clear" data-cardId="${cardNumber}">
+                    <div class="cardPicture item-photo"></div>
+                    <div class="cardNumberContainer" style="float: left">
+                        <div>Card Number: </div>
+                        <div class="item-info">${cardNumber}</div>
+                    </div>
+                    <a class='deleteCardButton' data-role="detailbutton" data-style="rowdelete" style="overflow:hidden;"></a>
                 </div>
-                <a class='deleteCardButton' data-role="detailbutton" data-style="rowdelete"></a>
-            </div>    
         </script>
         
         <script type="text/x-kendo-template" id="announcement-listview-template">
@@ -100,58 +101,61 @@
 	        <p class="item-info">${reward}</p>
 		</script>
         
+		<!-- ModalViewAddCard -->
+		<div data-role="modalview" id="modalViewAddCard" style="width: 95%; height: 80%;">
+			<div data-role="header">
+				<div data-role="navbar">
+					<span>Add Card</span>
+					<a id="modalViewAddCardCancelButton" data-role="button" data-align="right">Cancel</a>
+				</div>
+			</div>
+			<ul data-role="listview" data-style="inset">
+				<li>
+					<label for="cardNumberField">CardNumber:</label>
+					<input type="text" id="cardNumberField" />
+				</li>
+			</ul>
+			<a id="modalViewAddCardButton" type="button" data-role="button">Add Card</a>
+			<div id="addNewCardErrorLog"></div>
+		</div>
+        
+                
+
+		<!-- ModalViewDeleteCardConfirmation -->
+		<div data-role="modalview" id="modalViewDeleteCard" style="width: 95%; height: 80%;">
+			<div data-role="header">
+				<div data-role="navbar">
+					<span>Delete Card</span>
+				</div>
+			</div>
+			<div id="modalViewDeleteCardContent">
+				<ul data-role="listview" data-style="inset">
+					<li>
+						<div id ="modalViewDeleteCardMessage"></div>
+					</li>
+					<li>
+						<div id ="modalViewDeleteCardNumber">
+							<span id="deleteMessage"></span>
+							<span id="deleteCardId"></span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<a id="buttonModalViewDeleteConfirm" type="button" data-role="button">Yes</a>
+			<a id="buttonModalViewDeleteCancel" type="button" data-role="button">No</a>
+		</div>
+
+        
         <!-- CARDS List page -->
-        <div data-role="view" id="cardsView" data-title="Cards" data-init="listViewCardsInit">
-			<div id="cardsViewContent" data-role="content">         
-                
-                <!-- ModalViewAddCard -->
-                <div data-role="modalview" id="modalViewAddCard" style="width: 95%; height: 80%;">
-					<div data-role="header">
-						<div data-role="navbar">
-							<span>Add Card</span>
-							<a id="modalViewAddCardCancelButton" data-role="button" data-align="right">Cancel</a>
-						</div>
-					</div>
-					<ul data-role="listview" data-style="inset">
-						<li>
-							<label for="cardNumberField">CardNumber:</label>
-							<input type="text" id="cardNumberField" />
-						</li>
-					</ul>
-					<a id="modalViewAddCardButton" type="button" data-role="button">Add Card</a>
-                    <div id="addNewCardErrorLog"></div>
-                </div>
-                
-                <!-- ModalViewDeleteCardConfirmation -->
-                <div data-role="modalview" id="modalViewDeleteCard" style="width: 95%; height: 80%;">
-					<div data-role="header">
-						<div data-role="navbar">
-							<span>Delete Card</span>
-						</div>
-					</div>
-                    <div id="modalViewDeleteCardContent">
-                        <ul data-role="listview" data-style="inset">
-    						<li>
-    							<div id ="modalViewDeleteCardMessage"></div>
-    						</li>
-                            <li>
-                                <div id ="modalViewDeleteCardNumber">
-                                    <span id="deleteMessage"></span>
-                                    <span id="deleteCardId"></span>
-                                </div> 
-                            </li>
-    					</ul>                   
-                    </div>
-					<a id="buttonModalViewDeleteConfirm" type="button" data-role="button">Yes</a>
-                    <a id="buttonModalViewDeleteCancel" type="button" data-role="button">No</a>
-                </div>
-                
-                
-                <!-- List of cards -->
-                <a id="buttonAddNewCard" class="button" data-role="button">Add Card</a>
-                <ul id="cardsList"></ul>
-            </div>
-        </div>
+		<div data-role="view" id="cardsView" data-title="Cards" data-init="listViewCardsInit" data-model="cardsData">
+			<div id="cardsViewContent" data-role="content">
+				
+                 
+				<!-- List of cards -->
+				<a id="buttonAddNewCard" class="button" data-role="button"  href="#modalViewAddCard" data-rel="modalview">Add Card</a>
+				<ul id="cardsList" data-role="listview" data-bind="source: cards" data-template="cardsListTemplate"></ul>
+			</div>
+		</div>
         
         <!-- Single Card page -->
         <div data-role="view" id="singleCardView" data-title="Card">
@@ -167,11 +171,11 @@
         </div>
         
         <!-- REWARDS page -->
-        <div data-role="view" id="rewardsView" data-title="Rewards" data-init="rewardsViewInit">
+        <div data-role="view" id="rewardsView" data-title="Rewards" data-init="rewardsViewInit" data-model="cardsData">
 			<div id="rewardsCardsViewContent" data-role="content">
                 
                 <!-- List of cards -->
-                <ul id="rewordsCardsList" data-role="listView"></ul>
+                <ul id="rewordsCardsList" data-role="listview" data-bind="source: cards" data-template="rewordsCardsList-template"></ul>
             </div>
         </div>
         

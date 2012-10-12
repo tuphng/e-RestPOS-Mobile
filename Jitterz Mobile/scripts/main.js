@@ -13,7 +13,7 @@ function onDeviceReady() {
 	//Append events
 	appendModalViewAddNewCardButtonsEvent();
 
-	$("#cardsView").on("click", ".listCard", function(e) {
+	$("#cardsView").on("touchend", ".listCard", function(e) {
 		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
         var $cardFront = $("#cardFront"),
@@ -22,7 +22,7 @@ function onDeviceReady() {
 		app.navigate('#singleCardView');
 	});
    
-	$("#cardsView").on("click", ".deleteCardButton", function(e) {
+	$("#cardsView").on("touchend", ".deleteCardButton", function(e) {
     	
 		var cardNumberToDelete = $(e.currentTarget).parent().data('cardid');
 		var message = "Are you sure that you want to permanently delete card with number ?";
@@ -34,15 +34,18 @@ function onDeviceReady() {
 		e.stopPropagation();
 	});
     
-	$("#modalViewDeleteCard").on("click", '#buttonModalViewDeleteCancel', function() {
+	$("#modalViewDeleteCard").on("touchend", '#buttonModalViewDeleteCancel', function() {
 		$("#modalViewDeleteCard").kendoMobileModalView("close");
 	});
     
-	$("#modalViewDeleteCard").on("click", '#buttonModalViewDeleteConfirm', function() {
+	$("#modalViewDeleteCard").on("touchend", '#buttonModalViewDeleteConfirm', function() {
 		var cardNumberToDelete = $("#deleteCardId").text();
 		deleteCard(cardNumberToDelete);
 		$("#modalViewDeleteCard").kendoMobileModalView("close");
 	});
+    
+    cardsData.init();
+    cardsData.cards.bind("change",writeIntoLocalStorage);
     
 }
 
@@ -171,9 +174,34 @@ function setStiresViews(locations) {
 
 //Cards informations
 var cardsData = kendo.observable({
-	cardNumbers: {},
+	init:function() {
+		var i;
+		this._cardNumbers = {};
+        var cards=[];
+		if (window.localStorage.getItem("cards") !== null) {
+            cards = JSON.parse(window.localStorage.getItem("cards"));
+		}
+		for (i = 0; i < cards.length; i+=1) {
+			this._cardNumbers[cards[i].cardNumber] = i;
+		}
+		cardsData.set("cards",cards);
+	},
+	cardNumbers: function(value) {
+		if (value) {
+			this._cardNumbers = value;
+		}
+		else {
+			return this._cardNumbers;
+		}
+	},
 	cards : []
 });
+
+function writeIntoLocalStorage(e)
+{
+    var dataToWrite=JSON.stringify(cardsData.cards);
+    window.localStorage.setItem("cards",dataToWrite);
+}
 
 function addNewCard() {
 	var cardNumberValue = $('#cardNumberField').val();
@@ -201,7 +229,7 @@ function addNewCard() {
 		}
         
 		var positionAdded = cardsData.cards.push(cardToAdd) - 1;
-        cardsData.cardNumbers[cardNumberValue] = positionAdded;
+        cardsData.cardNumbers()[cardNumberValue] = positionAdded;
         
 		$addnewCardErrorLog.text('');
 		$modalViewCardNumber.kendoMobileModalView("close");
@@ -216,15 +244,12 @@ function validateCardNumber(cardNumberValue) {
 }
 
 function isDublicateNumber(cardNumberValue) {
-	var isDublicate = cardsData.cardNumbers.hasOwnProperty(cardNumberValue);
+	var isDublicate = cardsData.cardNumbers().hasOwnProperty(cardNumberValue);
 	return isDublicate;
 }
 
 function listViewCardsInit() {
-	$("#cardsList").kendoMobileListView({
-		dataSource: kendo.data.DataSource.create({data: cardsData.cards}),
-		template: $("#cardsListTemplate").html()
-	});
+   
 }
 
 function appendCardFadeEffect($cardFront, $cardBack) {
@@ -244,15 +269,12 @@ function appendCardFadeEffect($cardFront, $cardBack) {
 }
 
 function appendModalViewAddNewCardButtonsEvent() {
-	$("#cardsView").on("click", "#buttonAddNewCard", function() {
-		$("#modalViewAddCard").kendoMobileModalView("open");
-	});
     
-	$("#modalViewAddCard").on("click", "#modalViewAddCardCancelButton", function() {
+	$("#modalViewAddCard").on("touchend", "#modalViewAddCardCancelButton", function() {
 		$("#modalViewAddCard").kendoMobileModalView("close");
 	});
     
-	$("#modalViewAddCard").on("click", "#modalViewAddCardButton", function() {
+	$("#modalViewAddCard").on("touchend", "#modalViewAddCardButton", function() {
 		addNewCard();
 	});
 }
@@ -263,14 +285,14 @@ function deleteCard(cardId) {
 	for (var i = -1, len = allCardsArray.length; ++i < len;) {
 		if (allCardsArray[i].cardNumber === cardId) {
 			allCardsArray.splice(i, 1);
-			delete cardsData.cardNumbers[cardId];
+			delete cardsData.cardNumbers()[cardId];
             break;
 		}
 	} 
 }
 
 function initSingleCardView(cardId) {
-	var cardPosition = cardsData.cardNumbers[cardId];
+	var cardPosition = cardsData.cardNumbers()[cardId];
     var cardsArray = cardsData.cards;
     
     var barcodeUrl = generateBarcodeUrl(cardId),
@@ -325,18 +347,16 @@ var rewardCards = {
 };
 
 function rewardsViewInit() {
-	$("#rewordsCardsList").kendoMobileListView({
-		dataSource: kendo.data.DataSource.create({data: cardsData.cards}),
-		template: $("#rewordsCardsList-template").html()
-	});
+    
 }
 
 var rewardsViewModel = new kendo.observable({
 		setBonusPoints: function(e){
             var that = this,
             bonusPointsReceived=e.view.params.bonusPoints,
+            bonusCardBarcodeSeq = e.view.params.cardNumber+"bonus",
             currentCard = null,
-            barcode = generateBarcodeUrl("121314151");
+            barcode = generateBarcodeUrl(bonusCardBarcodeSeq);
             that.set("bonusPoints",bonusPointsReceived);
             if(bonusPointsReceived<20)
             {
