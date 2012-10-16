@@ -189,9 +189,11 @@
 				</div>
 			</header>
 			<div id="rewardCardViewContent" data-role="content" class="clear">
-				<div id="singleRewardCardContainer" class="cardStyle clear">
-					<img id="rewardCardFront" class="cardStyle clear"  data-bind="attr: { src: imageUrlFront }"/>
-					<img id="rewardCardBack" class="cardStyle clear" data-bind='attr: {src:imageUrlBack}' styles="display:none;">
+				<div id="singleCardContainer" class="clear">
+					<div id="rewardCardFront" data-bind='style:{background-image:imageUrlFront}' class="cardStyle" ></div>
+					<div id="rewardCardBack" data-bind='style:{background-image:imageUrlBack}'  class="cardStyle clear">
+						<img id="barcodeImage" data-bind='attr: {src:barcodeURL}' alt="Shop Card Id"/>
+					</div>
 				</div>
 				<div class="clear">
 					<div class="cardBonus" class="clear">
@@ -203,12 +205,13 @@
 							<span data-bind="text: currentDate"></span>
 						</div>
 					</div>
-                    <div>
-					    <ul id="rewardsList" data-role="listview" data-bind="source: rewards" data-template="rewardsListTemplate"></ul>
-                    </div>
+					<div>
+						<ul id="rewardsList" data-role="listview" data-bind="source: rewards" data-template="rewardsListTemplate"></ul>
+					</div>
 				</div>
 			</div>
 		</div>
+                                
         
           <!-- STORES page -->
 		<div data-role="view" id="stores" data-title="Stores" data-show="storesShow" data-stretch="true">

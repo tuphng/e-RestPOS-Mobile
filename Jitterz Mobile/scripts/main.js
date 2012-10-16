@@ -356,7 +356,7 @@ var rewardsViewModel = new kendo.observable({
             bonusPointsReceived=e.view.params.bonusPoints,
             bonusCardBarcodeSeq = e.view.params.cardNumber+"bonus",
             currentCard = null,
-            barcode = generateBarcodeUrl(bonusCardBarcodeSeq);
+            barcode =generateBarcodeUrl(bonusCardBarcodeSeq) ;
             that.set("bonusPoints",bonusPointsReceived);
             if(bonusPointsReceived<20)
             {
@@ -365,8 +365,8 @@ var rewardsViewModel = new kendo.observable({
                 currentCard = rewardCards["gold"];
             }  
             that.set("rewards",currentCard.rewards);
-            that.set("imageUrlFront",currentCard.imageURLFront);
-            that.set("imageUrlBack",currentCard.imageURLBack);
+            that.set("imageUrlFront",'url('+currentCard.imageURLFront+ ')');
+            that.set("imageUrlBack",'url('+currentCard.imageURLBack + ')');
             that.set("barcodeURL",barcode);
             that.set("currentDate",kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt" ))
 		},
