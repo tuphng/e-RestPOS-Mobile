@@ -78,7 +78,7 @@
         </script>
         
 		<script type="text/x-kendo-template" id="stores-listview-template">
-	        <p class="item-address">${address}</p>
+	        <p style="height:100px;">#:address.replace(/(&nbsp)/g," ")#</p>
 		</script>
         
         <script type="text/x-kendo-template" id="singleCardTamplate" >
@@ -102,10 +102,10 @@
 		</script>
         
 		<!-- ModalViewAddCard -->
-		<div data-role="modalview" id="modalViewAddCard" style="width: 95%; height: 80%;">
+		<div data-role="modalview" data-id="jitterz-addcard-header" id="modalViewAddCard" style="width: 95%; height: 80%;">
 			<div data-role="header">
 				<div data-role="navbar">
-					<span>Add Card</span>
+					<span data-role="view-title">Add Card</span>
 					<a id="modalViewAddCardCancelButton" data-role="button" data-align="right">Cancel</a>
 				</div>
 			</div>
@@ -125,7 +125,7 @@
 		<div data-role="modalview" id="modalViewDeleteCard" style="width: 95%; height: 80%;">
 			<div data-role="header">
 				<div data-role="navbar">
-					<span>Delete Card</span>
+					<span data-role="view-title">Delete Card</span>
 				</div>
 			</div>
 			<div id="modalViewDeleteCardContent">
@@ -215,15 +215,18 @@
         
           <!-- STORES page -->
 		<div data-role="view" id="stores" data-title="Stores" data-show="storesShow" data-stretch="true">
-
-			<ul id="storesNavigate" data-index="0">
-				<li>
-					Map
-				</li>
-				<li>
-					List
-				</li>
-			</ul>
+			<header data-role="header" data-id="jitterz-stores-header">
+				<div data-role="navbar">
+						<ul  id="storesNavigate" data-index="0">
+							<li>
+								Map
+							</li>
+							<li>
+								List
+							</li>
+						</ul>
+				</div>
+			</header>
 			<div id="mapwrap" data-role="content">
                 <div id="map"></div>
 			</div>

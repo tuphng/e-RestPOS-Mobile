@@ -13,7 +13,7 @@ function onDeviceReady() {
 	//Append events
 	appendModalViewAddNewCardButtonsEvent();
 
-	$("#cardsView").on("touchend", ".listCard", function(e) {
+	$("#cardsView").on("click", ".listCard", function(e) {
 		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
         var $cardFront = $("#cardFront"),
@@ -106,7 +106,8 @@ function storesShow(e) {
 			var marker = new google.maps.Marker({
 				position: latlng,
 				map: mapElem,
-				title: "Your Location"
+				title: "Your Location",
+                zIndex:google.maps.Marker.MAX_ZINDEX
 			});
         
 			if (cachedLocations.length > 0) {
@@ -152,19 +153,33 @@ function setStiresViews(locations) {
 												new google.maps.Point(0, 0),
 												new google.maps.Point(12, 35));
     
-	var markerImage = new google.maps.MarkerImage('icons/coffeecupbutton.png');
-	var marker;
-    
-	for (i = 0; i < locations.length; i++) {
-		marker = new google.maps.Marker({
+	var markerImage = new google.maps.MarkerImage('icons/iconPin.png'),
+	marker,
+    currentMarkerIndex = 0;
+    function createMarker(index){
+        if(index<locations.length)
+        marker = new google.maps.Marker({
 			map: mapElem,
 			animation: google.maps.Animation.DROP,
-			position: locations[i].latlng,
-			title: locations[i].address,
+			position: locations[index].latlng,
+			title: locations[index].address.replace(/(&nbsp)/g," "),
 			icon: markerImage,
-			shadow: pinShadow
+			shadow: pinShadow,
 		});
-	}
+        oneMarkerAtTime();
+    }
+    
+	createMarker(0);
+    function oneMarkerAtTime()
+    {
+        google.maps.event.addListener(marker,"animation_changed",function()
+        {
+           if(marker.getAnimation()==null)
+            {
+                createMarker(currentMarkerIndex+=1);
+            }
+        });
+    }
 	
 	$("#stores-listview").kendoMobileListView({
 		dataSource: kendo.data.DataSource.create({ data: locations}),
