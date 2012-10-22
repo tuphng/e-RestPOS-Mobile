@@ -8,10 +8,36 @@
 
 .cardPicture
 {
-    background-color: #fff;
-    background-image: url('http://semanticommunity.info/@api/deki/files/10026/Coffee.png');
+    background-image: url("coffeeCupFrame.png");
     background-repeat:no-repeat;
-    background-position:center; 
+    background-position:center;
+    width: 52px;
+    height: 52px;
+    float: left;
+}
+
+.cardPicture:after 
+{
+    content: url("coffeeCupSmall.png");
+    position: relative;
+    top: 12px;
+    left: 12px;
+}
+
+.addCardLogo {
+    margin: 25px 10px 0 10px;
+}
+
+.addCardLogoText {
+    color: #4C566C;
+    font-size: 16px;
+    line-height: 52px;
+    margin-left: 15px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.addNewCardWrapper {
+    margin: 10px;
 }
 
 .item-photo {
@@ -71,8 +97,6 @@
 	background-color: #66ccff;
 }
 
-
-
 .km-ios #jitterz-tabstrip
 {
 	border-top: 2px solid #66ccff;
@@ -89,12 +113,9 @@
 {
     content: "";
     clear: both;
-    height: 0;
     display: block;
 }
 
-#modalViewAddCardButton,
-#buttonAddNewCard,
 #buttonModalViewDeleteConfirm,
 #buttonModalViewDeleteCancel
 {
@@ -104,31 +125,36 @@
     font-size: 1.2em;
 }
 
-#modalViewAddCard
-{
-    height: 180px;
+#cardsView {
+    font-family:Sans-serif, Helvetica;
+}
+.cardNumberText {
+    color: #486A9A;
+    font-weight: normal;
+    font-size: 12px;
 }
 
-#cardsList
+.expireDateText {
+    color: #7F7F7F;
+    font-weight: normal;
+    font-size: 12px;
+}
+.cardInformationContainer
 {
-    margin: 0 15px;
+    margin: 7px 0 0 10px;
+    float: left;
 }
 
 /*Single Card View Styles*/
 #singleCardContainer
 {
     margin-top: 15px;
-    height: 190px;
-    font-family:Helvetica;
+    height: 220px;
 }
 
 #cardFront
 {
     background-image: url("http://webmuch.com/demos/jquery_image_flip/images/image1.jpg");
-    /*-moz-animation:myfirst 2s infinite; // Firefox 
-    -webkit-animation:myfirst 2s infinite; // Safari and Chrome 
-    -o-animation:myfirst 2s infinite; // Opera
-    */
 }
 
 #cardBack
@@ -139,13 +165,13 @@
 
 .cardStyle
 {
-    border-radius: 12px;
+    border-radius: 25px;
     cursor:pointer;
     width:300px;
-    height:166px;
-    box-shadow: 0px 0px 3px #666;
+    height:190px;
+    box-shadow: 0px 0px 2px #333;
     margin: 0 auto;
-    border: solid 1px rgba(255, 255, 255, .5)
+
 }
 
 #cardBarcode
@@ -169,40 +195,12 @@
     background-color: darkred;
 }
 
-.cardNumberContainer
-{
-    margin: 7px 0 0 10px;
-}
-
-#cardsViewContent, #cardViewContent
-{
-    background: rgba(0,0,0,.1);
-    box-shadow: 0 0 2px rgba(255,255,255,.5), inset 0 0 7px #000;
-}
-
-#cardsList
-{
-    background-color: transparent;
-    border-radius: 15px;
-    box-shadow: 0px 0px 2px #333;
-}
-
-.km-ios #cardsList li:first-child
-{
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-.km-ios #cardsList li:last-child
-{
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+.cardListWrapper {
+    margin: 0 10px;
 }
 
 #cardsList li 
 {
-    background-color: #BAB8B9;
-    color: #363636;
     font-size: 13px;
 }
 
@@ -229,9 +227,9 @@
 
 #barcodeImage
 {
-    width: 120px;
-    height: 120px;
-    margin-left: 90px;
+    width: 150px;
+    height: 150px;
+    margin-left: 80px;
     margin-top: 20px;
 }
 
@@ -255,43 +253,6 @@
     margin-bottom: 10px;
 }
 
-/*Glow effect*/
-/*
-@keyframes myfirst
-{
-    0%   { box-shadow: 0 0 3px #5E9BFF;}
-    50% {box-shadow: 0 0 20px #5E9BFF;}
-    100% {box-shadow: 0 0 3px #5E9BFF;}
-}
-
-@keyframes myfirst
-{
-    0%   { box-shadow: 0 0 3px #5E9BFF;}
-    50% {box-shadow: 0 0 20px #5E9BFF;}
-    100% {box-shadow: 0 0 3px #5E9BFF;}
-}
-
-@-moz-keyframes myfirst // Firefox 
-{
-    0%   { box-shadow: 0 0 3px #5E9BFF;}
-    50% {box-shadow: 0 0 20px #5E9BFF;}
-    100% {box-shadow: 0 0 3px #5E9BFF;}
-}
-
-@-webkit-keyframes myfirst // Safari and Chrome 
-{
-    0%   { box-shadow: 0 0 3px #5E9BFF;}
-    50% {box-shadow: 0 0 20px #5E9BFF;}
-    100% {box-shadow: 0 0 3px #5E9BFF;}
-}
-
-@-o-keyframes myfirst // Opera 
-{
-    0%   { box-shadow: 0 0 3px #5E9BFF;}
-    50% {box-shadow: 0 0 20px #5E9BFF;}
-    100% {box-shadow: 0 0 3px #5E9BFF;}
-}
-*/
 /*Kristian Styles*/
 
 clear:after
@@ -302,52 +263,6 @@ clear:after
     display: block;
 }
 
-#rewordsCardsList
-{
-    margin: 0 15px;
-}
-
-.cardNumberContainer
-{
-    margin: 7px 0 0 10px;
-}
-
-#rewardsCardsViewContent, #cardViewContent
-{
-}
-
-#rewordsCardsList
-{
-    background-color: transparent;
-    border-radius: 15px;
-    box-shadow: 0px 0px 2px #333;
-}
-
-.km-ios #rewordsCardsList li:first-child
-{
-    margin-top:9px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-.km-ios #rewordsCardsList li:last-child
-{
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-
-#rewordsCardsList li:first-child
-{
-    margin-top:9px;
-}
-
-#rewordsCardsList li 
-{
-    background-color: #BAB8B9;
-    color: #363636;
-    font-size: 13px;
-}
-
 .listReswardsCard
 {
     overflow:hidden;
@@ -356,7 +271,6 @@ clear:after
 #rewardsCardsViewContent, #rewardCardViewContent
 {
 }
-
 
 #singleRewardCardContainer{
     margin-top: 15px;
@@ -371,7 +285,7 @@ clear:after
     margin-bottom: 10px;
 }
 
-.cardBonusfrea
+.cardBonus
 {
     margin: 0 auto;
     width: 200px;

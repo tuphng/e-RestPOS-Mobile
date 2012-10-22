@@ -15,7 +15,7 @@ function onDeviceReady() {
 		initSingleCardView(cardId);
         var $cardFront = $("#cardFront"),
 	    $cardBack = $("#cardBack");
-		appendCardFadeEffect($cardFront,$cardBack);
+		appendCardFadeEffect($cardFront, $cardBack);
 		app.navigate('#singleCardView');
 	});
    
@@ -41,8 +41,8 @@ function onDeviceReady() {
 		$("#modalViewDeleteCard").kendoMobileModalView("close");
 	});
     
-    cardsData.init();
-    cardsData.cards.bind("change",writeIntoLocalStorage);
+	cardsData.init();
+	cardsData.cards.bind("change", writeIntoLocalStorage);
     
 }
 
@@ -52,19 +52,19 @@ function getPosition(handler) {
 
 function getLocations(position, handler) {
 	$.getJSON("http://www.starbucks.com/api/location.ashx?&features=&lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "&limit=10",
-    function(data) {
-      var locations = [];
-      $.each(data, function() {
-    	  locations.push(
-    		  {
-    		  address: this.WalkInAddressDisplayStrings[0] + ", " + this.WalkInAddressDisplayStrings[1], 
-    		  latlng: new google.maps.LatLng(this.WalkInAddress.Coordinates.Latitude, this.WalkInAddress.Coordinates.Longitude)
-    	  });                
-      });
-      handler(locations);
-    }).error(function(error) {
-        alert(error.message);
-    });
+			  function(data) {
+				  var locations = [];
+				  $.each(data, function() {
+					  locations.push(
+						  {
+						  address: this.WalkInAddressDisplayStrings[0] + ", " + this.WalkInAddressDisplayStrings[1], 
+						  latlng: new google.maps.LatLng(this.WalkInAddress.Coordinates.Latitude, this.WalkInAddress.Coordinates.Longitude)
+					  });                
+				  });
+				  handler(locations);
+			  }).error(function(error) {
+				  alert(error.message);
+			  });
 }
 
 function storesShow(e) {
@@ -95,10 +95,10 @@ function storesShow(e) {
 				mapTypeControl: false,
 				navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
 				mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
+			};
 			mapElem = new google.maps.Map(document.getElementById("map"), myOptions);
 			var marker = new google.maps.Marker({
-					position: latlng,
+				position: latlng,
 				map: mapElem,
 				title: "Your Location",
                 zIndex:google.maps.Marker.MAX_ZINDEX
@@ -193,7 +193,7 @@ var cardsData = kendo.observable({
 		for (i = 0; i < cards.length; i+=1) {
 			this._cardNumbers[cards[i].cardNumber] = i;
 		}
-		cardsData.set("cards",cards);
+		cardsData.set("cards", cards);
 	},
 	cardNumbers: function(value) {
 		if (value) {
@@ -206,20 +206,19 @@ var cardsData = kendo.observable({
 	cards : []
 });
 
-function writeIntoLocalStorage(e)
-{
-    var dataToWrite=JSON.stringify(cardsData.cards);
-    window.localStorage.setItem("cards",dataToWrite);
+function writeIntoLocalStorage(e) {
+	var dataToWrite = JSON.stringify(cardsData.cards);
+	window.localStorage.setItem("cards", dataToWrite);
 }
 
 function addNewCard() {
 	var cardNumberValue = $('#cardNumberField').val();
     
 	var isValidCardNumber = validateCardNumber(cardNumberValue),
-	    isDuplicateCardNumber = isDublicateNumber(cardNumberValue);
+	isDuplicateCardNumber = isDublicateNumber(cardNumberValue);
     
-    var $addnewCardErrorLog = $('#addNewCardErrorLog'),
-        $modalViewCardNumber = $('#modalViewAddCard');
+	var $addnewCardErrorLog = $('#addNewCardErrorLog'),
+	$modalViewCardNumber = $('#modalViewAddCard');
     
 	if (!isValidCardNumber) {
 		$addnewCardErrorLog.text('Card number is nine digits code');
@@ -228,20 +227,23 @@ function addNewCard() {
 		$addnewCardErrorLog.text('Dublicate record');
 	}
 	else {
-		var currentAmount = Math.floor((Math.random()*100) + 10),
-            bonusPoints = Math.floor((Math.random()*100) + 20);
+		var currentAmount = Math.floor((Math.random() * 100) + 10),
+		    bonusPoints = Math.floor((Math.random() * 100) + 20),
+            currentDate = new Date(),    
+            expireDate = currentDate.setFullYear(currentDate.getFullYear() + 2);
         
 		var cardToAdd = {
 			cardNumber : cardNumberValue,
 			amount: currentAmount,
-            bonusPoints: bonusPoints
+			bonusPoints: bonusPoints,
+            expireDate: kendo.toString(expireDate, "yyyy/MM/dd")
 		}
         
 		var positionAdded = cardsData.cards.push(cardToAdd) - 1;
-        cardsData.cardNumbers()[cardNumberValue] = positionAdded;
+		cardsData.cardNumbers()[cardNumberValue] = positionAdded;
         
 		$addnewCardErrorLog.text('');
-		$modalViewCardNumber.kendoMobileModalView("close");
+		app.navigate("#cardsView");
 	}
 }
 
@@ -264,24 +266,20 @@ function listViewCardsInit() {
 function appendCardFadeEffect($cardFront, $cardBack) {
 
 	$cardFront.click(function(e) {
-		$(e.currentTarget).fadeOut(500, "linear", function(){
-            $cardBack.fadeIn(500, "linear");
-        });
+		$(e.currentTarget).fadeOut(500, "linear", function() {
+			$cardBack.fadeIn(500, "linear");
+		});
 
 	});
     
-    $cardBack.click(function(e) {
-		$(e.currentTarget).fadeOut(500, "linear", function(){
-            $cardFront.fadeIn(500, "linear");
-        });
+	$cardBack.click(function(e) {
+		$(e.currentTarget).fadeOut(500, "linear", function() {
+			$cardFront.fadeIn(500, "linear");
+		});
 	});
 }
 
 function appendModalViewAddNewCardButtonsEvent() {
-    
-	$("#modalViewAddCard").on("touchend", "#modalViewAddCardCancelButton", function() {
-		$("#modalViewAddCard").kendoMobileModalView("close");
-	});
     
 	$("#modalViewAddCard").on("touchend", "#modalViewAddCardButton", function() {
 		addNewCard();
@@ -289,36 +287,15 @@ function appendModalViewAddNewCardButtonsEvent() {
 }
 
 function deleteCard(cardId) {
-    var allCardsArray = cardsData.cards;
+	var allCardsArray = cardsData.cards;
     
 	for (var i = -1, len = allCardsArray.length; ++i < len;) {
 		if (allCardsArray[i].cardNumber === cardId) {
 			allCardsArray.splice(i, 1);
 			delete cardsData.cardNumbers()[cardId];
-            break;
+			break;
 		}
 	} 
-}
-
-function initSingleCardView(cardId) {
-	var cardPosition = cardsData.cardNumbers()[cardId];
-    var cardsArray = cardsData.cards;
-    
-    var barcodeUrl = generateBarcodeUrl(cardId),
-        amount = cardsArray[cardPosition].amount,
-        bonusPoints = cardsArray[cardPosition].bonusPoints,
-        amountFormated = kendo.toString(amount, "c");
-     
-	var singleCardViewData = {
-		barcodeUrl : barcodeUrl,
-		cardId : cardId,
-		cardAmount : amountFormated,
-		bonusPoints : bonusPoints,
-        currentDate : kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt" )
-	};
-    
-	var encodingTemplate = kendo.template($("#singleCardTamplate").text());
-	$('#cardViewContent').html(encodingTemplate(singleCardViewData));
 }
 
 function generateBarcodeUrl(cardId) {
@@ -333,26 +310,50 @@ function generateBarcodeUrl(cardId) {
 	return imageRequestString;
 }
 
+function initSingleCardView(cardId) {
+    singleCardViewModel.setValues.call(singleCardViewModel, cardId);
+}
+
+var singleCardViewModel = new kendo.observable({
+    setValues: function(cardId) {
+        var that = this,
+            cardPosition = cardsData.cardNumbers()[cardId],
+            currentCard = cardsData.cards[cardPosition];
+
+        that.set("barcodeUrl", generateBarcodeUrl(cardId));
+		that.set("cardId", cardId);
+		that.set("cardAmount", kendo.toString(currentCard.amount, "c"));
+		that.set("barcodeURL", currentCard.bonusPoints);
+		that.set("currentDate", kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt"));
+    },
+    
+    barcodeUrl : "",
+	cardId : "",
+	cardAmount : "",
+	bonusPoints : "",
+	currentDate : ""
+});
+
 /*------------------- Rewards ----------------------*/
 
 var rewardCards = {
-    gold : {
-        imageURLFront:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
-        imageURLBack:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
-        rewards:[
-            {reward:"Free coffee every day"},
-            {reward:"Free refil"},
-            {reward:"Free cookies with every drink"}
-        ]
-    },
-    silver:{
-        imageURLFront:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
-        imageURLBack:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
-        rewards:[
-            {reward:"Free refil"},
-            {reward:"Free cookies with every drink"}
-        ]
-    }
+	gold : {
+		imageURLFront:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
+		imageURLBack:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
+		rewards:[
+			{reward:"Free coffee every day"},
+			{reward:"Free refil"},
+			{reward:"Free cookies with every drink"}
+		]
+	},
+	silver:{
+		imageURLFront:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
+		imageURLBack:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
+		rewards:[
+			{reward:"Free refil"},
+			{reward:"Free cookies with every drink"}
+		]
+	}
 };
 
 function rewardsViewInit() {
@@ -389,10 +390,10 @@ var rewardsViewModel = new kendo.observable({
         cardNumber:""
 	});
 
-function rewardCardShow()
-{
-    rewardsViewModel.setBonusPoints.apply(rewardsViewModel,arguments);
-    var $rewardCardFront = $("#rewardCardFront"),
-    $rewardCardBack = $("#rewardCardBack");
-    appendCardFadeEffect($rewardCardFront,$rewardCardBack);
+function rewardCardShow() {
+	rewardsViewModel.setBonusPoints.apply(rewardsViewModel, arguments);
+	var $rewardCardFront = $("#rewardCardFront"),
+	    $rewardCardBack = $("#rewardCardBack");
+    
+	appendCardFadeEffect($rewardCardFront, $rewardCardBack);
 }
