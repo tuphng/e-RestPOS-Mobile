@@ -31,6 +31,9 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
+    <Folder Include="kendo\js" />
+    <Folder Include="kendo\styles" />
+    <Folder Include="kendo\styles\images" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -54,7 +57,9 @@
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icons\cofeeCup.png" />
     <Content Include="icons\coffeecupbutton.png" />
+    <Content Include="icons\iconBonus.png" />
     <Content Include="icons\iconPin.png" />
     <Content Include="icons\rewards.png" />
     <Content Include="icons\card.png" />

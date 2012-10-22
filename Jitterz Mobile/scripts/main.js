@@ -6,9 +6,6 @@ cachedLocations = [];
 // Apache Cordova is ready
 function onDeviceReady() {
 	// Prevent screen bounce
-	$(document).bind("touchmove", function (e) {
-		e.preventDefault();
-	});
     
 	//Append events
 	appendModalViewAddNewCardButtonsEvent();
@@ -86,9 +83,6 @@ function storesShow(e) {
 		index: 0
 	});
     
-	$('#map').bind("touchmove", function (e) {
-		e.preventDefault();
-	});
     
 	var iteration = function() {
 		getPosition(function(position) {
@@ -101,10 +95,10 @@ function storesShow(e) {
 				mapTypeControl: false,
 				navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
 				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
+		};
 			mapElem = new google.maps.Map(document.getElementById("map"), myOptions);
 			var marker = new google.maps.Marker({
-				position: latlng,
+					position: latlng,
 				map: mapElem,
 				title: "Your Location",
                 zIndex:google.maps.Marker.MAX_ZINDEX
@@ -329,7 +323,7 @@ function initSingleCardView(cardId) {
 
 function generateBarcodeUrl(cardId) {
     
-	var size = "150",
+	var size = "130",
     	urlSizeParameter = "chs=" + size + "x" + size,
     	urlQrParameter = "cht=qr",
     	urlDataParameter = "chl=" + cardId,
@@ -372,7 +366,8 @@ var rewardsViewModel = new kendo.observable({
             bonusCardBarcodeSeq = e.view.params.cardNumber+"bonus",
             currentCard = null,
             barcode =generateBarcodeUrl(bonusCardBarcodeSeq) ;
-            that.set("bonusPoints",bonusPointsReceived);
+            that.set("cardNumber","#"+e.view.params.cardNumber);
+            that.set("bonusPoints","Bonus:"+bonusPointsReceived);
             if(bonusPointsReceived<20)
             {
                 currentCard = rewardCards["silver"];
@@ -390,7 +385,8 @@ var rewardsViewModel = new kendo.observable({
 		rewards: [],
 		bonusPoints:0,
         barcodeURL:"",
-        currentDate:""
+        currentDate:"",
+        cardNumber:""
 	});
 
 function rewardCardShow()

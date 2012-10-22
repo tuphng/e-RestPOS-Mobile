@@ -78,7 +78,7 @@
         </script>
         
 		<script type="text/x-kendo-template" id="stores-listview-template">
-	        <p style="height:100px;">#:address.replace(/(&nbsp)/g," ")#</p>
+	        <p>#:address.replace(/(&nbsp)/g," ")#</p>
 		</script>
         
         <script type="text/x-kendo-template" id="singleCardTamplate" >
@@ -171,17 +171,17 @@
         </div>
         
         <!-- REWARDS page -->
-        <div data-role="view" id="rewardsView" data-title="Rewards" data-init="rewardsViewInit" data-model="cardsData">
+        <div data-role="view" id="rewardsView" data-style="inset" data-title="Rewards" data-init="rewardsViewInit" data-model="cardsData">
 			<div id="rewardsCardsViewContent" data-role="content">
                 
                 <!-- List of cards -->
-                <ul id="rewordsCardsList" data-role="listview" data-bind="source: cards" data-template="rewordsCardsList-template"></ul>
+                <ul id="rewordsCardsList" data-role="listview" data-style="inset" data-bind="source: cards" data-template="rewordsCardsList-template"></ul>
             </div>
         </div>
         
         <!-- REWARD CARD page -->
         
-		<div data-role="view" id="rewardCard" data-title="Card" data-show="rewardCardShow" data-model="rewardsViewModel">
+		<div data-role="view" id="rewardCard" data-style="inset"  data-title="Reward Card" data-show="rewardCardShow" data-model="rewardsViewModel">
 			<header data-role="header" data-id="jitterz-default-header">
 				<div data-role="navbar">
 					<a class="nav-button" data-role="backbutton" data-align="left">Back</a>
@@ -190,23 +190,28 @@
 			</header>
 			<div id="rewardCardViewContent" data-role="content" class="clear">
 				<div id="singleCardContainer" class="clear">
-					<div id="rewardCardFront" data-bind='style:{background-image:imageUrlFront}' class="cardStyle" ></div>
-					<div id="rewardCardBack" data-bind='style:{background-image:imageUrlBack}'  class="cardStyle clear">
+					<div id="rewardCardFront" class="cardStyle gold" >
+                        <div class="clear">
+                            <div class="iconContainer">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="cardNumberLine" data-bind="text: cardNumber"></div>
+                        </div>
+                        <div class="amountLine">
+                            <div class="bonusIcon"></div><span class="bonusPoints" data-bind="text: bonusPoints"></span>
+                        </div>
+                        <div class="dateLine">
+                            <span>as of</span>
+							<span data-bind="text: currentDate"></span>
+                        </div>
+                    </div>
+					<div id="rewardCardBack" class="cardStyle clear gold">
 						<img id="barcodeImage" data-bind='attr: {src:barcodeURL}' alt="Shop Card Id"/>
 					</div>
 				</div>
 				<div class="clear">
-					<div class="cardBonus" class="clear">
-						<div class="clear">
-							<img class="starIcon" src="http://icons.iconarchive.com/icons/double-j-design/xmas-festives/48/star-icon.png">
-							<h3 class="bonusHeader">Bonus:</h3>
-							<div class="singleRewardCardBonusBox clear"  data-bind="text: bonusPoints"></div>
-							<span>as of</span>
-							<span data-bind="text: currentDate"></span>
-						</div>
-					</div>
 					<div>
-						<ul id="rewardsList" data-role="listview" data-bind="source: rewards" data-template="rewardsListTemplate"></ul>
+						<ul id="rewardsList" data-role="listview" data-style="inset" data-bind="source: rewards" data-template="rewardsListTemplate"></ul>
 					</div>
 				</div>
 			</div>
