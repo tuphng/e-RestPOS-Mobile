@@ -211,6 +211,10 @@ function writeIntoLocalStorage(e) {
 	window.localStorage.setItem("cards", dataToWrite);
 }
 
+function focusCardNumber() {
+    $('#cardNumberField').focus();
+}
+
 function addNewCard() {
 	var cardNumberValue = $('#cardNumberField').val();
     

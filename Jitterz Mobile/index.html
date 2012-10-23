@@ -148,7 +148,7 @@
 		</div>
         
         <!-- ADD Card View -->
-        <div data-role="view" id="modalViewAddCard" data-title="Cards" >
+        <div data-role="view" id="modalViewAddCard" data-title="Cards" data-show="focusCardNumber">
 			<div data-role="header">
 				<div data-role="navbar">
 					<a href="#cardsView" data-role="button" data-align="left">Cancel</a>
@@ -165,7 +165,7 @@
                 <ul class="addNewCardWrapper" data-role="listview" data-style="inset">
     				<li>
     					<label for="cardNumberField">CardNumber </label>
-    					<input type="text" id="cardNumberField" />
+    					<input type="number" id="cardNumberField" min="3" max="10" />
     				</li>
     			</ul>
     			<div id="addNewCardErrorLog"></div>

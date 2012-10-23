@@ -268,8 +268,10 @@ clear:after
     overflow:hidden;
 }
 
-#rewardsCardsViewContent, #rewardCardViewContent
-{
+#buttonAddNewCard, 
+#modalViewAddCardButton {
+    margin: 5px;
+    padding: 3px 10px;
 }
 
 #singleRewardCardContainer{
@@ -385,4 +387,11 @@ clear:after
 
 .bonusPoints{
     margin-left:27px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
