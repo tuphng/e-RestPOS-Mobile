@@ -228,7 +228,7 @@ function addNewCard() {
 	}
 	else {
 		var currentAmount = Math.floor((Math.random() * 100) + 10),
-		    bonusPoints = Math.floor((Math.random() * 100) + 20),
+		    bonusPoints = Math.floor(Math.random() * 100),
             currentDate = new Date(),    
             expireDate = currentDate.setFullYear(currentDate.getFullYear() + 2);
         
@@ -321,7 +321,7 @@ var singleCardViewModel = new kendo.observable({
             currentCard = cardsData.cards[cardPosition];
 
         that.set("barcodeUrl", generateBarcodeUrl(cardId));
-		that.set("cardId", cardId);
+		that.set("cardId","#" + cardId);
 		that.set("cardAmount", kendo.toString(currentCard.amount, "c"));
 		that.set("barcodeURL", currentCard.bonusPoints);
 		that.set("currentDate", kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt"));
@@ -370,11 +370,15 @@ var rewardsViewModel = new kendo.observable({
             that.set("cardNumber","#"+e.view.params.cardNumber);
             that.set("bonusPoints","Bonus:"+bonusPointsReceived);
             if(bonusPointsReceived<20)
-            {
+             {
                 currentCard = rewardCards["silver"];
+                $("#rewardCardFront").removeClass("gold").addClass("silver");
+                $("#rewardCardBack").removeClass("gold").addClass("silver");
             } else {
                 currentCard = rewardCards["gold"];
-            }  
+                $("#rewardCardFront").removeClass("silver").addClass("gold");
+                $("#rewardCardBack").removeClass("silver").addClass("gold");
+            }
             that.set("rewards",currentCard.rewards);
             that.set("imageUrlFront",'url('+currentCard.imageURLFront+ ')');
             that.set("imageUrlBack",'url('+currentCard.imageURLBack + ')');
