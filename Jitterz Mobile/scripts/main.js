@@ -10,7 +10,7 @@ function onDeviceReady() {
 	//Append events
 	appendModalViewAddNewCardButtonsEvent();
 
-	$("#cardsView").on("click", ".listCard", function(e) {
+	$("#cardsView").on("touchend", ".listCard", function(e) {
 		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
         var $cardFront = $("#cardFront"),
@@ -19,7 +19,7 @@ function onDeviceReady() {
 		app.navigate('#singleCardView');
 	});
    
-	$("#cardsView").on("touchend", ".deleteCardButton", function(e) {
+	$("#cardsView").on("click", ".deleteCardButton", function(e) {
     	
 		var cardNumberToDelete = $(e.currentTarget).parent().data('cardid');
 		var message = "Are you sure that you want to permanently delete card with number ?";
