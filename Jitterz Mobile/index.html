@@ -178,6 +178,7 @@
 				<div data-role="navbar">
 					<a class="nav-button" data-role="backbutton" data-align="left">Back</a>
 					<span data-role="view-title"></span>
+                    <a data-role="button" data-align="right" data-rel="actionsheet" href="#singleCardActions">Edit</a>
 				</div>
 			</header>
 			<div id="cardViewContent" data-role="content" class="km-insetcontent" data-style="inset">
@@ -199,11 +200,16 @@
 							<div class="cardNumberLine" data-bind="text: cardId"></div>
 						</div>
 					</div>
-					<div id="cardBack" class="cardStyle clear gold">
+					<div id="cardBack" class="cardStyle clear silver">
 						<img id="barcodeImage" data-bind='attr: {src:barcodeUrl}' alt="Shop Card Id"/>
 					</div>
 				</div>
 			</div>
+            <ul data-role="actionsheet" class="singleCardActionsList" id="singleCardActions" data-open="onOpen" data-popup='{"direction": "left"}'>
+                <li>
+                    <a href="#" data-action="delete" class="singleCardDeleteButton">Delete</a>
+                </li>
+            </ul>
 		</div>
         
         <!-- REWARDS page -->
