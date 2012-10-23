@@ -8,12 +8,23 @@
 
 .cardPicture
 {
-    background-image: url("coffeeCupFrame.png");
-    background-repeat:no-repeat;
-    background-position:center;
     width: 52px;
     height: 52px;
     float: left;
+}
+
+.silverFrame
+{
+    background-image: url("coffeeCupFrameSilver.png");
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.goldFrame
+{
+    background-image: url("coffeeCupFrameGold.png");
+    background-repeat:no-repeat;
+    background-position:center;
 }
 
 .cardPicture:after 
