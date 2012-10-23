@@ -225,10 +225,10 @@
 
 #barcodeImage
 {
-    width: 150px;
-    height: 150px;
-    margin-left: 80px;
-    margin-top: 20px;
+    width: 130px;
+    height: 130px;
+    margin-left: 85px;
+    margin-top: 19px;
 }
 
 #cardAmount
@@ -384,6 +384,7 @@ clear:after
 
 .bonusPoints{
     margin-left:20px;
+    text-shadow: 1px 1px 1px black;
     color:#fff;
     font-size:24px;
 }
