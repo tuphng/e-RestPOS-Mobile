@@ -342,7 +342,7 @@ var rewardCards = {
 		imageURLBack:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
 		rewards:[
 			{reward:"Free coffee every day"},
-			{reward:"Free refil"},
+			{reward:"Free refill"},
 			{reward:"Free cookies with every drink"}
 		]
 	},
