@@ -7,13 +7,10 @@ cachedLocations = [];
 function onDeviceReady() {
 	// Prevent screen bounce
     
-	$("#addCardView").on("touchend", "#buttonAddNewCardView", function() {
-		addNewCard();
-	});
+	//Append events
+	appendModalViewAddNewCardButtonsEvent();
 
-    // TODO: get all (where applicable) event handlers into the viewModels (hint: data-bind="click: handler")
-    
-	$("#cardsView").on("click", ".listCard", function(e) {
+	$("#cardsView").on("touchend", ".listCard", function(e) {
 		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
         var $cardFront = $("#cardFront"),
@@ -22,7 +19,7 @@ function onDeviceReady() {
 		app.navigate('#singleCardView');
 	});
    
-	$("#cardsView").on("touchend", ".deleteCardButton", function(e) {
+	$("#cardsView").on("click", ".deleteCardButton", function(e) {
     	
 		var cardNumberToDelete = $(e.currentTarget).parent().data('cardid');
 		var message = "Are you sure that you want to permanently delete card with number ?";
@@ -185,7 +182,6 @@ function setStiresViews(locations) {
 }
 
 //Cards informations
-// TODO: rename to cardsDataViewModel
 var cardsData = kendo.observable({
 	init:function() {
 		var i;
@@ -213,10 +209,6 @@ var cardsData = kendo.observable({
 function writeIntoLocalStorage(e) {
 	var dataToWrite = JSON.stringify(cardsData.cards);
 	window.localStorage.setItem("cards", dataToWrite);
-}
-
-function focusCardNumber() {
-    $('#cardNumberField').focus();
 }
 
 function addNewCard() {
@@ -287,6 +279,13 @@ function appendCardFadeEffect($cardFront, $cardBack) {
 	});
 }
 
+function appendModalViewAddNewCardButtonsEvent() {
+    
+	$("#modalViewAddCard").on("touchend", "#modalViewAddCardButton", function() {
+		addNewCard();
+	});
+}
+
 function deleteCard(cardId) {
 	var allCardsArray = cardsData.cards;
     
@@ -311,8 +310,6 @@ function generateBarcodeUrl(cardId) {
 	return imageRequestString;
 }
 
-// TODO: get this into the view model
-// of the view it initializes
 function initSingleCardView(cardId) {
     singleCardViewModel.setValues.call(singleCardViewModel, cardId);
 }
@@ -337,18 +334,6 @@ var singleCardViewModel = new kendo.observable({
 	currentDate : ""
 });
 
-function singleCardShow() {
-    
-}
-
-function processDeleteCard() {
-    var cardIdString = singleCardViewModel.cardId,
-        cardIdLength = singleCardViewModel.cardId.length,
-        cardId = cardIdString.substring(1, cardIdLength);
-    deleteCard(cardId);
-    app.navigate('#cardsView');
-}
-
 /*------------------- Rewards ----------------------*/
 
 var rewardCards = {
@@ -357,7 +342,7 @@ var rewardCards = {
 		imageURLBack:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
 		rewards:[
 			{reward:"Free coffee every day"},
-			{reward:"Free refil"},
+			{reward:"Free refill"},
 			{reward:"Free cookies with every drink"}
 		]
 	},

@@ -8,12 +8,23 @@
 
 .cardPicture
 {
-    background-image: url("coffeeCupFrame.png");
-    background-repeat:no-repeat;
-    background-position:center;
     width: 52px;
     height: 52px;
     float: left;
+}
+
+.silverFrame
+{
+    background-image: url("coffeeCupFrameSilver.png");
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.goldFrame
+{
+    background-image: url("coffeeCupFrameGold.png");
+    background-repeat:no-repeat;
+    background-position:center;
 }
 
 .cardPicture:after 
@@ -178,7 +189,7 @@
 }
 
 #map {
-    width:100%; height:100%; position:absolute;        
+    width:100%; height:100%; position:absolute;
 }
 
 .deleteCardButton
@@ -251,27 +262,6 @@
     margin-bottom: 10px;
 }
 
-#singleCardActions .singleCardDeleteButton {
-   background: #E30111;
-    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,rgba(0, 0, 0, 0.3)),
-    color-stop(0.05,transparent), color-stop(0.98, transparent), color-stop(1, rgba(70, 70, 70, 0.5))), 
-    -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(255, 255, 255, 0.6)),color-stop(0.5, rgba(255, 255, 255, 0.1)),
-    color-stop(0.5, rgba(255, 255, 255, 0)),color-stop(1, rgba(255, 255, 255, 0.15)));
-    background-clip: padding-box;
-    color: white;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
-}
-
- .km-actionsheet-wrapper { 
-    padding-top: 20px!important;
-    padding-bottom: 10px!important;
-    background-color:rgba(96, 101, 111, 1) !important;
-}
-
-.singleCardActionsList li {
-    margin: 20px 10px!important;
-}
-
 /*Kristian Styles*/
 
 clear:after
@@ -282,19 +272,18 @@ clear:after
     display: block;
 }
 
+#rewordsCardsList li
+{
+    font-size: 13px;
+}
+
 .listReswardsCard
 {
     overflow:hidden;
 }
 
-#buttonAddNewCard, 
-#buttonAddNewCardView {
-    margin: 6px 5px;
-    padding: 3px 10px;
-}
-
-#buttonAddNewCardView {
-    background-color: #2260DD;
+#rewardsCardsViewContent, #rewardCardViewContent
+{
 }
 
 #singleRewardCardContainer{
@@ -362,8 +351,8 @@ clear:after
     width:80px;
     border:solid 1px rgba(0, 0, 0, 0.4);
     border-radius:10px;
-    margin-left:11px;
-    margin-top:10px;
+    margin-left:16px;
+    margin-top:16px;
     background-color:#eee;
 }
 
@@ -380,7 +369,7 @@ clear:after
 {
     width:300px;
     line-height:40px;
-    margin-top:15px;
+    margin-top:16px;
     background: rgba(0,0,0,0.3);
     text-align:center;
 }
@@ -397,7 +386,7 @@ clear:after
 
 .dateLine
 {
-    margin-right: 8px;
+    margin-right: 16px;
     font-size:12px;
     text-align:center;
     margin-top:4px;
@@ -410,21 +399,15 @@ clear:after
 }
 
 .bonusPoints{
-    margin-left:20px;
+    margin-left:16px;
     text-shadow: 1px 1px 1px black;
     color:#fff;
     font-size:24px;
 }
 
-.bonusContainer {
+.bonusContainer
+{
     float:right;
     margin-top:30px;
     width:200px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
