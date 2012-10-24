@@ -7,9 +7,12 @@ cachedLocations = [];
 function onDeviceReady() {
 	// Prevent screen bounce
     
-	//Append events
-	appendModalViewAddNewCardButtonsEvent();
+	$("#addCardView").on("touchend", "#buttonAddNewCardView", function() {
+		addNewCard();
+	});
 
+    // TODO: get all (where applicable) event handlers into the viewModels (hint: data-bind="click: handler")
+    
 	$("#cardsView").on("click", ".listCard", function(e) {
 		var cardId = $(e.currentTarget).data('cardid');
 		initSingleCardView(cardId);
@@ -182,6 +185,7 @@ function setStiresViews(locations) {
 }
 
 //Cards informations
+// TODO: rename to cardsDataViewModel
 var cardsData = kendo.observable({
 	init:function() {
 		var i;
@@ -283,13 +287,6 @@ function appendCardFadeEffect($cardFront, $cardBack) {
 	});
 }
 
-function appendModalViewAddNewCardButtonsEvent() {
-    
-	$("#modalViewAddCard").on("touchend", "#modalViewAddCardButton", function() {
-		addNewCard();
-	});
-}
-
 function deleteCard(cardId) {
 	var allCardsArray = cardsData.cards;
     
@@ -314,6 +311,8 @@ function generateBarcodeUrl(cardId) {
 	return imageRequestString;
 }
 
+// TODO: get this into the view model
+// of the view it initializes
 function initSingleCardView(cardId) {
     singleCardViewModel.setValues.call(singleCardViewModel, cardId);
 }
@@ -337,6 +336,18 @@ var singleCardViewModel = new kendo.observable({
 	bonusPoints : "",
 	currentDate : ""
 });
+
+function singleCardShow() {
+    
+}
+
+function processDeleteCard() {
+    var cardIdString = singleCardViewModel.cardId,
+        cardIdLength = singleCardViewModel.cardId.length,
+        cardId = cardIdString.substring(1, cardIdLength);
+    deleteCard(cardId);
+    app.navigate('#cardsView');
+}
 
 /*------------------- Rewards ----------------------*/
 

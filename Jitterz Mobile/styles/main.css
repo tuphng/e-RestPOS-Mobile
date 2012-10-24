@@ -253,20 +253,13 @@
 
 #singleCardActions .singleCardDeleteButton {
    background: #E30111;
-background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,
-rgba(0, 0, 0, 0.3)),color-stop(0.05,
-transparent),color-stop(0.98,
-transparent),color-stop(1,
-rgba(70, 70, 70, 0.5))),-webkit-gradient(linear,50% 0,50% 100%,color-stop(0,
-rgba(255, 255, 255, 0.6)),color-stop(0.5,
-rgba(255, 255, 255, 0.1)),color-stop(0.5,
-rgba(255, 255, 255, 0)),color-stop(1,
-rgba(255, 255, 255, 0.15)));
-background-clip: padding-box;
-color: 
-white;
-text-shadow: 0 -1px 
-rgba(0, 0, 0, 0.3);
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,rgba(0, 0, 0, 0.3)),
+    color-stop(0.05,transparent), color-stop(0.98, transparent), color-stop(1, rgba(70, 70, 70, 0.5))), 
+    -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(255, 255, 255, 0.6)),color-stop(0.5, rgba(255, 255, 255, 0.1)),
+    color-stop(0.5, rgba(255, 255, 255, 0)),color-stop(1, rgba(255, 255, 255, 0.15)));
+    background-clip: padding-box;
+    color: white;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
 }
 
  .km-actionsheet-wrapper { 
@@ -295,9 +288,12 @@ clear:after
 }
 
 #buttonAddNewCard, 
-#modalViewAddCardButton {
-    margin: 5px;
+#buttonAddNewCardView {
+    margin: 6px 5px;
     padding: 3px 10px;
+}
+
+#buttonAddNewCardView {
     background-color: #2260DD;
 }
 
