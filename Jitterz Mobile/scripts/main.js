@@ -357,7 +357,7 @@ var rewardCards = {
 		imageURLBack:"http://www.arbolcrafts.co.uk/images/gold%20card%20blanks.jpg",
 		rewards:[
 			{reward:"Free coffee every day"},
-			{reward:"Free refil"},
+			{reward:"Free refill"},
 			{reward:"Free cookies with every drink"}
 		]
 	},
@@ -365,7 +365,7 @@ var rewardCards = {
 		imageURLFront:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
 		imageURLBack:"http://originalgiftsforwoman.com/wp-content/uploads/2012/02/prepaid-gift-cards.s600x600-300x190.jpg",
 		rewards:[
-			{reward:"Free refil"},
+			{reward:"Free refill"},
 			{reward:"Free cookies with every drink"}
 		]
 	}
