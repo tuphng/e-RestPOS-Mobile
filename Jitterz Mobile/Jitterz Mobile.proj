@@ -55,7 +55,6 @@
   <ItemGroup>
     <Content Include="icons\cofeeCup.png" />
     <Content Include="icons\coffeecupbutton.png" />
-    <Content Include="styles\coffeeCupFrameSilver.png" />
     <Content Include="icons\iconBonus.png" />
     <Content Include="icons\iconPin.png" />
     <Content Include="icons\rewards.png" />
@@ -76,7 +75,7 @@
     <Content Include="scripts\card.js" />
     <Content Include="scripts\main.js" />
     <Content Include="styles\coffeeCupSmall.png" />
-    <Content Include="styles\coffeeCupFrameGold.png" />
+    <Content Include="styles\coffeeCupFrame.png" />
     <Content Include="styles\main.css" />
     <Content Include="cordova.ios.js">
       <Platform>iOS</Platform>

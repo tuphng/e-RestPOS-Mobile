@@ -23,9 +23,8 @@
         <!-- Tablet 768x1024 High DPI (aka iPad3") -->
         <link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:2)" href="styles/tablet-1024-hdpi.css" type="text/css" />
         <style type="text/css">
-
             
-        </style> 
+        </style>
         <!-- Scripts -->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
@@ -50,12 +49,7 @@
         <!-- Templates -->
         <script type="text/x-kendo-template" id="rewordsCardsList-template">
             <a class="listReswardsCard clear" data-role="listview-link" href='rewardCard?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}' data-cardId="${cardNumber}">
-                    <div 
-            #if(bonusPoints>20){#
-                class="goldFrame cardPicture"
-            #}else{#
-                class="silverFrame cardPicture"#}
-            #></div>
+                <div class="cardPicture"></div>
                 <div class="cardInformationContainer">
                     <span>Card Number: </span>
                     <span class="cardNumberText">${cardNumber}</span>
@@ -67,12 +61,7 @@
         
         <script type="text/x-kendo-template" id="cardsListTemplate">
             <a class="listCard clear" data-cardId="${cardNumber}">
-                <div 
-            #if(bonusPoints>20){#
-                class="goldFrame cardPicture"
-            #}else{#
-                class="silverFrame cardPicture"#}
-            #></div>
+                <div class="cardPicture"></div>
                 <div class="cardInformationContainer">
                     <span>Card Number: </span>
                     <span class="cardNumberText">${cardNumber}</span>
@@ -112,36 +101,11 @@
 	        <p class="item-info">${reward}</p>
 		</script>
 
-		<!-- ModalViewDeleteCardConfirmation -->
-		<div data-role="modalview" id="modalViewDeleteCard" style="width: 95%; height: 80%;">
-			<div data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">Delete Card</span>
-				</div>
-			</div>
-			<div id="modalViewDeleteCardContent">
-				<ul data-role="listview" data-style="inset">
-					<li>
-						<div id ="modalViewDeleteCardMessage"></div>
-					</li>
-					<li>
-						<div id ="modalViewDeleteCardNumber">
-							<span id="deleteMessage"></span>
-							<span id="deleteCardId"></span>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<a id="buttonModalViewDeleteConfirm" type="button" data-role="button">Yes</a>
-			<a id="buttonModalViewDeleteCancel" type="button" data-role="button">No</a>
-		</div>
-
-        
         <!-- CARDS List page -->
 		<div data-role="view" id="cardsView" data-title="Cards" data-init="listViewCardsInit" data-model="cardsData">
 			<header data-role="header">
 				<div data-role="navbar">
-                    <a id="buttonAddNewCard" data-role="button" href="#modalViewAddCard" 
+                    <a id="buttonAddNewCard" data-role="button" href="#addCardView" 
                          data-align="right" data-icon="add"></a>
                     <span data-role="view-title"></span>
 				</div>
@@ -158,12 +122,12 @@
 		</div>
         
         <!-- ADD Card View -->
-        <div data-role="view" id="modalViewAddCard" data-title="Cards" >
+        <div data-role="view" id="addCardView" data-title="Add Card" data-show="focusCardNumber">
 			<div data-role="header">
 				<div data-role="navbar">
 					<a href="#cardsView" data-role="button" data-align="left">Cancel</a>
-                    <span data-role="view-title">Add Card</span>
-                    <a data-role="button" data-align="right" data-icon="add" id="modalViewAddCardButton"></a>
+                    <span data-role="view-title"></span>
+                    <a data-role="button" data-align="right" data-icon="add" id="buttonAddNewCardView"></a>
 				</div>
 			</div>
             <div data-role="content">
@@ -175,7 +139,7 @@
                 <ul class="addNewCardWrapper" data-role="listview" data-style="inset">
     				<li>
     					<label for="cardNumberField">CardNumber </label>
-    					<input type="text" id="cardNumberField" />
+    					<input type="number" id="cardNumberField" min="3" max="10" maxlength="10" maxlength="9"/>
     				</li>
     			</ul>
     			<div id="addNewCardErrorLog"></div>
@@ -188,6 +152,7 @@
 				<div data-role="navbar">
 					<a class="nav-button" data-role="backbutton" data-align="left">Back</a>
 					<span data-role="view-title"></span>
+                    <a id="editCardButton" data-role="button" data-align="right" data-rel="actionsheet" href="#singleCardActions" >Edit</a>
 				</div>
 			</header>
 			<div id="cardViewContent" data-role="content" class="km-insetcontent" data-style="inset">
@@ -214,6 +179,11 @@
 					</div>
 				</div>
 			</div>
+            <ul data-role="actionsheet" class="singleCardActionsList" id="singleCardActions" data-open="onOpen" data-popup='{"direction": "left"}'>
+                <li>
+                    <a href="#" data-action="processDeleteCard" class="singleCardDeleteButton">Delete</a>
+                </li>
+            </ul>
 		</div>
         
         <!-- REWARDS page -->
@@ -226,7 +196,7 @@
         </div>
         
 		<!-- REWARD CARD page -->
-        
+
 		<div data-role="view" id="rewardCard" data-style="inset"  data-title="Reward Card" data-show="rewardCardShow" data-model="rewardsViewModel">
 			<header data-role="header" data-id="jitterz-default-header">
 				<div data-role="navbar">
