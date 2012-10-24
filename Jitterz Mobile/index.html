@@ -50,10 +50,11 @@
         <script type="text/x-kendo-template" id="rewordsCardsList-template">
             <a class="listReswardsCard clear" data-role="listview-link" href='rewardCard?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}' data-cardId="${cardNumber}">
                        <div 
-						#if(bonusPoints>20){#
-							class="goldFrame cardPicture"
+						#if(bonusPoints<50){#
+							class="silverFrame cardPicture"
 						#}else{#
-							class="silverFrame cardPicture"#}
+                             class="goldFrame cardPicture"
+							#}
 						#></div>
                 <div class="cardInformationContainer">
                     <span>Card Number: </span>
@@ -67,10 +68,11 @@
         <script type="text/x-kendo-template" id="cardsListTemplate">
             <a class="listCard clear" data-cardId="${cardNumber}">
                 <div 
-            #if(bonusPoints>20){#
-                class="goldFrame cardPicture"
+            #if(bonusPoints<50){#
+                class="silverFrame cardPicture"
             #}else{#
-                class="silverFrame cardPicture"#}
+                class="goldFrame cardPicture"
+                #}
             #></div>
                 <div class="cardInformationContainer">
                     <span>Card Number: </span>

@@ -322,7 +322,14 @@ var singleCardViewModel = new kendo.observable({
         var that = this,
             cardPosition = cardsData.cardNumbers()[cardId],
             currentCard = cardsData.cards[cardPosition];
-
+        if(currentCard.bonusPoints<50)
+         {
+            $("#cardFront").removeClass("gold").addClass("silver");
+            $("#cardBack").removeClass("gold").addClass("silver");
+        } else {
+            $("#cardFront").removeClass("silver").addClass("gold");
+            $("#cardBack").removeClass("silver").addClass("gold");
+        }
         that.set("barcodeUrl", generateBarcodeUrl(cardId));
 		that.set("cardId","#" + cardId);
 		that.set("cardAmount", kendo.toString(currentCard.amount, "c"));
@@ -384,7 +391,7 @@ var rewardsViewModel = new kendo.observable({
             barcode =generateBarcodeUrl(bonusCardBarcodeSeq) ;
             that.set("cardNumber","#"+e.view.params.cardNumber);
             that.set("bonusPoints","Bonus:"+bonusPointsReceived);
-            if(bonusPointsReceived<20)
+            if(bonusPointsReceived<50)
              {
                 currentCard = rewardCards["silver"];
                 $("#rewardCardFront").removeClass("gold").addClass("silver");
