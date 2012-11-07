@@ -10,6 +10,8 @@ function onDeviceReady() {
 	$("#addCardView").on("touchend", "#buttonAddNewCardView", function() {
 		addNewCard();
 	});
+    
+    getInitialCardsData();
 
     // TODO: get all (where applicable) event handlers into the viewModels (hint: data-bind="click: handler")
     
@@ -49,6 +51,8 @@ function onDeviceReady() {
     
 }
 
+
+
 function getPosition(handler) {
 	navigator.geolocation.getCurrentPosition(handler, onGeolocationError, { enableHighAccuracy: true });
 }
@@ -68,6 +72,15 @@ function getLocations(position, handler) {
 			  }).error(function(error) {
 				  alert(error.message);
 			  });
+}
+
+function getInitialCardsData(){
+    if(window.localStorage.getItem("cards")===null)
+    {
+        var cardData = new initialCardData(),
+        initialCards = cardData.getInitialCardsData();
+        localStorage.setItem("cards",initialCards);
+    }
 }
 
 function storesShow(e) {
