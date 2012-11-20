@@ -53,14 +53,12 @@
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icons\cofeeCup.png" />
-    <Content Include="icons\coffeecupbutton.png" />
-    <Content Include="styles\coffeeCupFrameSilver.png" />
-    <Content Include="icons\iconBonus.png" />
-    <Content Include="icons\iconPin.png" />
     <Content Include="icons\rewards.png" />
     <Content Include="icons\card.png" />
     <Content Include="icons\stores.png" />
+    <Content Include="images\bgr_pattern.jpg" />
+    <Content Include="images\cofeeCup-sprite.png" />
+    <Content Include="images\cofeeCup-sprite@x2.png" />
     <Content Include="images\hot-coffee.jpg" />
     <Content Include="images\holiday.jpg" />
     <Content Include="images\rewards.jpg" />
@@ -75,8 +73,6 @@
     <Content Include="kendo\styles\kendo.mobile.all.min.css" />
     <Content Include="scripts\card.js" />
     <Content Include="scripts\main.js" />
-    <Content Include="styles\coffeeCupSmall.png" />
-    <Content Include="styles\coffeeCupFrameGold.png" />
     <Content Include="styles\main.css" />
     <Content Include="cordova.ios.js">
       <Platform>iOS</Platform>

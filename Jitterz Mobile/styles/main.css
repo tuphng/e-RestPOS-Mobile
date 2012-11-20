@@ -18,7 +18,7 @@
 
 .silverFrame
 {
-    background-image: url("coffeeCupFrameSilver.png");
+    background-image: url("../images/coffeeCupFrameSilver.png");
     background-repeat:no-repeat;
     background-position:center;
 }
@@ -32,7 +32,7 @@
 
 .cardPicture:after 
 {
-    content: url("coffeeCupSmall.png");
+    content: url("../images/coffeeCupSmall.png");
     position: relative;
     top: 12px;
     left: 12px;
@@ -118,8 +118,8 @@
 
 #home .km-content
 {
-    background-image: url("../images/hot-coffee.jpg");
-    background-size: auto 100%;
+   background-image: url("../images/bgr_pattern.jpg");
+    background-size: repeed;
 }
 
 /*Ivan Ivanov Cancel button*/
