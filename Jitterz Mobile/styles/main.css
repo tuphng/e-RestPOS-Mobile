@@ -32,8 +32,9 @@
 
 .cardPicture:after 
 {
-    content: url("../images/coffeeCupSmall.png");
+    content: "";
     position: relative;
+    background:red url("../images/cofeeCup-sprite.png") no-repeat right top;
     top: 12px;
     left: 12px;
 }
