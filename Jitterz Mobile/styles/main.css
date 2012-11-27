@@ -6,37 +6,29 @@
     border-radius: 6px;
 }
 
+#announcements li
+{
+    background-color: transparent;
+}
+
 .cardPicture
 {
     background-image: url("coffeeCupFrame.png");
     background-repeat:no-repeat;
     background-position:center;
-    width: 52px;
-    height: 52px;
+    width: 49px;
+    height: 49px;
     float: left;
 }
 
-.silverFrame
+.silverCardImage
 {
-    background-image: url("../images/coffeeCupFrameSilver.png");
-    background-repeat:no-repeat;
-    background-position:center;
+    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -101px;
 }
 
-.goldFrame
+.goldCardImage
 {
-    background-image: url("coffeeCupFrameGold.png");
-    background-repeat:no-repeat;
-    background-position:center;
-}
-
-.cardPicture:after 
-{
-    content: "";
-    position: relative;
-    background:red url("../images/cofeeCup-sprite.png") no-repeat right top;
-    top: 12px;
-    left: 12px;
+    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -51px;
 }
 
 .addCardLogo {
@@ -348,6 +340,11 @@ clear:after
     display:none;
 }
 
+#rewordsCardsList li
+{
+    font-size: 12px;
+}
+
 .gold
 {
    background-image: -webkit-linear-gradient(bottom, #FDC20B, #FFD337);
@@ -362,7 +359,7 @@ clear:after
 {
     font-size: 23px;
     opacity: 0.7;
-    text-shadow: -1px -1px 1px black;
+    text-shadow: -0px -1px 3px black;
     color: white;
     font-weight: normal;
     font-family: monospace;
@@ -384,11 +381,11 @@ clear:after
 
 .icon
 {
-    height:70px;
-    width:70px;
-    margin-top:5px;
-    margin-left:5px;
-    background-image:url("../icons/cofeeCup.png");
+    height:50px;
+    width:50px;
+    margin-top:15px;
+    margin-left:15px;
+   background: url("../images/cofeeCup-sprite.png") no-repeat 0 0px;
 }
 
 .amountLine
@@ -422,11 +419,12 @@ clear:after
 .km-ios #rewardsList > li
 {
     line-height:0.6em;
+    font-size: 12px;
 }
 
 .bonusPoints{
     margin-left:16px;
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 0px -1px 3px black;
     color:#fff;
     font-size:24px;
 }

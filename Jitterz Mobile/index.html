@@ -51,9 +51,9 @@
             <a class="listReswardsCard clear" data-role="listview-link" href='rewardCard?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}' data-cardId="${cardNumber}">
                        <div 
 						#if(bonusPoints<50){#
-							class="silverFrame cardPicture"
+							class="silverCardImage cardPicture"
 						#}else{#
-                             class="goldFrame cardPicture"
+                             class="goldCardImage cardPicture"
 							#}
 						#></div>
                 <div class="cardInformationContainer">
@@ -69,9 +69,9 @@
             <a class="listCard clear" data-cardId="${cardNumber}">
                 <div 
             #if(bonusPoints<50){#
-                class="silverFrame cardPicture"
+                class="silverCardImage cardPicture"
             #}else{#
-                class="goldFrame cardPicture"
+                class="goldCardImage cardPicture"
                 #}
             #></div>
                 <div class="cardInformationContainer">
