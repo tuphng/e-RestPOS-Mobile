@@ -154,17 +154,20 @@ function onGeolocationError(error) {
 
 function setStiresViews(locations) {
 	var pinColor = "66CCFF";
-	var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-											   new google.maps.Size(21, 34),
-											   new google.maps.Point(0, 0),
-											   new google.maps.Point(10, 34));
-	var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+
+	/*var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
 												new google.maps.Size(40, 37),
 												new google.maps.Point(0, 0),
-												new google.maps.Point(12, 35));
+												new google.maps.Point(12, 35));*/
     
-	var markerImage = new google.maps.MarkerImage('icons/iconPin.png'),
-	marker,
+
+     var pimImage = new google.maps.MarkerImage("../images/cofeeCup-sprite.png",
+      new google.maps.Size(49, 49),
+      new google.maps.Point(0,202),
+      new google.maps.Point(0, 32));
+    
+    
+	var marker,
     currentMarkerIndex = 0;
     function createMarker(index){
         if(index<locations.length)
@@ -173,8 +176,7 @@ function setStiresViews(locations) {
 			animation: google.maps.Animation.DROP,
 			position: locations[index].latlng,
 			title: locations[index].address.replace(/(&nbsp)/g," "),
-			icon: markerImage,
-			shadow: pinShadow,
+			icon: pimImage
 		});
         oneMarkerAtTime();
     }
