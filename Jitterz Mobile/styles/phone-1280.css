@@ -1,0 +1,18 @@
+#rewordsCardsList .silverCardImage, #singleCardView .silverCardImage
+{
+    background: url("../images/cofeeCup-sprite@x2.png") no-repeat 0 -101px;
+}
+
+#rewordsCardsList .goldCardImage, #singleCardView .goldCardImage
+{
+    background: url("../images/cofeeCup-sprite@x2.png") no-repeat 0 -51px;
+}
+
+.iconContainer .icon
+{
+    height: 50px;
+    width: 50px;
+    margin-top: 15px;
+    margin-left: 15px;
+    background: url("../images/cofeeCup-sprite@x2.png") no-repeat 0 0px;
+}

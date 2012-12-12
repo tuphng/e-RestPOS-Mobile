@@ -12,6 +12,7 @@
     <iOSStatusBarStyle>Hidden</iOSStatusBarStyle>
     <BundleVersion>1.0</BundleVersion>
     <AndroidVersionCode>1</AndroidVersionCode>
+    <AndroidHardwareAcceleration>True</AndroidHardwareAcceleration>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="App_Resources" />

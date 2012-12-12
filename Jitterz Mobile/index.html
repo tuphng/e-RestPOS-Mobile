@@ -65,7 +65,7 @@
         </script>
         
         <script type="text/x-kendo-template" id="cardsListTemplate">
-            <a class="listCard clear" data-cardId="${cardNumber}">
+            <a class="listCard clear" data-cardId="${cardNumber}" data-role="listview-link" href='singleCardView?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}'>
                 <div 
             #if(bonusPoints<50){#
                 class="silverCardImage cardPicture"

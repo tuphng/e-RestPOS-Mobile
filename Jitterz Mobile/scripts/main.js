@@ -14,15 +14,6 @@ function onDeviceReady() {
     getInitialCardsData();
 
     // TODO: get all (where applicable) event handlers into the viewModels (hint: data-bind="click: handler")
-    
-	$("#cardsView").on("click", ".listCard", function(e) {
-		var cardId = $(e.currentTarget).data('cardid');
-		initSingleCardView(cardId);
-        var $cardFront = $("#cardFront"),
-	    $cardBack = $("#cardBack");
-		appendCardFadeEffect($cardFront, $cardBack);
-		app.navigate('#singleCardView');
-	});
    
 	$("#cardsView").on("touchend", ".deleteCardButton", function(e) {
     	
@@ -328,8 +319,14 @@ function generateBarcodeUrl(cardId) {
 
 // TODO: get this into the view model
 // of the view it initializes
-function initSingleCardView(cardId) {
+function singleCardShow(arguments) {
+    var cardId = arguments.view.params.cardNumber;
     singleCardViewModel.setValues.call(singleCardViewModel, cardId);
+	
+    var $cardFront = $("#cardFront"),
+	    $cardBack = $("#cardBack");
+	
+    appendCardFadeEffect($cardFront, $cardBack);
 }
 
 var singleCardViewModel = new kendo.observable({
@@ -358,10 +355,6 @@ var singleCardViewModel = new kendo.observable({
 	bonusPoints : "",
 	currentDate : ""
 });
-
-function singleCardShow() {
-    
-}
 
 function processDeleteCard() {
     var cardIdString = singleCardViewModel.cardId,
