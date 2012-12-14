@@ -46,8 +46,8 @@
 }
 
 .item-photo {
-    width: 5em;
-    height: 3.5em;
+    width: 75px;
+    height: 75px;
     float: left;
     margin: .5em 0;
     -webkit-box-shadow: 0 1px 3px #333;
