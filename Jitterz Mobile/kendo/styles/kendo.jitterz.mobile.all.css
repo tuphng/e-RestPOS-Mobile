@@ -94,3 +94,11 @@
 	rgba(255, 255, 255, 1),
 	rgba(255, 255, 255, 1));
 }
+
+.km-android .km-list > li {
+    font-size:1em;
+}
+.km-android .km-navbar .km-icon {
+    width:1.3em;
+    margin: 0px 30px;
+}
