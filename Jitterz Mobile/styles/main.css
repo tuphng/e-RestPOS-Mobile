@@ -2,7 +2,7 @@
 {
     margin: 12px;
     padding: 3px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 6px;
 }
 
@@ -14,20 +14,20 @@
 .cardPicture
 {
     background-repeat:no-repeat;
-    background-position:center;
-    width: 49px;
-    height: 49px;
+    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -100px;;
+    width: 50px;
+    height: 50px;
     float: left;
 }
 
 .silverCardImage
 {
-    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -101px;
+    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -100px;
 }
 
 .goldCardImage
 {
-    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -51px;
+    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -50px;
 }
 
 .addCardLogo {
@@ -35,11 +35,10 @@
 }
 
 .addCardLogoText {
-    color: #4C566C;
-    font-size: 16px;
+    color: #fff;
+    font-size: 18px;
     line-height: 52px;
-    margin-left: 15px;
-    text-shadow: 1px 1px 1px #fff;
+    margin-left:10px;
 }
 
 .addNewCardWrapper {
