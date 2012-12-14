@@ -70,6 +70,7 @@
     <Content Include="kendo\styles\images\icons.png" />
     <Content Include="kendo\styles\images\iconmasks.svg" />
     <Content Include="kendo\styles\images\android-sprite.png" />
+    <Content Include="kendo\styles\kendo.jitterz.mobile.all.css" />
     <Content Include="kendo\styles\kendo.mobile.all.min.css" />
     <Content Include="scripts\card.js" />
     <Content Include="scripts\main.js" />

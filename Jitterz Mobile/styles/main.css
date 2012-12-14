@@ -59,7 +59,7 @@
 
 #announcements-listview .item-title {
 	float: left;
-	font-size: 1.3em;
+	font-size: 1.2em;
     line-height: 1.2em;
     margin: 0 0 0 .8em;
     width: 61%;
@@ -76,7 +76,7 @@
 
 .km-ios #home .km-list
 {
-    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
 }
 
 .km-card
@@ -110,8 +110,7 @@
 
 #home .km-content
 {
-   background-image: url("../images/bgr_pattern.jpg");
-    background-size: repeed;
+   
 }
 
 /*Ivan Ivanov Cancel button*/
@@ -300,7 +299,7 @@ clear:after
 }
 
 #buttonAddNewCardView {
-    background-color: #2260DD;
+    
 }
 
 #singleRewardCardContainer{
