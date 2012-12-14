@@ -291,16 +291,6 @@ clear:after
     overflow:hidden;
 }
 
-#buttonAddNewCard, 
-#buttonAddNewCardView {
-    margin: 6px 5px;
-    padding: 3px 10px;
-}
-
-#buttonAddNewCardView {
-    
-}
-
 #singleRewardCardContainer{
     margin-top: 15px;
     margin-bottom:15px;
