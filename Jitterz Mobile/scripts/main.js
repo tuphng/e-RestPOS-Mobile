@@ -54,9 +54,9 @@ function activateAddButtonIfCardIsValid(cardId) {
             
     if(isValid)
     {
-        $("#buttonAddNewCardView").css("background-color", "green");
+        $("#buttonAddNewCardView").removeClass("isCardValid");
     } else {
-        $("#buttonAddNewCardView").css("background-color", "red");
+        $("#buttonAddNewCardView").addClass("isCardValid");
     }
 }
 
