@@ -372,7 +372,7 @@ clear:after
     width:50px;
     margin-top:15px;
     margin-left:15px;
-   background: url("../images/cofeeCup-sprite.png") no-repeat 0 0px;
+    background: url("../images/cofeeCup-sprite.png") no-repeat 0 0px;
 }
 
 .amountLine
@@ -405,10 +405,19 @@ clear:after
 
 .km-ios #rewardsList > li
 {
-    line-height:0.6em;
     font-size: 12px;
+    padding-left: 3px;
 }
-
+.km-ios #rewardsList > li:before,
+.km-android #rewardsList > li:before {
+    content: "";
+	background: url("../images/cofeeCup-sprite.png") no-repeat 0 -250px;;
+    width: 50px;
+    height: 50px;
+	display: block;
+    float:left;
+    padding-right:5px;
+}
 .bonusPoints{
     margin-left:16px;
     text-shadow: 0px -1px 3px black;
@@ -427,4 +436,7 @@ input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+#buttonAddNewCard,#buttonAddNewCardView {
+    bottom: 3px;
 }

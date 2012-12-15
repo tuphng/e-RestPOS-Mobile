@@ -102,3 +102,6 @@
     width:1.3em;
     margin: 0px 30px;
 }
+.km-android .km-buttongroup .km-button .km-text {
+    color:#fff;
+}
