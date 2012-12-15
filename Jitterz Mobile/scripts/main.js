@@ -37,12 +37,32 @@ function onDeviceReady() {
 		$("#modalViewDeleteCard").kendoMobileModalView("close");
 	});
     
+    $("#cardNumberField").keyup(function(e) {
+        activateAddButtonIfCardIsValid(e.target.value);
+    });
+    
+    $("#cardNumberField").on("paste", function(e) {
+        activateAddButtonIfCardIsValid(e.target.value);
+    });
+    
 	cardsData.init();
 	cardsData.cards.bind("change", writeIntoLocalStorage);
-    
 }
 
+function activateAddButtonIfCardIsValid(cardId) {
+    var isValid = checkIsValid(cardId);
+            
+    if(isValid)
+    {
+        $("#buttonAddNewCardView").css("background-color", "green");
+    } else {
+        $("#buttonAddNewCardView").css("background-color", "red");
+    }
+}
 
+function checkIsValid(typedCardId) {
+    return validateCardNumber(typedCardId) && !isDublicateNumber(typedCardId);
+}
 
 function getPosition(handler) {
 	navigator.geolocation.getCurrentPosition(handler, onGeolocationError, { enableHighAccuracy: true });
@@ -228,22 +248,11 @@ function focusCardNumber() {
     $('#cardNumberField').focus();
 }
 
+
 function addNewCard() {
 	var cardNumberValue = $('#cardNumberField').val();
     
-	var isValidCardNumber = validateCardNumber(cardNumberValue),
-	isDuplicateCardNumber = isDublicateNumber(cardNumberValue);
-    
-	var $addnewCardErrorLog = $('#addNewCardErrorLog'),
-	$modalViewCardNumber = $('#modalViewAddCard');
-    
-	if (!isValidCardNumber) {
-		$addnewCardErrorLog.text('Card number is nine digits code');
-	}
-	else if (isDuplicateCardNumber) {
-		$addnewCardErrorLog.text('Dublicate record');
-	}
-	else {
+	if (checkIsValid(cardNumberValue)) {
 		var currentAmount = Math.floor((Math.random() * 100) + 10),
 		    bonusPoints = Math.floor(Math.random() * 100),
             currentDate = new Date(),    
@@ -259,7 +268,6 @@ function addNewCard() {
 		var positionAdded = cardsData.cards.push(cardToAdd) - 1;
 		cardsData.cardNumbers()[cardNumberValue] = positionAdded;
         
-		$addnewCardErrorLog.text('');
 		app.navigate("#cardsView");
 	}
 }
