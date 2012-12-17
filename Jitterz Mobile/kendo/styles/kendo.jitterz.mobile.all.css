@@ -94,6 +94,15 @@
 	rgba(255, 255, 255, 1),
 	rgba(255, 255, 255, 1));
 }
+.km-tablet .km-ios .km-buttongroup .km-button:not(.km-state-active), .km-ios .km-header > .km-buttongroup .km-button:not(.km-state-active), .km-ios .km-footer > .km-buttongroup .km-button:not(.km-state-active), .km-ios .km-content .km-buttongroup .km-button:not(.km-state-active) {
+    color:#fff;
+    text-shadow:none;
+}
+
+.km-tablet .km-ios .km-navbar .km-button, .km-tablet .km-ios :not(.km-tabstrip):not(.km-buttongroup) > .km-button {
+        background-color: rgb(5, 82, 0);
+    
+}
 
 .km-android .km-list > li {
     font-size:1em;
@@ -104,4 +113,8 @@
 }
 .km-android .km-buttongroup .km-button .km-text {
     color:#fff;
+}
+.km-tablet .km-ios .km-view-title, .km-tablet .km-ios .km-modalview .km-view-title {
+    color:#fff;
+    text-shadow: 0 -1px rgba(0,0,0,0.8); 
 }
