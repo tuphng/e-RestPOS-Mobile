@@ -445,5 +445,7 @@ input::-webkit-inner-spin-button {
 }
 
 #buttonAddNewCardView.isCardValid {
-    background:red;
+    opacity:0.5;
+    pointer-events: none;
+    cursor: default;
 }
