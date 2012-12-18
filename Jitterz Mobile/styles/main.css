@@ -1,7 +1,6 @@
 #announcements
 {
     margin: 12px;
-    padding: 3px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 6px;
 }
@@ -71,6 +70,10 @@
 	line-height: 1em;
     margin: 0 0 0 1em;
     width: 61%;
+}
+
+#announcements-listview {
+    margin: 0;
 }
 
 .km-ios #home .km-list
@@ -165,7 +168,7 @@
     display:none;
 }
 
-.cardStyle
+#cardFront, #cardBack, #rewardCardFront, #rewardCardBack 
 {
     border-radius: 10px;
     cursor:pointer;
@@ -334,12 +337,24 @@ clear:after
 
 .gold
 {
-   background-image: -webkit-linear-gradient(bottom, #FDC20B, #FFD337);
+	background: #fdc20b; /* Old browsers */
+	background: -moz-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdc20b), color-stop(100%, #ffd336)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #fdc20b 0%, #ffd336 100%); /* W3C */
 }
 
 .silver
 {
-   background-image: -webkit-linear-gradient(bottom, #c0c4c6, #ccd0d3);
+	background: #c0c4c6; /* Old browsers */
+	background: -moz-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c0c4c6), color-stop(100%, #ccd0d3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #c0c4c6 0%, #ccd0d3 100%); /* W3C */
 }
 
 .cardNumberLine
@@ -411,7 +426,7 @@ clear:after
 .km-ios #rewardsList > li:before,
 .km-android #rewardsList > li:before {
     content: "";
-	background: url("../images/cofeeCup-sprite.png") no-repeat 0 -250px;;
+	background: url("../images/cofeeCup-sprite.png") no-repeat 0 -250px;
     width: 50px;
     height: 50px;
 	display: block;
@@ -438,10 +453,20 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 #buttonAddNewCard {
-    bottom: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+    min-width:40px;
+}
+#buttonAddNewCard > .km-icon {
+    color:#fff;
 }
 #buttonAddNewCardView {
     bottom:0px;
+}
+
+#buttonAddNewCardView[disabled] {
+    opacity:0.5;
+    cursor: default;
 }
 
 #buttonAddNewCardView.isCardValid {
@@ -449,3 +474,8 @@ input::-webkit-inner-spin-button {
     pointer-events: none;
     cursor: default;
 }
+
+#btnStoreViewToggle > .km-button {
+    padding: 0.25rem 30px; 
+}
+
