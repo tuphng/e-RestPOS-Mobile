@@ -32,6 +32,9 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
+	<Folder Include="App_Resources\Android\drawable-nodpi">
+      <Platform>Android</Platform>
+    </Folder>
     <Folder Include="kendo" />
     <Folder Include="kendo\js" />
     <Folder Include="kendo\styles" />
@@ -40,8 +43,6 @@
     <Folder Include="views" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="App_Resources\Android\drawable-nodpi" />
-    <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
     <Resource Include="App_Resources\iOS\Default-568h@2x.png" />
     <Resource Include="App_Resources\iOS\icon.png" />
     <Resource Include="App_Resources\iOS\icon@2x.png" />
@@ -59,7 +60,8 @@
     <Resource Include="App_Resources\iOS\Default-Landscape@2x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
+	<Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
