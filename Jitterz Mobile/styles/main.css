@@ -474,3 +474,6 @@ input::-webkit-inner-spin-button {
 #btnStoreViewToggle > .km-button {
     padding: 0.25rem 30px; 
 }
+.km-ios #home .km-listview-wrapper {
+    background:rgba(255,255,255,0.7);
+}
