@@ -1,10 +1,6 @@
-#announcements
-{
+#announcements{
     margin: 12px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 6px;
 }
-
 #announcements li
 {
     background-color: transparent;
@@ -478,4 +474,3 @@ input::-webkit-inner-spin-button {
 #btnStoreViewToggle > .km-button {
     padding: 0.25rem 30px; 
 }
-
