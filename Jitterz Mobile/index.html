@@ -8,6 +8,15 @@
 		<!-- Styles -->
 		<link rel="stylesheet" href="kendo/styles/kendo.mobile.all.min.css" />
 		<link rel="stylesheet" href="kendo/styles/kendo.jitterz.mobile.all.css" />
+        
+        <!-- Scripts -->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript" src="kendo/js/jquery.min.js"></script>
+		<script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
+		<script type="text/javascript" src="scripts/appData.js"></script>
+		<script type="text/javascript" src="viewModels/viewModels.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
 
 		<!-- Default Stylesheet -->
 		<link rel="stylesheet" href="styles/main.css" />
@@ -63,14 +72,7 @@
 			<p class="item-info">${description}</p>
 		</script>
 
-		<!-- Scripts -->
-		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-		<script type="text/javascript" src="kendo/js/jquery.min.js"></script>
-		<script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
-		<script type="text/javascript" src="scripts/appData.js"></script>
-		<script type="text/javascript" src="viewModels/viewModels.js"></script>
-		<script type="text/javascript" src="scripts/main.js"></script>
+		
 
 		<script>
 			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
