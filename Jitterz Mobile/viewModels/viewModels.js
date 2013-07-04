@@ -114,7 +114,6 @@
 		},
         
 		appendCardFadeEffect: function ($cardFront, $cardBack) {
-			debugger;
             $cardFront.bind('touchend', function(e) {
 				console.log("clickFront");
 				$(e.currentTarget).fadeOut(500, "linear", function() {

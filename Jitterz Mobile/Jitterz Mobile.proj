@@ -3,10 +3,10 @@
   <PropertyGroup>
     <ProjectGuid>c01056bd-0b45-4f53-a7cb-77d0c861a95f</ProjectGuid>
     <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
-    <AppIdentifier>com.telerik.Jitterz_Mobile</AppIdentifier>
+    <AppIdentifier>com.telerik.JitterzMobile</AppIdentifier>
     <ProjectName>Jitterz Mobile</ProjectName>
     <IsRunnable>true</IsRunnable>
-    <TemplateAppName>Cordova220</TemplateAppName>
+    <TemplateAppName>Cordova270</TemplateAppName>
     <AndroidPermissions>android.permission.CAMERA;android.permission.VIBRATE;android.permission.ACCESS_COARSE_LOCATION;android.permission.ACCESS_FINE_LOCATION;android.permission.ACCESS_LOCATION_EXTRA_COMMANDS;android.permission.READ_PHONE_STATE;android.permission.INTERNET;android.permission.RECEIVE_SMS;android.permission.RECORD_AUDIO;android.permission.MODIFY_AUDIO_SETTINGS;android.permission.READ_CONTACTS;android.permission.WRITE_CONTACTS;android.permission.WRITE_EXTERNAL_STORAGE;android.permission.ACCESS_NETWORK_STATE</AndroidPermissions>
     <DeviceOrientations>Portrait;Landscape</DeviceOrientations>
     <iOSStatusBarStyle>Default</iOSStatusBarStyle>
@@ -14,6 +14,8 @@
     <AndroidVersionCode>1</AndroidVersionCode>
     <AndroidHardwareAcceleration>false</AndroidHardwareAcceleration>
     <iOSDisplayName />
+    <iOSDeviceFamily>1;2</iOSDeviceFamily>
+    <iOSBackgroundMode />
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="App_Resources" />
@@ -32,7 +34,7 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
-	<Folder Include="App_Resources\Android\drawable-nodpi">
+    <Folder Include="App_Resources\Android\drawable-nodpi">
       <Platform>Android</Platform>
     </Folder>
     <Folder Include="kendo" />
@@ -61,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
-	<Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
@@ -79,13 +81,15 @@
     <Content Include="images\love-friend.png" />
     <Content Include="images\rewards.png" />
     <Content Include="index.html" />
+    <Content Include="kendo\styles\kendo.jitterz.mobile.all.css" />
     <Content Include="kendo\js\jquery.min.js" />
     <Content Include="kendo\js\kendo.mobile.min.js" />
     <Content Include="kendo\styles\images\back.png" />
     <Content Include="kendo\styles\images\KendoUI.ttf" />
     <Content Include="kendo\styles\images\KendoUI.woff" />
+    <Content Include="kendo\styles\images\wp8_icons.png" />
+    <Content Include="kendo\styles\images\wp8_inverseicons.png" />
     <Content Include="kendo\styles\kendo.mobile.all.min.css" />
-    <Content Include="kendo\styles\kendo.jitterz.mobile.all.css" />
     <Content Include="scripts\appData.js" />
     <Content Include="scripts\main.js" />
     <Content Include="styles\main.css" />

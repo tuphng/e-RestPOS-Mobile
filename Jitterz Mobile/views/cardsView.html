@@ -18,8 +18,8 @@
 </div>
         
 <script type="text/x-kendo-template" id="cardsListTemplate">
-    <a class="listCard clear" data-cardId="${cardNumber}" data-role="listview-link" 
-        href='views/singleCardView.html?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}&cardAmount=${amount}'>
+    <a class="listCard clear" data-cardId="#:cardNumber#" data-role="listview-link" 
+        href='views/singleCardView.html?bonusPoints=#:bonusPoints#&cardNumber=#:cardNumber#&cardAmount=#:amount#'>
         <div 
     #if(bonusPoints<50){#
         class="silverCardImage cardPicture"
@@ -29,8 +29,8 @@
     #></div>
         <div class="cardInformationContainer">
             <span>Card Number: </span>
-            <span class="cardNumberText">${cardNumber}</span>
-            <div class="expireDateText">Expire on ${expireDate}</div>
+            <span class="cardNumberText">#:cardNumber#</span>
+            <div class="expireDateText">Expire on #:expireDate#</div>
         </div>
         <div class="clear"></div>
     </a>
