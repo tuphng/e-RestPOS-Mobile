@@ -10,4 +10,4 @@ The app demonstrates the following:
 * Kendo UI Mobile Templates
 * Kendo UI Mobile Observable Object
 
-More information can be found [here](http://docs.icenium.com/example-apps-and-code-snippets/apps/icenium-coffee-app "Coffee App Documentation").
+For more information please refer to the [sample documentation](http://docs.icenium.com/sample-apps/icenium-coffee-app).
