@@ -71,22 +71,22 @@
 				    pinImage = new google.maps.MarkerImage(
                                     "images/cofeeCup-sprite.png",
                                     new google.maps.Size(49, 49),
-                                    new google.maps.Point(0, 202)
-                                    );
+                                    new google.maps.Point(0, 202));
 
+                
 				for (var i = 0; i < len; i++) {
 					locations.push({
-						title: result[i].WalkInAddressDisplayStrings[0] + ", " + result[i].WalkInAddressDisplayStrings[1],
-						position: new google.maps.LatLng(result[i].WalkInAddress.Coordinates.Latitude, result[i].WalkInAddress.Coordinates.Longitude),
+						title: result[i].title + ", " + result[i].description,
+						position: new google.maps.LatLng(result[i].latitude, result[i].longitude),
                         icon: pinImage,
 						animation: google.maps.Animation.DROP
 					});
 				}
-
-				_private.addMarkers(locations, mapObj);
+                
+                 _private.addMarkers(locations, mapObj);
 			})
-			.fail(function() {
-				alert("Error loading locations.");
+			.fail(function(e, r, t) {
+                alert("Error loading locations.");
 			});
 		},
         
@@ -94,8 +94,9 @@
 			var marker,
 			    currentMarkerIndex = 0;
             
+            
             function createMarker(index) {
-				if (index < locations.length) {
+                if (index < locations.length) {
 					var tmpLocation = locations[index];
 
 					marker = new google.maps.Marker({
@@ -106,15 +107,14 @@
 						shadow: tmpLocation.shadow,
 						animation: tmpLocation.animation
 					});
-                    
 					oneMarkerAtTime();
 				}
 			}
             
 			function oneMarkerAtTime() {
 				google.maps.event.addListener(marker, "animation_changed", function() {
-					if (marker.getAnimation() === null) {
-						createMarker(currentMarkerIndex+=1);
+                    if (marker.getAnimation() === null) {
+                        createMarker(currentMarkerIndex+=1);
 					}
 				});
 			}				
@@ -126,13 +126,15 @@
 		initStoreList: function(position) {
 			_appData.getStarbucksLocations(position.coords.latitude, position.coords.longitude)
         			.done(function(data) {
-        				//TODO: Bind data to listview
-        				$(_storeListElem).kendoMobileListView({
+                        //TODO: Bind data to listview
+        				/*$(_storeListElem).kendoMobileListView({
         					dataSource: kendo.data.DataSource.create({ data: data }),
         					template: _tmplStoreList
-        				});
+        				});*/
         			})
-        			.fail();
+        			.fail(function(e, r, t) {
+                        alert("Loading error");    
+                    });
 		},
         
 		toggleStoreView: function(index) {
