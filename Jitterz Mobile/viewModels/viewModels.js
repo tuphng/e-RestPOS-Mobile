@@ -8,7 +8,7 @@
         
 	AddCardViewModel = kendo.data.ObservableObject.extend({
 		cardNumber: null,
-        
+         
 		init: function() {
 			kendo.data.ObservableObject.fn.init.apply(this, [this]);
 			var that = this;

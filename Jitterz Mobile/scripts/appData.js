@@ -5,8 +5,7 @@ var AppData = function() {
         _private;
 
 	_endpoints = {
-		starbucksLocs: {path:"http://www.starbucks.com/api/location.ashx?&features=&lat={LAT}&long={LONG}&limit={MAX}", verb:"GET"},
-		starbucksTest: {path:"scripts/testData/starbucksTest.json", verb:"GET"}
+		starbucksTest: {path:"scripts/starbucksTest.json", verb:"GET"}
 	};
     
 	_initialCards = [
@@ -119,18 +118,7 @@ var AppData = function() {
 
 	return {
 		getStarbucksLocations: function(lat, lng, max) {
-			var route = $.extend({}, _endpoints.starbucksLocs);
-
-			route.path = route.path.replace(/{LAT}/g, lat);
-			route.path = route.path.replace(/{LONG}/g, lng);
-			route.path = route.path.replace(/{MAX}/g, max || 10);
-
-			if (document.location.hostname === "coffee") {
-				//Test environment (localhost) - fake response
-				route = $.extend({}, _endpoints.starbucksTest);
-			}
-
-			return _private.load(route, {});
+            return $.getJSON("data/starbucksTest.json");
 		},
         
 		getInitialCards: function() {
