@@ -126,11 +126,10 @@
 		initStoreList: function(position) {
 			_appData.getStarbucksLocations(position.coords.latitude, position.coords.longitude)
         			.done(function(data) {
-                        //TODO: Bind data to listview
-        				/*$(_storeListElem).kendoMobileListView({
+                        $(_storeListElem).kendoMobileListView({
         					dataSource: kendo.data.DataSource.create({ data: data }),
         					template: _tmplStoreList
-        				});*/
+        				});
         			})
         			.fail(function(e, r, t) {
                         alert("Loading error");    
