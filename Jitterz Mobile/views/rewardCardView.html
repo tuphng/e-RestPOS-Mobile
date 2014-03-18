@@ -5,37 +5,39 @@
 			<span data-role="view-title"></span>
 		</div>
 	</header>
-	<div id="singleCardContainer" class="clear">
-		<div id="rewardCardFront" data-bind="attr: {class: cardStatus}">
-			<div class="clear">
-				<div class="iconContainer">
-					<div class="icon"></div>
-				</div>
-				<div class="bonusContainer clear">
-					<span class="bonusPoints" data-bind="text: bonusPoints"></span>
-					<div class="dateLine">
-						<span>as of</span>
-						<span data-bind="text: currentDate"></span>
-					</div>
-				</div>
-
-			</div>
-			<div class="amountLine">
-				<div class="cardNumberLine" data-bind="text: cardNumber"></div>
-			</div>
+    <div>
+        <div id="rewardCardFront" data-bind="attr: {class: cardStatus}">
+            <div class="card-icon">
+                <div class="j-icon main-badge"></div>
+            </div>
+            <div class="card-bonus">
+                <span data-bind="text: bonusPoints"></span>
+                <div>
+                    <span>as of</span>
+                    <span data-bind="text: currentDate"></span>
+                </div>
+            </div>
+            <div class="card-line">
+                <span data-bind="text: cardNumber"></div>
+            </div>
 		</div>
-		<div id="rewardCardBack" data-bind="attr: {class: cardStatus}">
-			<img id="barcodeImage" data-bind="attr: {src:barcodeURL}" alt="Shop Card Id"/>
-		</div>
-	</div>
-	<div class="clear">
-		<div>
-			<ul id="rewardsList" data-role="listview" data-style="inset" data-bind="source: rewards" data-template="rewardsListTemplate"></ul>
-		</div>
+        <div id="rewardCardBack" data-bind="attr: {class: cardStatus}">
+            <img id="barcodeImage" data-bind="attr: {src:barcodeURL}" alt="Shop Card Id"/>
+        </div>
+        <ul id="rewardsList" 
+            data-role="listview" data-style="inset" data-bind="source: rewards" data-style="inset"
+            data-template="rewardsListTemplate">
+        </ul>
 	</div>
 </div>
 
 <!-- Templates -->
-<script type="text/x-kendo-template" id="rewardsListTemplate">
-        <p class="item-info">#:reward#</p>
+<script id="rewardsListTemplate" type="text/x-kendo-template">
+	<div class="j-listview-item rewards">
+		<div class="j-icon reward-badge"></div>
+		<div class="j-listview-item-content">
+         	<span>#:reward#</span>
+            <span>Reward</span>
+		</div>
+	</div>
 </script>

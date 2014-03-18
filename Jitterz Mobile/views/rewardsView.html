@@ -1,26 +1,27 @@
-<div data-role="view" id="rewardsView" data-style="inset" data-title="Rewards" data-init="rewardsViewInit" data-model="cardsViewModel">
-	<div id="rewardsCardsViewContent" data-role="content">
-        
-        <!-- List of cards -->
-        <ul id="rewordsCardsList" data-role="listview" data-style="inset" data-bind="source: cards" data-template="rewordsCardsList-template"></ul>
-    </div>
+<div id="rewardsView" 
+     data-role="view" data-style="inset" 
+     data-title="Rewards" data-init="rewardsViewInit" 
+     data-model="cardsViewModel">
+    
+	<ul id="rewordsCardsList" 
+		data-role="listview" data-style="inset" 
+		data-bind="source: cards" data-template="rewordsCardsList-template">
+    </ul>
 </div>
 
 <script type="text/x-kendo-template" id="rewordsCardsList-template">
     <a href='views/rewardCardView.html?bonusPoints=#:bonusPoints#&cardNumber=#:cardNumber#' 
-        data-cardId="#:cardNumber#" class="listReswardsCard clear" data-role="listview-link">
-               <div 
-				#if(bonusPoints<50){#
-					class="silverCardImage cardPicture"
-				#}else{#
-                     class="goldCardImage cardPicture"
-					#}
-				#></div>
-        <div class="cardInformationContainer">
-            <span>Card Number: </span>
-            <span class="cardNumberText">#:cardNumber#</span>
-            <div class="expireDateText">Expire on #:expireDate#</div>
+        data-cardId="#:cardNumber#" data-role="listview-link" class="j-listview-item">
+        <div 
+			#if(bonusPoints<50){#
+				class="j-icon silver-badge"
+			#}else{#
+            	class="j-icon golden-badge"
+			#}#>
+		</div>
+        <div class="j-listview-item-content">
+            <span>Card Number: #:cardNumber#</span>
+            <span>Expires On: #:expireDate#</span>
         </div>
-        <div class="clear"></div>
     </a>    
 </script>

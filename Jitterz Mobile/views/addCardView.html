@@ -1,4 +1,4 @@
-<div data-role="view" id="addCardView" data-title="Add Card" data-show="onAddCardViewShow" data-model="addCardViewModel">
+<div data-role="view" id="addCardView" data-title="Add New Card" data-show="onAddCardViewShow" data-model="addCardViewModel">
 	<div data-role="header">
 		<div data-role="navbar">
 			<a href="#cardsView" data-role="button" data-align="left">Cancel</a>
@@ -6,16 +6,11 @@
             <button data-role="button" data-align="right" id="buttonAddNewCardView" class="isCardValid" data-bind="events: { click: addNewCard }">Add</button>
 		</div>
 	</div>
-    <div data-role="content">
-        <div class="addCardLogo clear">
-            <div class="cardPicture">
-            </div>
-            <span class="addCardLogoText">Create New Jitterz Card</span>
-        </div>
+    <div>
         <ul class="addNewCardWrapper" data-role="listview" data-style="inset">
 			<li>
 				<label for="cardNumberField">Card Number </label>
-				<input type="number" id="cardNumberField" min="3" max="10" maxlength="10" maxlength="9" data-bind="value: cardNumber, events: { keyup: cardIdChanged }"/>
+				<input id="cardNumberField" type="number" min="3" max="10" maxlength="10" maxlength="9" data-bind="value: cardNumber, events: { keyup: cardIdChanged }"/>
 			</li>
 		</ul>
 		<div id="addNewCardErrorLog"></div>
