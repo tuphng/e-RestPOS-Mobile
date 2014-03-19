@@ -171,7 +171,7 @@
     font-family: monospace;
     text-transform: uppercase;
     letter-spacing: 0.25em;
-    top: 6px;
+    top: 8px;
 	position: relative;
 }
 
@@ -266,4 +266,11 @@
 }
 .j-listview-item.rewards > .j-listview-item-content > span {
 	    
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+	.j-icon {
+        background: url("../images/cofeeCup-sprite@x2.png") no-repeat 0 0;
+        background-size: 100%;
+	}
 }
