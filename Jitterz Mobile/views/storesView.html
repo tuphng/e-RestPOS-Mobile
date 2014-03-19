@@ -1,6 +1,7 @@
 <div id="stores" 
      data-role="view" data-title="Stores" data-style="inset"
-     data-init="storesInit" data-show="onStoresShow">
+     data-init="storesInit" data-show="onStoresShow"
+     data-model="storesListViewModel">
 	<header data-role="header">
         <div data-role="navbar">
             <ul id="btnStoreViewToggle" data-role="buttongroup" data-index="0" data-align="center">
@@ -9,27 +10,20 @@
             </ul>
         </div>
     </header>
-    <!--
-	<span id="offline-msg">Please reconnect to the Internet.</span>
-	-->
-    <div id="map"></div>
-    <ul id="storeList" data-role="listview" data-style="inset" style="display:none"
-        data-template="tmplStoreListItem">
-	</ul>
+    <h3 id="offline-msg">Please reconnect to the Internet.</h3>
+    <div id="stores">
+        <div id="map"></div>
+        <ul id="storeList" data-role="listview" data-style="inset" style="display:none"
+            data-template="tmplStoreListItem" data-bind="source: stores">
+        </ul>
+    </div>
 </div>
 
 <script id="tmplStoreListItem" type="text/x-kendo-template">
 	<div class="j-listview-item stores">
     	<div class="j-listview-item-content">
-            <span>#: data.Name #</span>
-            <span>#: data.Address #</span>
-            <span>
-                #if(OpenNow === 1){#
-                    Open
-                #}else{#
-                    Closed
-                #}#
-            </span>
+            <span>#: Name #</span>
+            <span>#: Address #</span>
 		<div>
 	</div>
 </script>

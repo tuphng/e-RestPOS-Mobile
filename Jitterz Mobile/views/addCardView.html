@@ -9,8 +9,10 @@
     <div>
         <ul class="addNewCardWrapper" data-role="listview" data-style="inset">
 			<li>
-				<label for="cardNumberField">Card Number </label>
-				<input id="cardNumberField" type="number" min="3" max="10" maxlength="10" maxlength="9" data-bind="value: cardNumber, events: { keyup: cardIdChanged }"/>
+				<label>
+                    Card Number 
+					<input id="cardNumberField" type="number" min="1" max="999999999" maxlength="9" data-bind="value: cardNumber, events: { keyup: cardIdChanged }"/>                
+                </label>
 			</li>
 		</ul>
 		<div id="addNewCardErrorLog"></div>

@@ -124,9 +124,7 @@
 		initStoreList: function(position) {
 			_appData.getStarbucksLocations(position.coords.latitude, position.coords.longitude)
         			.done(function(data) {
-                        $(_storeListElem).kendoMobileListView({
-        					dataSource: kendo.data.DataSource.create({ data: data })
-        				});
+						storesListViewModel.load(data);
         			})
         			.fail(function(e, r, t) {
                         alert("Loading error");    
@@ -222,15 +220,13 @@
 			});
             
 			if (_isOnline === true) {
-               // $("#map").show();
-				//$("#storeList").show();
-				//$(".offline").hide();
+               	$("#stores").show();
+				$("#offline-msg").hide();
                 google.maps.event.trigger(map, "resize");
 			}
 			else {
-               // $("#map").hide();
-				//$("#storeList").hide();
-				//$(".offline").show();
+				$("#stores").hide();
+				$("#offline-msg").show();
 			}
 		}
 	};
