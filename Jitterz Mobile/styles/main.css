@@ -1,3 +1,4 @@
+/* kendo override styles */
 .km-ios7 .km-touch-scrollbar,
 .km-ios .km-touch-scrollbar,
 .km-android .km-touch-scrollbar,
@@ -52,10 +53,23 @@
 }
 
 /* android specific styles */
+.km-android .km-shim,
+.km-android .km-popup,
+.km-android .k-slider,
+.km-android .km-badge,
+.km-android .km-switch-on,
+.km-android .km-current-page,
+.km-android input:focus,
+.km-android select:focus,
+.km-android textarea:focus,
+.km-android input:checked,
+.km-android .km-touch-scrollbar,
+.km-android .km-widget .k-state-focused,
+.km-android .km-widget .km-state-active {
+    color: #fff;
+}
+
 .km-android .km-view .km-content {
-    background-image: none;
-    background-repeat: ,repeat;
-    background-position: ,0% 0%;
     background-color: #422e17;
 }
 .km-android .km-view .km-navbar {
@@ -101,6 +115,9 @@
 }
 .km-wp .km-view .km-navbar .km-view-title > * .km-button.km-state-active {
     background-color: #347a14;
+}
+.km-wp .km-view .km-navbar .km-view-title > * .km-button.km-state-active {
+    background-color: #347a14;
     color: #fff;
 }
 
@@ -122,7 +139,8 @@
     box-shadow: 0px 0px 2px #333;
     -webkit-box-shadow: 0px 0px 2px #333;
 }
-#cardBack, #rewardCardBarcode, #rewardCardBack { display:none; }
+#cardBack, #rewardCardBack { display:none; }
+
 #cardBack > img,
 #rewardCardBack > img {
     width: 130px;
