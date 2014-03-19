@@ -1,17 +1,8 @@
-/* kendo override styles */
-.km-ios .km-view .km-content,
-.km-android .km-view .km-content,
-.km-wp .km-view .km-content {
-    background-image: none;
-    background-repeat: ,repeat;
-    background-position: ,0% 0%;
-    background-color: #422e17;
-}
-
-.km-ios .km-view .km-navbar,
-.km-android .km-view .km-navbar,
-.km-wp .km-view .km-navbar {
-    background-color: #604118;
+.km-ios7 .km-touch-scrollbar,
+.km-ios .km-touch-scrollbar,
+.km-android .km-touch-scrollbar,
+.km-wp .km-touch-scrollbar {
+    background-color: #fff;
 }
 
 /* ios7 specific styles */
@@ -37,6 +28,15 @@
 }
 
 /* ios specific styles */
+.km-ios .km-view .km-content {
+    background-image: none;
+    background-repeat: ,repeat;
+    background-position: ,0% 0%;
+    background-color: #422e17;
+}
+.km-ios .km-view .km-navbar {
+    background-color: #604118;
+}
 .km-ios .km-view .km-tabstrip .km-button {
     background-color: #604118;
 }
@@ -52,6 +52,15 @@
 }
 
 /* android specific styles */
+.km-android .km-view .km-content {
+    background-image: none;
+    background-repeat: ,repeat;
+    background-position: ,0% 0%;
+    background-color: #422e17;
+}
+.km-android .km-view .km-navbar {
+    background-color: #604118;
+}
 .km-android .km-view .km-tabstrip .km-button.km-state-active {
     background-color: #133403;
     border-color: #fff;
@@ -71,6 +80,28 @@
 }
 .km-android .km-view .km-content .km-list .km-state-active .km-listview-link {
     background-color: #133403;
+}
+
+/* windows phone specific styles */
+.km-wp .km-view .km-content {
+    background-color: #af9577;
+}
+.km-wp .km-view .km-navbar {
+    background-color: #af9577;
+}
+.km-wp .km-view .km-tabstrip .km-state-active span.km-icon {
+    background: #347a14;
+    border-color: #347a14;
+}
+.km-wp .km-view .km-tabstrip .km-state-active span.km-text {
+    color: #347a14;
+}
+.km-wp .km-view .km-navbar .km-view-title > * .km-button {
+    background-color: transparent;
+}
+.km-wp .km-view .km-navbar .km-view-title > * .km-button.km-state-active {
+    background-color: #347a14;
+    color: #fff;
 }
 
 /* map styles */
