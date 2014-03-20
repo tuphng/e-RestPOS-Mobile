@@ -220,13 +220,13 @@
 			});
             
 			if (_isOnline === true) {
-               	$("#stores").show();
-				$("#offline-msg").hide();
+				$("#storesContent").show();
+				$("#offline").hide();
                 google.maps.event.trigger(map, "resize");
 			}
 			else {
-				$("#stores").hide();
-				$("#offline-msg").show();
+				$("#storesContent").hide();
+				$("#offline").show();
 			}
 		}
 	};

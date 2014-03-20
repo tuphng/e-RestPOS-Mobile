@@ -10,13 +10,13 @@
             </ul>
         </div>
     </header>
-    <h3 id="offline-msg">Please reconnect to the Internet.</h3>
-    <div id="stores">
-        <div id="map"></div>
-        <ul id="storeList" data-role="listview" data-style="inset" style="display:none"
-            data-template="tmplStoreListItem" data-bind="source: stores">
+	<div id="storesContent">
+		<div id="map"></div>
+		<ul id="storeList" data-role="listview" data-style="inset" style="display:none"
+                data-template="tmplStoreListItem" data-bind="source: stores">
         </ul>
     </div>
+    <span id="offline">Please reconnect to Internet.</span>
 </div>
 
 <script id="tmplStoreListItem" type="text/x-kendo-template">
