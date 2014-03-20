@@ -97,28 +97,9 @@
 }
 
 /* windows phone specific styles */
-.km-wp .km-view .km-content {
-    background-color: #af9577;
-}
+.km-wp .km-view .km-content,
 .km-wp .km-view .km-navbar {
     background-color: #af9577;
-}
-.km-wp .km-view .km-tabstrip .km-state-active span.km-icon {
-    background: #347a14;
-    border-color: #347a14;
-}
-.km-wp .km-view .km-tabstrip .km-state-active span.km-text {
-    color: #347a14;
-}
-.km-wp .km-view .km-navbar .km-view-title > * .km-button {
-    background-color: transparent;
-}
-.km-wp .km-view .km-navbar .km-view-title > * .km-button.km-state-active {
-    background-color: #347a14;
-}
-.km-wp .km-view .km-navbar .km-view-title > * .km-button.km-state-active {
-    background-color: #347a14;
-    color: #fff;
 }
 
 /* map styles */
