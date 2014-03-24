@@ -1,360 +1,177 @@
-#announcements{
-    margin: 12px;
-}
-#announcements li
-{
-    background-color: transparent;
-}
-
-.cardPicture
-{
-    background-repeat:no-repeat;
-    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -100px;;
-    width: 50px;
-    height: 50px;
-    float: left;
+/* kendo override styles */
+.km-ios7 .km-touch-scrollbar,
+.km-ios .km-touch-scrollbar,
+.km-android .km-touch-scrollbar,
+.km-wp .km-touch-scrollbar {
+    background-color: #fff;
 }
 
-.silverCardImage
-{
-    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -100px;
+/* ios7 specific styles */
+.km-ios7 .km-view .km-content {
+    background-color: #af9577;
+}
+.km-ios7 .k-list,
+.km-ios7 .k-slider,
+.km-ios7 .km-widget {
+    color: #347a14;
+}
+.km-ios7 .km-view .km-content .km-list > li {
+    border-image: -webkit-linear-gradient(left,transparent 1em,rgba(255,255,255,0.5) 1em,rgba(255,255,255,0.5) 100%) 1 stretch;
+}
+.km-ios7 .km-list>li:last-child {
+	-webkit-box-shadow: inset 0 -1px 0 rgba(255,255,255,0.5);
+}
+.km-ios7 .km-listview-link:after {
+    color: rgba(255,255,255,0.5);
+}
+.km-ios7 .km-view .km-content .km-list .km-state-active .km-listview-link {
+    background-color: #907759;
 }
 
-.goldCardImage
-{
-    background: url("../images/cofeeCup-sprite.png") no-repeat 0 -50px;
+/* ios specific styles */
+.km-ios .km-view .km-content {
+    background-image: none;
+    background-repeat: ,repeat;
+    background-position: ,0% 0%;
+    background-color: #422e17;
 }
-
-.addCardLogo {
-    margin: 25px 10px 0 10px;
+.km-ios .km-view .km-navbar {
+    background-color: #604118;
 }
-
-.addCardLogoText {
+.km-ios .km-view .km-tabstrip .km-button {
+    background-color: #604118;
+}
+.km-ios .km-view .km-tabstrip .km-button.km-state-active,
+.km-ios .km-view .km-navbar .km-button,
+.km-ios .km-view .km-navbar .km-button.km-state-active,
+.km-ios .km-view .km-content .km-list .km-state-active .km-listview-link {
+    background-color: #133403;
+}
+.km-ios .km-view .km-tabstrip .km-button .km-icon,
+.km-ios .km-view .km-tabstrip .km-state-active span.km-icon {
     color: #fff;
-    font-size: 18px;
-    line-height: 52px;
-    margin-left:10px;
 }
 
-.addNewCardWrapper {
-    margin: 10px;
+/* android specific styles */
+.km-android .km-shim,
+.km-android .km-popup,
+.km-android .k-slider,
+.km-android .km-badge,
+.km-android .km-switch-on,
+.km-android .km-current-page,
+.km-android input:focus,
+.km-android select:focus,
+.km-android textarea:focus,
+.km-android input:checked,
+.km-android .km-touch-scrollbar,
+.km-android .km-widget .k-state-focused,
+.km-android .km-widget .km-state-active {
+    color: #fff;
 }
 
-.item-photo {
-    width: 75px;
-    height: 75px;
-    float: left;
-    margin: .5em 0;
-    -webkit-box-shadow: 0 1px 3px #333;
-    box-shadow: 0 1px 3px #333;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
+.km-android .km-view .km-content {
+    background-color: #422e17;
+}
+.km-android .km-view .km-navbar {
+    background-color: #604118;
+}
+.km-android .km-view .km-tabstrip .km-button.km-state-active {
+    background-color: #133403;
+    border-color: #fff;
+}
+.km-android .km-view .km-tabstrip .km-state-active span.km-icon {
+    color: #fff;
+}
+.km-android .km-view .km-navbar .km-buttongroup .km-button {
+    background-color: transparent;
+    border: 1px solid #133403;
+}
+.km-android .km-view .km-navbar .km-button.km-state-active {
+	background-color: #133403;
+}
+.km-android .km-view .km-navbar .km-button.km-state-active:after {
+    display: none;
+}
+.km-android .km-view .km-content .km-list .km-state-active .km-listview-link {
+    background-color: #133403;
 }
 
-#announcements-listview .item-title {
-	float: left;
-	font-size: 1.2em;
-    line-height: 1.2em;
-    margin: 0 0 0 .8em;
-    width: 61%;
+/* windows phone specific styles */
+.km-wp .km-view .km-content,
+.km-wp .km-view .km-navbar {
+    background-color: #af9577;
 }
 
-#announcements-listview .item-info {
-	float: left;
-	font-size: 1em;
-    font-weight: 100;
-	line-height: 1em;
-    margin: 0 0 0 1em;
-    width: 61%;
-}
-
-#announcements-listview {
-    margin: 0;
-}
-
-.km-ios #home .km-list
-{
-    border-radius: 3px;
-}
-
-.km-card
-{
-	-webkit-mask-box-image: url("../icons/card.png");
-}
-
-.km-rewards
-{
-	-webkit-mask-box-image: url("../icons/rewards.png");
-}
-
-.km-stores
-{
-	-webkit-mask-box-image: url("../icons/stores.png");
-}
-
-/*66CCFF*/
-#jitterz-tabstrip,
-#jitterz-default-header .km-navbar,
-#jitterz-tabstrip .km-state-active .km-icon,
-#jitterz-default-header .km-navbar .km-button
-{
-	background-color: #66ccff;
-}
-
-.km-ios #jitterz-tabstrip
-{
-	border-top: 2px solid #66ccff;
-}
-
-#home .km-content
-{
-   
-}
-
-/*Ivan Ivanov Cancel button*/
-.clear:after
-{
-    content: "";
-    clear: both;
-    display: block;
-}
-
-#buttonModalViewDeleteConfirm,
-#buttonModalViewDeleteCancel
-{
-    display: block;
-    text-align: center;
-    margin: .6em .8em .6em;
-    font-size: 1.2em;
-}
-
-#cardsView {
-    font-family:Sans-serif, Helvetica;
-}
-.cardNumberText {
-    color: #486A9A;
-    font-weight: normal;
-    font-size: 12px;
-}
-
-.expireDateText {
-    color: #7F7F7F;
-    font-weight: normal;
-    font-size: 12px;
-}
-.cardInformationContainer
-{
-    margin: 7px 0 0 10px;
-    float: left;
-}
-
-/*Single Card View Styles*/
-#singleCardContainer
-{
-    margin-top: 15px;
-    height: 170px;
-}
-
-#cardFront
-{
-}
-
-#cardBack
-{
-    display:none;
-}
-
-#cardFront, #cardBack, #rewardCardFront, #rewardCardBack 
-{
-    border-radius: 10px;
-    cursor:pointer;
-    width:300px;
-    height:170px;
-    box-shadow: 0px 0px 2px #333;
-    margin: 0 auto;
-
-}
-
-#cardBarcode
-{
-    margin: 40px auto 0 auto;    
-}
-
+/* map styles */
 #map {
-    width:100%; height:100%; position:absolute;        
+    width:100%; 
+    height:100%;     
+    position: absolute;
+    top:0;
+    left:0;
 }
-
-.deleteCardButton
-{
-    width:20px;
-    height:20px;
-    text-align:center;
-}
-
-.deleteCardButton:hover
-{
-    background-color: darkred;
-}
-
-.cardListWrapper {
-    margin: 0 10px;
-}
-
-#cardsList li 
-{
-    font-size: 13px;
-}
-
-#modalViewDeleteCard
-{
-    height: 270px;
-}
-
-#modalViewDeleteCardMessage,
-#modalViewDeleteCardNumber
-{
-    color: #363636;
-    font-weight: normal;
-    font-size: 12px;
-}
-
-#addNewCardErrorLog
-{
-    color: #FF3333;
-    margin: 0px auto;
-    width: 240px;
+#offline {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    margin:0 auto;
+    width:100%;
     text-align: center;
 }
 
-#barcodeImage
-{
+/* card styles */
+#cardFront, #cardBack, #rewardCardFront, #rewardCardBack {
+    border-radius: 10px;
+    cursor: pointer;
+    width: 300px;
+    height: 170px;
+    margin: 10px auto;
+    position: relative;
+    box-shadow: 0px 0px 2px #333;
+    -webkit-box-shadow: 0px 0px 2px #333;
+}
+#cardBack, #rewardCardBack { display:none; }
+
+#cardBack > img,
+#rewardCardBack > img {
     width: 130px;
     height: 130px;
-    margin-left: 85px;
-    margin-top: 19px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -65px;
+    margin-left: -65px;
 }
 
-#cardAmount
-{
-    margin: 0 auto;
-    width: 200px;
+.gold { 
+    background: #fdc20b;
+    background: -moz-linear-gradient(top, #fdc20b 0%, #ffd336 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdc20b), color-stop(100%, #ffd336));
+    background: -webkit-linear-gradient(top, #fdc20b 0%, #ffd336 100%);
+    background: -o-linear-gradient(top, #fdc20b 0%, #ffd336 100%);
+    background: -ms-linear-gradient(top, #fdc20b 0%, #ffd336 100%);
+    background: linear-gradient(to bottom, #fdc20b 0%, #ffd336 100%); 
+}
+.silver { 
+    background: #c0c4c6;
+    background: -moz-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c0c4c6), color-stop(100%, #ccd0d3));
+    background: -webkit-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%);
+    background: -o-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%);
+    background: -ms-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%);
+    background: linear-gradient(to bottom, #c0c4c6 0%, #ccd0d3 100%); 
+}
+
+.card-line {
+	height: 40px;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px #333;
-    padding: 10px;
-    background-color: #bababa;
-    color: #000;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
 }
-
-.singleCardPriceBox
-{
-    font-size: 30px;
-    font-weight: normal;
-    padding: 0;
-    margin-bottom: 10px;
-}
-
-#singleCardActions .singleCardDeleteButton {
-   background: #E30111;
-    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,rgba(0, 0, 0, 0.3)),
-    color-stop(0.05,transparent), color-stop(0.98, transparent), color-stop(1, rgba(70, 70, 70, 0.5))), 
-    -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(255, 255, 255, 0.6)),color-stop(0.5, rgba(255, 255, 255, 0.1)),
-    color-stop(0.5, rgba(255, 255, 255, 0)),color-stop(1, rgba(255, 255, 255, 0.15)));
-    background-clip: padding-box;
-    color: white;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
-}
-
- .km-actionsheet-wrapper { 
-    padding-top: 20px!important;
-    padding-bottom: 10px!important;
-    background-color:rgba(96, 101, 111, 1) !important;
-}
-
-.singleCardActionsList li {
-    margin: 20px 10px!important;
-}
-
-/*Kristian Styles*/
-
-clear:after
-{
-    content: "";
-    clear: both;
-    height: 0;
-    display: block;
-}
-
-.listReswardsCard
-{
-    overflow:hidden;
-}
-
-#singleRewardCardContainer{
-    margin-top: 15px;
-    margin-bottom:15px;
-}
-
-.singleRewardCardBonusBox
-{
-    font-size: 30px;
-    font-weight: normal;
-    padding: 0;
-    margin-bottom: 10px;
-}
-
-.cardBonus
-{
-    margin: 0 auto;
-    width: 200px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px #333;
-    padding: 10px;
-    background-color: #bababa;
-    color: #000;
-    margin-bottom:20px;
-}
-
-.starIcon,.bonusHeader
-{
-    float:left;
-}
-
- #rewardCardBarcode, #rewardCardBack
-{
-    display:none;
-}
-
-#rewordsCardsList li
-{
-    font-size: 12px;
-}
-
-.gold
-{
-	background: #fdc20b; /* Old browsers */
-	background: -moz-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdc20b), color-stop(100%, #ffd336)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #fdc20b 0%, #ffd336 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #fdc20b 0%, #ffd336 100%); /* W3C */
-}
-
-.silver
-{
-	background: #c0c4c6; /* Old browsers */
-	background: -moz-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c0c4c6), color-stop(100%, #ccd0d3)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #c0c4c6 0%, #ccd0d3 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #c0c4c6 0%, #ccd0d3 100%); /* W3C */
-}
-
-.cardNumberLine
-{
+.card-line > span {
     font-size: 23px;
     opacity: 0.7;
     text-shadow: -0px -1px 3px black;
@@ -363,117 +180,106 @@ clear:after
     font-family: monospace;
     text-transform: uppercase;
     letter-spacing: 0.25em;
+    top: 8px;
+	position: relative;
 }
 
-.iconContainer
-{
-    float:left;
-    height:80px;
-    width:80px;
-    border:solid 1px rgba(0, 0, 0, 0.4);
-    border-radius:10px;
-    margin-left:16px;
-    margin-top:16px;
-    background-color:#eee;
+.card-icon {
+    float: left;
+    height: 80px;
+    width: 80px;
+    border: solid 1px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    margin-left: 16px;
+    margin-top: 16px;
+    background-color: #eee;
+    position: relative;
+}
+.card-icon > .j-icon {
+    margin-left: 5px;
 }
 
-.icon
-{
-    height:50px;
-    width:50px;
-    margin-top:15px;
-    margin-left:15px;
-    background: url("../images/cofeeCup-sprite.png") no-repeat 0 0px;
+.card-bonus {
+    float: right;
+    margin-top: 30px;
+    width: 200px;
 }
-
-.amountLine
-{
-    width:300px;
-    line-height:40px;
-    margin-top:16px;
-    background: rgba(0,0,0,0.3);
-    text-align:center;
+.card-bonus > span {
+    margin-left: 16px;
+    text-shadow: 0px -1px 3px black;
+    color: #fff;
+    font-size: 24px;
 }
-
-.bonusIcon
-{   
-    float:left;
-    margin-top:4px;
-    margin-left:38px;
-    height:32px;
-    width:32px;
-    background-image:url("../icons/iconBonus.png");
-}
-
-.dateLine
-{
-    margin-right: 16px;
-    font-size:12px;
-    text-align:center;
-    margin-top:4px;
-    color:rgba(0,0,0,.5);
-}
-
-.km-ios #rewardsList > li
-{
+.card-bonus > div > span {
     font-size: 12px;
-    padding-left: 3px;
+    margin-left: 16px;
+    margin-top:4px;
+    text-align: center;
+    color: rgba(0,0,0,.5);
 }
-.km-ios #rewardsList > li:before,
-.km-android #rewardsList > li:before {
-    content: "";
-	background: url("../images/cofeeCup-sprite.png") no-repeat 0 -250px;
+.card-bonus > div > span:last-of-type {
+    margin-left: 0;
+    font-weight: bold;
+}
+
+.j-icon {
+    background: url("../images/cofeeCup-sprite.png") no-repeat 0 0;
+    position: absolute;
+    top: 50%;
+    left: 10px;
     width: 50px;
     height: 50px;
-	display: block;
-    float:left;
-    padding-right:5px;
+    margin-top: -25px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
 }
-.bonusPoints{
-    margin-left:16px;
-    text-shadow: 0px -1px 3px black;
-    color:#fff;
-    font-size:24px;
+.j-icon.main-badge { background-position: 0 0; }
+.j-icon.golden-badge { background-position: 0 -50px; }
+.j-icon.silver-badge { background-position: 0 -100px; }
+.j-icon.reward-badge { background-position: 0 -250px }
+
+/* listview item styles */
+.j-listview-item > .j-listview-item-content {
+    padding-left: 60px;
+}
+.j-listview-item > .j-listview-item-content:after {
+	clear: both;
+}
+.j-listview-item > .j-listview-item-content > span {
+    display:block;
+    font-size: 0.9em;
+}
+.j-listview-item > .j-listview-item-content > span:last-of-type:not(:first-of-type) {
+    font-size: 0.7em;
+    opacity: 0.7;
 }
 
-.bonusContainer {
-    float:right;
-    margin-top:30px;
-    width:200px;
+.j-listview-item.announcement > .j-listview-item-content {
+    padding-left: 85px;
+}
+.j-listview-item.announcement > .j-listview-item-content > span {
+    font-size: 1em;
+    margin-top: 8px;
+}
+.j-listview-item.announcement > .j-listview-item-content > span:last-of-type {
+    font-size: 0.75em;
+}
+.j-listview-item.announcement > img {
+    width: 75px;
+    height: 75px;
+    float: left;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+.j-listview-item.stores > .j-listview-item-content {
+    padding-left: 0;
 }
-#buttonAddNewCard {
-    padding-left: 0px;
-    padding-right: 0px;
-    min-width:40px;
-}
-#buttonAddNewCard > .km-icon {
-    color:#fff;
-}
-#buttonAddNewCardView {
-    bottom:0px;
+.j-listview-item.rewards > .j-listview-item-content > span {
+	    
 }
 
-#buttonAddNewCardView[disabled] {
-    opacity:0.5;
-    cursor: default;
-}
-
-#buttonAddNewCardView.isCardValid {
-    opacity:0.5;
-    pointer-events: none;
-    cursor: default;
-}
-
-#btnStoreViewToggle > .km-button {
-    padding: 0.25rem 30px; 
-}
-.km-ios #home .km-listview-wrapper {
-    background:rgba(255,255,255,0.7);
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+	.j-icon {
+        background: url("../images/cofeeCup-sprite@x2.png") no-repeat 0 0;
+        background-size: 100%;
+	}
 }

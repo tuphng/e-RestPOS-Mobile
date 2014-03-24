@@ -17,6 +17,10 @@
     <iOSBackgroundMode />
     <FrameworkVersion>3.2.0</FrameworkVersion>
     <CorePlugins>org.apache.cordova.geolocation;org.apache.cordova.splashscreen;org.apache.cordova.statusbar</CorePlugins>
+    <DisplayName />
+    <WP8SupportedResolutions>ID_RESOLUTION_WVGA;ID_RESOLUTION_WXGA;ID_RESOLUTION_HD720P</WP8SupportedResolutions>
+    <WP8ProductID>{c01056bd-0b45-4f53-a7cb-77d0c861a95f}</WP8ProductID>
+    <WP8PublisherID>{271d983d-dceb-474e-ad8b-6471c1036a8d}</WP8PublisherID>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>

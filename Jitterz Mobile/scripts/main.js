@@ -5,8 +5,7 @@
     	_storeListElem,
     	_private,
     	_appData = new AppData(),
-    	_isOnline = true,
-    	_tmplStoreList;
+    	_isOnline = true;
     
 	//Private methods
 	_private = {
@@ -120,17 +119,12 @@
 			}				
             
             createMarker(0);
-
 		},
         
 		initStoreList: function(position) {
 			_appData.getStarbucksLocations(position.coords.latitude, position.coords.longitude)
         			.done(function(data) {
-                        //TODO: Bind data to listview
-        				/*$(_storeListElem).kendoMobileListView({
-        					dataSource: kendo.data.DataSource.create({ data: data }),
-        					template: _tmplStoreList
-        				});*/
+						storesListViewModel.load(data);
         			})
         			.fail(function(e, r, t) {
                         alert("Loading error");    
@@ -165,7 +159,6 @@
             addCardViewModel.resetView();
 		},
         
-            
 		rewardCardShow: function(e) {
 			var bonusPoints = e.view.params.bonusPoints,
 			    cardNumber = e.view.params.cardNumber;
@@ -201,7 +194,6 @@
 		storesInit: function() {
 			_mapElem = document.getElementById("map");
 			_storeListElem = document.getElementById("storeList");
-			_tmplStoreList = kendo.template($("#tmplStoreListItem").html());
 
 			$("#btnStoreViewToggle").data("kendoMobileButtonGroup")
 			.bind("select", function(e) {
@@ -228,13 +220,13 @@
 			});
             
 			if (_isOnline === true) {
-				$("#stores").show();
-				$(".offline").hide();
+				$("#storesContent").show();
+				$("#offline").hide();
                 google.maps.event.trigger(map, "resize");
 			}
 			else {
-				$("#stores").hide();
-				$(".offline").show();
+				$("#storesContent").hide();
+				$("#offline").show();
 			}
 		}
 	};

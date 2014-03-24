@@ -1,6 +1,7 @@
 (function($, console, doc) {
 	var announcementViewModel,
     	cardsViewModel,
+        storesListViewModel,
     	AddCardViewModel,
     	CardsViewModelBase,
     	SingleCardViewModel,
@@ -268,13 +269,22 @@
             
 		}
 	});
-
+	
+    storesListViewModel = kendo.observable({ 
+        stores : [], 
+        load: function(data) { 
+            var that = this;
+            that.set("stores", data); 
+        } 
+    });
+    
 	$.extend(window, {
 		singleCardViewModel: new SingleCardViewModel(),
 		rewardsViewModel: new RewardsViewModel(),
 		addCardViewModel: new AddCardViewModel(),
 		announcementViewModel: announcementViewModel,
-		cardsViewModel: cardsViewModel
+		cardsViewModel: cardsViewModel,
+        storesListViewModel: storesListViewModel
 	});
     
 })(jQuery, console, document);
