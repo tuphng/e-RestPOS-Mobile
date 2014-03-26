@@ -31,8 +31,8 @@
 /* ios specific styles */
 .km-ios .km-view .km-content {
     background-image: none;
-    background-repeat: ,repeat;
-    background-position: ,0% 0%;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
     background-color: #422e17;
 }
 .km-ios .km-view .km-navbar {
@@ -132,8 +132,8 @@
 }
 #cardBack, #rewardCardBack { display:none; }
 
-#cardBack > img,
-#rewardCardBack > img {
+#cardBack img,
+#rewardCardBack img {
     width: 130px;
     height: 130px;
     position: absolute;

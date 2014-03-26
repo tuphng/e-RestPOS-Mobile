@@ -115,21 +115,26 @@
 		},
         
 		appendCardFadeEffect: function ($cardFront, $cardBack) {
-            $cardFront.bind('touchend', function(e) {
-				console.log("clickFront");
-				$(e.currentTarget).fadeOut(500, "linear", function() {
-					$cardBack.fadeIn(500, "linear");
-				});
-            
-			});
+           var cardFrontButton = $cardFront.kendoMobileButton(),
+           	cardBackButton = $cardBack.kendoMobileButton();
                 
-			$cardBack.bind('touchend', function(e) {
-				console.log("clickBack");
-				$(e.currentTarget).fadeOut(500, "linear", function() {
-					$cardFront.fadeIn(500, "linear");
-				});
-			});
-		}
+			cardBackButton.bind('click', 
+                function(e) {
+			    	console.log("clickBack");
+			    	$(e.currentTarget).fadeOut(500, "linear", function() {
+			    		$cardFront.fadeIn(500, "linear");
+			    	});
+			    });
+            
+           cardFrontButton.bind('click',
+               function(e) {
+			    	console.log("clickFront");
+			    	$(e.currentTarget).fadeOut(500, "linear", function() {
+			    		$cardBack.fadeIn(500, "linear");
+			    	});
+               });
+        }
+		
 	});
 
 	SingleCardViewModel = CardsViewModelBase.extend({
