@@ -101,6 +101,11 @@
 .km-wp .km-view .km-navbar {
     background-color: #af9577;
 }
+.km-wp .km-actionsheet li a {
+    text-transform: lowercase;
+    font-weight: normal;
+    font-size: 0.9em;
+}
 
 /* map styles */
 #map {
