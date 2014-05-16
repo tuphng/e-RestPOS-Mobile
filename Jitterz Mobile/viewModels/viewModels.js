@@ -120,7 +120,6 @@
                 
 			cardBackButton.bind('click', 
                 function(e) {
-			    	console.log("clickBack");
 			    	$(e.currentTarget).fadeOut(500, "linear", function() {
 			    		$cardFront.fadeIn(500, "linear");
 			    	});
@@ -128,7 +127,6 @@
             
            cardFrontButton.bind('click',
                function(e) {
-			    	console.log("clickFront");
 			    	$(e.currentTarget).fadeOut(500, "linear", function() {
 			    		$cardBack.fadeIn(500, "linear");
 			    	});
