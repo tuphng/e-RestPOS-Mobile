@@ -2,13 +2,13 @@
      data-role="view" data-style="inset" 
      data-title="Card" data-show="singleCardShow" data-init="singleCardInit" 
      data-model="singleCardViewModel">
-	<header data-role="header" data-id="jitterz-default-header">
-		<div data-role="navbar">
-			<a class="nav-button" data-role="backbutton" data-align="left">Back</a>
-			<span data-role="view-title"></span>
+    <header data-role="header" data-id="jitterz-default-header">
+        <div data-role="navbar">
+            <a class="nav-button" data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title"></span>
             <a id="editCardButton" data-role="button" data-align="right" data-rel="actionsheet" href="#singleCardActions">Edit</a>
-		</div>
-	</header>
+        </div>
+    </header>
     <div>
         <div id="cardFront" data-bind="attr: {class: cardStatus}">
             <div class="card-icon">
@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="card-line">
-                <span data-bind="text: cardId"></div>
+                <span data-bind="text: cardId"></span>
             </div>
-		</div>
+        </div>
         <div id="cardBack" data-bind="attr: {class: cardStatus}">
             <img id="barcodeImage" data-bind="attr: {src:barcodeUrl}" alt="Shop Card Id"/>
         </div>
@@ -32,6 +32,6 @@
             <li>
                 <a href="#" data-role="button" data-bind="events: { click : deleteCard }" class="singleCardDeleteButton">Delete</a>
             </li>
-    	</ul>
-	</div>
+        </ul>
+    </div>
 </div>
