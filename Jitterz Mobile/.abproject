@@ -53,5 +53,6 @@
   "WP8TileTitle": "",
   "WP8Publisher": "",
   "WP8Capabilities": [],
-  "WP8Requirements": []
+  "WP8Requirements": [],
+  "Framework": "Cordova"
 }
