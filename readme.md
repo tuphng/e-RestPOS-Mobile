@@ -11,3 +11,5 @@ The app demonstrates the following:
 * Kendo UI Mobile Observable Object
 
 For more information please refer to the [sample documentation](http://docs.telerik.com/platform/appbuilder/sample-apps/coffee-app).
+
+10th of August 2017 We are starting to work with GitHub
